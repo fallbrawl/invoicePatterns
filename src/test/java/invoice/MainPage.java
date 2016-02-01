@@ -16,7 +16,6 @@ public class MainPage {
 
     public String title() {
         String title = driver.getTitle();
-        System.out.println(title);
         return title;
     }
 }

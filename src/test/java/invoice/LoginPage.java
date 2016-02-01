@@ -32,4 +32,32 @@ public class LoginPage {
 
         return new MainPage(driver);
     }
+
+    public void as(String role) {
+        if (role.equals("manager_buyer")) {
+
+            driver.get("http://invoicedev.php.attractgroup.com/public/login");
+            driver.findElement(By.name("email")).sendKeys("pavel.a.manager.buyer@attractgroup.com");
+            driver.findElement(By.name("password")).sendKeys("attract");
+            driver.findElement(By.id("submit_form_button_login")).click();
+
+        } else if (role.equals("manager_seller")) {
+            driver.get("http://invoicedev.php.attractgroup.com/public/login");
+            driver.findElement(By.name("email")).sendKeys("pavel.a.manager_sales@attractgroup.com");
+            driver.findElement(By.name("password")).sendKeys("attract");
+            driver.findElement(By.id("submit_form_button_login")).click();
+        } else if (role.equals("accounter")) {
+            driver.get("http://invoicedev.php.attractgroup.com/public/login");
+            driver.findElement(By.name("email")).sendKeys("pavel.a.accounter@attractgroup.com");
+            driver.findElement(By.name("password")).sendKeys("attract");
+            driver.findElement(By.id("submit_form_button_login")).click();
+        } else if (role.equals("admin")) {
+            driver.get("http://invoicedev.php.attractgroup.com/public/login");
+            driver.findElement(By.name("email")).sendKeys("pavel.a@attractgroup.com");
+            driver.findElement(By.name("password")).sendKeys("attract");
+            driver.findElement(By.id("submit_form_button_login")).click();
+        } else {
+            throw new IllegalArgumentException("No such role of user!");
+        }
+    }
 }

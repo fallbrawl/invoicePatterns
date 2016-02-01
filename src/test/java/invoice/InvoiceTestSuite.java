@@ -2,7 +2,6 @@ package invoice;
 
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -47,20 +46,72 @@ public class InvoiceTestSuite {
     @AfterTest
 
     public void shutDown() {
-        
-        driver.quit();
+
+       // driver.quit();
     }
 
     @Test
 
     public void login() {
+
         LoginPage login = new LoginPage(driver);
-        login.email("pavel.a@attractgroup.com");
-        login.password("attract");
+
+        login.as("admin");
         MainPage main = login.enter();
-        assertTrue(main.title().equals("Заказы на продажу"));
+        assertTrue(main.title().equals("Invoice"));
 
     }
 
+    @Test
+
+    public void addDocument() {
+        login();
+        driver.get("http://invoicedev.php.attractgroup.com/public/document/add");
+        AddDocumentFirstPage firstPage = new AddDocumentFirstPage(driver);
+
+        firstPage.setName1("wow1");
+        firstPage.setName2("wow2");
+
+        AddDocumentSecondPage secondPage = firstPage.save();
+        secondPage.getDocumentNumber();
+        assertTrue((secondPage.title() + secondPage.documentName).equals("Invoice"));
+        secondPage.attachPdf();
+        secondPage.save();
+        secondPage.send();
+
+
+
+
+    }
+
+    @Test
+
+    public void addDocumentFirstStep() {
+        login();
+        driver.get("http://invoicedev.php.attractgroup.com/public/document/add");
+        AddDocumentFirstPage firstPage = new AddDocumentFirstPage(driver);
+
+        firstPage.setName1("wow1");
+        firstPage.setName2("wow2");
+
+        AddDocumentSecondPage secondPage = firstPage.save();
+        assertTrue(main.title().equals("Invoice"));
+
+    }
+
+    @Test
+
+    public void addDocumentSecondStep() {
+        login();
+        driver.get("http://invoicedev.php.attractgroup.com/public/document/add");
+        AddDocumentFirstPage firstPage = new AddDocumentFirstPage(driver);
+
+        firstPage.setName1("wow1");
+        firstPage.setName2("wow2");
+
+        AddDocumentSecondPage secondPage = firstPage.save();
+        assertTrue(main.title().equals("Invoice"));
+
+    }
 
 }

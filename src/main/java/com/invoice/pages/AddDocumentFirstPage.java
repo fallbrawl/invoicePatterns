@@ -1,6 +1,5 @@
-package invoice;
+package com.invoice.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**

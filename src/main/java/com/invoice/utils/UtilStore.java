@@ -1,4 +1,4 @@
-package invoice;
+package com.invoice.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -38,18 +38,6 @@ public class UtilStore {
         }
     }
 
-
-    public static boolean gotToPage(WebDriver drv, String URLtitle, String URL, String errorMsg) throws InterruptedException {
-        drv.get(URL);
-        if (drv.getTitle().equals(URLtitle)) {
-            System.out.println(drv.getTitle() + " is ok!");
-            return true;
-        } else {
-            System.out.println("There is a test here: " + drv.getTitle() + ", and it is failed!");
-            return false;
-        }
-
-    }
 
     public static String addDate() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

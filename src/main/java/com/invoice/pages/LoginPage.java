@@ -2,8 +2,6 @@ package com.invoice.pages;
 
 import com.invoice.data.UserData;
 import com.invoice.utils.ConfigProperties;
-import org.openqa.jetty.start.Main;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,12 +25,12 @@ public class LoginPage extends Page {
         typeHere(fieldEmailLogin, admin.email);
         typeHere(fieldPasswordLogin, admin.password);
         buttonEnterLogin.submit();
-        return PageFactory.initElements(driver,MainPage.class);
+        return PageFactory.initElements(driver, MainPage.class);
     }
 
     @Override
     public void open() {
-        driver.get((ConfigProperties.getProperty(("login.url"))));
+        driver.get(ConfigProperties.getProperty("login.url"));
 
     }
 

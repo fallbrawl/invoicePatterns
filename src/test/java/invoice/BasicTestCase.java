@@ -5,6 +5,7 @@ import com.invoice.utils.ConfigProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +24,12 @@ public class BasicTestCase {
             driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp_wait")), TimeUnit.SECONDS);
         }
         return driver;
+    }
+
+    @BeforeTest
+
+    public void setUp() {
+
     }
 
     @AfterTest

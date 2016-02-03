@@ -1,29 +1,42 @@
 package com.invoice.pages;
 
+import com.invoice.utils.ConfigProperties;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by paul on 01.02.16.
  */
-public class AddDocumentFirstPage {
-    private final WebDriver driver;
-    private String name2;
+public class AddDocumentFirstPage extends Page {
+
+    @FindBy(id = "s-name_user_info")
+    public WebElement fieldNameOne;
+
+    @FindBy(id = "b-name_user_info")
+    public WebElement fieldNameTwo;
+
+    @FindBy(className = "btn-primary")
+    public WebElement buttonNextStep;
+
+
+    public void enterNames() {
+        typeHere(fieldNameOne, "wow1");
+        typeHere(fieldNameTwo, "wow2");
+    }
+
+    public AddDocumentSecondPage toTheNextStep(){
+        click(buttonNextStep);
+        return PageFactory.initElements(driver, AddDocumentSecondPage.class);
+    }
 
     public AddDocumentFirstPage(WebDriver driver) {
-        this.driver = driver;
-
+        super(driver);
     }
 
-    public void setName1(String name1) {
-
-    }
-
-    public void setName2(String name2) {
-
-    }
-
-
-    public AddDocumentSecondPage save() {
-        return new AddDocumentSecondPage(driver);
+    @Override
+    public void open() {
+        driver.get(ConfigProperties.getProperty("addDocument.url"));
     }
 }

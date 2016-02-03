@@ -47,15 +47,9 @@ public class UtilStore {
         return dateAndTimeAttachment;
     }
 
-
-    public static void uploadFile(WebDriver inputDriver, String nameOfFileForm, String pathToFile) {
-
-        //File input for Lubuntu /home/paul/Desktop/2015-12-30-150350_1920x1080_scrot.pdf
-        //File input for Windows C:\Users\NEXUS\Pictures\wow.pdf
-
-        inputDriver.findElement(By.name(nameOfFileForm)).sendKeys(pathToFile);
+    public static void goBack(WebDriver drv) {
+        drv.navigate().back();
     }
-
 
     public static void waitForElementsAbsence(WebDriver drv, int howLong, String classOfelementToWaitFor) {
         WebDriverWait wait = new WebDriverWait(drv, howLong);

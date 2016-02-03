@@ -21,6 +21,5 @@ public class LoginTest extends BasicTestCase {
         mainPage = loginPage.loginAs(admin);
         assertTrue(mainPage.isLoggedIn());
 
-
     }
 }

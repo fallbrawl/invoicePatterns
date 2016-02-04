@@ -19,7 +19,7 @@ public class ManagersPage extends Page {
     @FindBy(className = "btn-success")
     public WebElement buttonDone;
 
-    public void checkAndSave() {
+    public void checkAndSave() throws InterruptedException {
         buttonCheck.click();
         buttonDone.click();
     }

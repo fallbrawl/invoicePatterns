@@ -15,14 +15,17 @@ public class AddDocumentFirstStepTest extends BasicTestCase {
 
     private AddDocumentSecondPage secondPage;
     private MainPage mainPage;
+    private AddDocumentThirdPage thirdPage;
 
 
     //Initializing objects via PageFactory
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
+    private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
 
     @Test
+
     public void addDocument() throws Exception{
 
         loginPage.open();
@@ -34,12 +37,27 @@ public class AddDocumentFirstStepTest extends BasicTestCase {
 
         secondPage.uploadFile();
         secondPage.extractNumber();
-        secondPage.saveAgreement();
-        secondPage.sendAgreement();
+        secondPage.agreement("Save");
+
+        secondPage.waitForLoad();
+        secondPage.agreement("Send");
 
         managersPage.open();
         managersPage.checkAndSave();
         UtilStore.goBack(getWebDriver());
+
+        secondPage.waitForLoad();
+        secondPage.agreement("Use");
+        secondPage.waitForLoad();
+        thirdPage = secondPage.toTheNextStep();
+
+        secondPage.waitForLoad();
+        thirdPage.enterNameOfProduct();
+        thirdPage.addProduct();
+        thirdPage.waitForLoad();
+    //    thirdPage.saveProduct();
+
+        dynamicPayments.open();
 
 
 

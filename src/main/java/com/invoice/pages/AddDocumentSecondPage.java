@@ -1,9 +1,11 @@
 package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
+import com.invoice.utils.UtilStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -86,12 +88,17 @@ public class AddDocumentSecondPage extends Page {
     @FindBy(className = "icon_save_big")
     public WebElement buttonSaveAgreement;
 
+    @FindBy(className = "icon_in_big")
+    public WebElement buttonUseAgreement;
+
     @FindBy(className = "fa-envelope")
     public WebElement buttonSendAgreement;
 
     @FindBy(className = "loader_wrapper")
     public WebElement loader;
 
+    @FindAll(@FindBy(className = "btn-primary"))
+    public List<WebElement> allElementsInList;
 
     public void extractNumber() {
 
@@ -109,18 +116,39 @@ public class AddDocumentSecondPage extends Page {
     }
 
     public void uploadFile() {
+        String osVersion = System.getProperty("os.name");
+        System.out.println(osVersion);
         String paths = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
         System.out.println(paths);
         formForFile.sendKeys(paths);
     }
 
-    public void saveAgreement() {
-        click(buttonSaveAgreement);
-        
+    public void agreement(String what) throws NoSuchFieldException, InterruptedException {
+        switch (what) {
+
+            case "Save":
+                click(buttonSaveAgreement);
+                break;
+
+            case "Send":
+                click(buttonSendAgreement);
+                break;
+
+            case "Use":
+                click(buttonUseAgreement);
+                break;
+
+            default:
+                throw new NoSuchFieldException();
+        }
     }
 
-    public void sendAgreement() {
-        click(buttonSendAgreement);
+    public AddDocumentThirdPage toTheNextStep() {
+//        for (WebElement anAllElementsInList : allElementsInList) {
+//            System.out.println("Element: " + anAllElementsInList.getText());
+//        }
+        allElementsInList.get(2).click();
+        return PageFactory.initElements(driver,AddDocumentThirdPage.class);
     }
 
     public AddDocumentSecondPage(WebDriver driver) {

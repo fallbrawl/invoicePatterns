@@ -55,9 +55,11 @@ public class AddDocumentFirstStepTest extends BasicTestCase {
         thirdPage.enterNameOfProduct();
         thirdPage.addProduct();
         thirdPage.waitForLoad();
-    //    thirdPage.saveProduct();
+        thirdPage.waitForLoad();
+    //  thirdPage.saveProduct();
 
         dynamicPayments.open();
+        dynamicPayments.getValues();
 
 
 

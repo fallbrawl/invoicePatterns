@@ -16,6 +16,9 @@ import static com.jayway.restassured.RestAssured.given;
  */
 public class UtilStore {
 
+    public static String nameOfDocument1 = "documentcreated1 " + addDate();
+    public static String nameOfDocument2 = "documentcreated2 " + addDate();
+
     public static void logout(WebDriver drv) {
         drv.findElement(By.className("account-dropdown")).click();
         waitForElementsPresence(drv, 2, "dropdown-menu-right", 'c');

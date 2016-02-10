@@ -78,7 +78,6 @@ public class AddDocumentSecondPage extends Page {
 //
 //    }
 
-
     @FindBy(css = "li.active")
     public WebElement textNumber;
 
@@ -118,6 +117,9 @@ public class AddDocumentSecondPage extends Page {
     public void uploadFile() {
         String osVersion = System.getProperty("os.name");
         System.out.println(osVersion);
+
+        //Вставить путь для Windows
+
         String paths = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
         System.out.println(paths);
         formForFile.sendKeys(paths);

@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
  */
 public abstract class Page {
     protected WebDriver driver;
-    //
-
 
     @FindBy(className = "loader_wrapper")
     public WebElement loader;
@@ -39,8 +37,6 @@ public abstract class Page {
         elementToTypeIn.sendKeys(whatKey);
     }
 
-
-
     public abstract void open();
 
     protected void click(WebElement elementToClickOn) {
@@ -56,7 +52,6 @@ public abstract class Page {
     public void submit(WebElement elementToSubmit) {
         elementToSubmit.click();
     }
-
 
     public boolean isElementPresent(WebElement element) {
         try {

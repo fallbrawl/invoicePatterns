@@ -1,6 +1,7 @@
 package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
+import com.invoice.utils.UtilStore;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,8 +23,8 @@ public class AddDocumentFirstPage extends Page {
 
 
     public void enterNames() {
-        typeHere(fieldNameOne, "wow1");
-        typeHere(fieldNameTwo, "wow2");
+        typeHere(fieldNameOne, UtilStore.nameOfDocument1);
+        typeHere(fieldNameTwo, UtilStore.nameOfDocument2);
     }
 
     public AddDocumentSecondPage toTheNextStep(){

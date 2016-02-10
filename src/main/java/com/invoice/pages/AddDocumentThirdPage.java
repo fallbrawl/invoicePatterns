@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by paul on 04.02.16.
@@ -44,10 +45,10 @@ public class AddDocumentThirdPage extends Page{
     @FindBy (className = "icon_plus")
     WebElement buttonPlus;
 
-
-    //@FindBy (css = ".btn.btn-primary.btn-high.normal_document_step.normal_document_step_3")
     @FindBy (xpath = ".//*[@id='buttons_div']/a[1]")
-    WebElement buttonNext;
+    WebElement buttonSave;
+
+    //
 
     public void enterNameOfProduct() throws InterruptedException {
         fieldForName.click();
@@ -57,9 +58,11 @@ public class AddDocumentThirdPage extends Page{
         typeHere(fieldForName, Keys.ENTER);
     }
 
-    public void addProduct(){
+    public void addProduct() throws InterruptedException {
         buttonPlus.click();
-        buttonNext.click();
+        Thread.sleep(1000);
+        buttonSave.click();
+
     }
 
     public AddDocumentThirdPage(WebDriver driver) {
@@ -68,7 +71,6 @@ public class AddDocumentThirdPage extends Page{
 
     @Override
     public void open() {
-
     }
 
 

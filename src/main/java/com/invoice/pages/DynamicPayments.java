@@ -31,10 +31,8 @@ public class DynamicPayments extends Page {
         System.out.println(target);
         driver.navigate().refresh();
         //List<WebElement> cells = driver.findElements(By.xpath("//td/a[text()=\"" + target + "\"]"));
-        while (driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div/div/div[1]/table/tbody/tr[1]/td[2]/a")).)
-        {
-
-        }
+        //while (driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div/div/div[1]/table/tbody/tr[1]/td[2]/a")).)
+//сделать цикл http://stackoverflow.com/questions/247135/using-xpath-to-search-text-containing http://stackoverflow.com/questions/18510576/find-an-element-by-text-and-get-xpath-selenium-webdriver-junit
         //List<WebElement> cells = driver.findElements(By.xpath("//td/a[text()=\"Поставщик админ\"]"));
 
         for (int i = 0; i < cells.size(); i++) {

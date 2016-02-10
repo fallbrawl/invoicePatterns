@@ -39,6 +39,7 @@ public abstract class Page {
 
     public abstract void open();
 
+
     protected void click(WebElement elementToClickOn) {
         elementToClickOn.click();
     }

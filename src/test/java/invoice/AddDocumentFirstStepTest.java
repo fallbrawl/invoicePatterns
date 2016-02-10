@@ -43,6 +43,7 @@ public class AddDocumentFirstStepTest extends BasicTestCase {
         secondPage.agreement("Send");
 
         managersPage.open();
+        UtilStore.reload(getWebDriver());
         managersPage.checkAndSave();
         UtilStore.goBack(getWebDriver());
 

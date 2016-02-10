@@ -20,6 +20,7 @@ public class ManagersPage extends Page {
     public WebElement buttonDone;
 
     public void checkAndSave() throws InterruptedException {
+
         buttonCheck.click();
         buttonDone.click();
     }

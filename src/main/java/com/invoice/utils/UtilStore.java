@@ -50,9 +50,6 @@ public class UtilStore {
         return dateAndTimeAttachment;
     }
 
-    public static void goBack(WebDriver drv) {
-        drv.navigate().back();
-    }
 
     public static void waitForElementsAbsence(WebDriver drv, int howLong, String classOfelementToWaitFor) {
         WebDriverWait wait = new WebDriverWait(drv, howLong);
@@ -82,4 +79,15 @@ public class UtilStore {
         System.out.println("\n$$$$$$$$$$$$$$ " + elementToWaitFor + " on the page " + drv.getCurrentUrl() + " is present!$$$$$$$$$$$$$$$$");
 
     }
+
+
+    public static void goBack(WebDriver webDriver) {
+        webDriver.navigate().back();
+    }
+
+    public static void reload(WebDriver webDriver) {
+        webDriver.navigate().refresh();
+
+    }
+
 }

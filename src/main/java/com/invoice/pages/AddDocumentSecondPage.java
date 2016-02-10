@@ -119,10 +119,16 @@ public class AddDocumentSecondPage extends Page {
         System.out.println(osVersion);
 
         //Вставить путь для Windows
-
-        String paths = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
-        System.out.println(paths);
-        formForFile.sendKeys(paths);
+        if (osVersion.contains("Linux")) {
+            String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
+            System.out.println(pathLinux);
+            formForFile.sendKeys(pathLinux);
+        }
+        else {
+            String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\agreement.pdf");
+            System.out.println(pathWindows);
+            formForFile.sendKeys(pathWindows);
+        }
     }
 
     public void agreement(String what) throws NoSuchFieldException, InterruptedException {

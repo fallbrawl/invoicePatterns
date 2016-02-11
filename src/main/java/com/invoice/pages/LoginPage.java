@@ -21,7 +21,7 @@ public class LoginPage extends Page {
     @FindBy(xpath = "//*[@id=\"submit_form_button_login\"]")
     public WebElement buttonEnterLogin;
 
-    public MainPage loginAs(UserData admin){
+    public MainPage loginAs(UserData admin) {
         typeHere(fieldEmailLogin, admin.email);
         typeHere(fieldPasswordLogin, admin.password);
         buttonEnterLogin.submit();

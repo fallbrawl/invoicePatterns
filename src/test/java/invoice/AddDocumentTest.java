@@ -11,7 +11,7 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Created by paul on 03.02.16.
  */
-public class AddDocumentFirstStepTest extends BasicTestCase {
+public class AddDocumentTest extends BasicTestCase {
     //Creating objects
 
     private AddDocumentSecondPage secondPage;
@@ -24,6 +24,8 @@ public class AddDocumentFirstStepTest extends BasicTestCase {
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
+    private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
+
 
     @Test
 
@@ -70,11 +72,13 @@ public class AddDocumentFirstStepTest extends BasicTestCase {
         thirdPage.save();
         thirdPage.waitForLoad();
 //        thirdPage.waitForLoad();
-        thirdPage.saveAndInitiate();
+        fourthPage = thirdPage.saveAndInitiate();
         UtilStore.reload(getWebDriver());
         //thirdPage.waitForLoad();
         UtilStore.goBack(getWebDriver());
         UtilStore.goForward(getWebDriver());
+        Assert.assertTrue(fourthPage.checkTitle());
+
 
 
 //        assertTrue(mainPage.isLoggedIn());

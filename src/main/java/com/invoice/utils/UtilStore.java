@@ -90,4 +90,7 @@ public class UtilStore {
 
     }
 
+    public static void goForward(WebDriver webDriver) {
+        webDriver.navigate().forward();
+    }
 }

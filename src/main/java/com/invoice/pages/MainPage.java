@@ -19,7 +19,7 @@ public class MainPage extends Page {
     }
 
     public boolean isLoggedIn() {
-        if (driver.getTitle().equals("Invoice"))
+        if (driver.getTitle().equals("Заказы на продажу"))
             return true;
         else
             return false;

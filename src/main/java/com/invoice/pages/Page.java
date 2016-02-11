@@ -33,6 +33,24 @@ public abstract class Page {
         elementToTypeIn.sendKeys(whatToType);
     }
 
+    protected void uploadFile(WebElement formForFile) {
+        String osVersion = System.getProperty("os.name");
+        System.out.println(osVersion);
+
+        //Вставить путь для Windows
+        if (osVersion.contains("Linux")) {
+            String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
+            System.out.println(pathLinux);
+            formForFile.sendKeys(pathLinux);
+        }
+        else {
+            String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\agreement.pdf");
+            System.out.println(pathWindows);
+            formForFile.sendKeys(pathWindows);
+        }
+    }
+
+
     protected void typeHere(WebElement elementToTypeIn, Keys whatKey) {
         elementToTypeIn.sendKeys(whatKey);
     }
@@ -46,7 +64,7 @@ public abstract class Page {
 
     public void waitForLoad() throws InterruptedException {
         if (loader.isDisplayed()) {
-            Thread.sleep(3000);
+            Thread.sleep(4000);
         }
     }
 

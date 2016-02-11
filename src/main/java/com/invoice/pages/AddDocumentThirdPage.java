@@ -48,7 +48,8 @@ public class AddDocumentThirdPage extends Page{
     @FindBy (xpath = ".//*[@id='buttons_div']/a[1]")
     WebElement buttonSave;
 
-    //
+    @FindBy (id = "save_and_purchase")
+    WebElement buttonSaveAndInitiate;
 
     public void enterNameOfProduct() throws InterruptedException {
         fieldForName.click();
@@ -63,6 +64,16 @@ public class AddDocumentThirdPage extends Page{
         Thread.sleep(1000);
         buttonSave.click();
 
+    }
+
+    public void save(){
+        buttonSave.click();
+    }
+
+    public void saveAndInitiate() throws InterruptedException {
+        Thread.sleep(2000);
+        buttonSaveAndInitiate.click();
+        Thread.sleep(2000);
     }
 
     public AddDocumentThirdPage(WebDriver driver) {

@@ -5,6 +5,7 @@ import com.invoice.utils.ConfigProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -25,6 +26,7 @@ public class BasicTestCase {
     protected WebDriver getWebDriver() {
         if (driver == null) {
             driver = new FirefoxDriver();
+            driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp_wait")), TimeUnit.SECONDS);
         }
         return driver;
@@ -33,7 +35,7 @@ public class BasicTestCase {
     @BeforeTest
 
     public void setUp() {
-
+//        driver.manage().window().maximize();
     }
 
     @AfterTest

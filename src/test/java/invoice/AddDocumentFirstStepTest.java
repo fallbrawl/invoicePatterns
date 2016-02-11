@@ -56,11 +56,24 @@ public class AddDocumentFirstStepTest extends BasicTestCase {
         thirdPage.enterNameOfProduct();
         thirdPage.addProduct();
         thirdPage.waitForLoad();
-        thirdPage.waitForLoad();
-    //  thirdPage.saveProduct();
+        //UtilStore.reload(getWebDriver());
+//        thirdPage.waitForLoad();
 
         dynamicPayments.open();
-        dynamicPayments.getValues();
+        dynamicPayments.openPayWindow();
+        dynamicPayments.setValuesPayWindow();
+        dynamicPayments.uploadFile();
+        dynamicPayments.confirmPayment();
+
+        thirdPage.waitForLoad();
+        thirdPage.save();
+        thirdPage.waitForLoad();
+//        thirdPage.waitForLoad();
+        thirdPage.saveAndInitiate();
+        UtilStore.reload(getWebDriver());
+        //thirdPage.waitForLoad();
+        UtilStore.goBack(getWebDriver());
+        UtilStore.goForward(getWebDriver());
 
 
 

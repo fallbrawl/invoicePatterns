@@ -3,6 +3,7 @@ package invoice;
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
@@ -74,7 +75,6 @@ public class AddDocumentFirstStepTest extends BasicTestCase {
         //thirdPage.waitForLoad();
         UtilStore.goBack(getWebDriver());
         UtilStore.goForward(getWebDriver());
-
 
 
 //        assertTrue(mainPage.isLoggedIn());

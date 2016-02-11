@@ -25,7 +25,7 @@ public class BasicTestCase {
 
     protected WebDriver getWebDriver() {
         if (driver == null) {
-            driver = new FirefoxDriver();
+            driver = new PhantomJSDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp_wait")), TimeUnit.SECONDS);
         }

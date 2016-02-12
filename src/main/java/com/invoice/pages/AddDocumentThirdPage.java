@@ -48,7 +48,6 @@ public class AddDocumentThirdPage extends Page{
 
     public AddDocumentFourthPage saveAndInitiate() throws InterruptedException {
         Thread.sleep(2000);
-
         buttonSaveAndInitiate.click();
         Thread.sleep(2000);
         return PageFactory.initElements(driver, AddDocumentFourthPage.class);

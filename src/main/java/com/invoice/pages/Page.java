@@ -3,10 +3,8 @@ package com.invoice.pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by NEXUS on 01.02.2016.
- */
 public abstract class Page {
+
     protected WebDriver driver;
 
     @FindBy(className = "loader_wrapper")
@@ -57,14 +55,13 @@ public abstract class Page {
 
     public abstract void open();
 
-
     protected void click(WebElement elementToClickOn) {
         elementToClickOn.click();
     }
 
     public void waitForLoad() throws InterruptedException {
         if (loader.isDisplayed()) {
-            Thread.sleep(4000);
+            Thread.sleep(3000);
         }
     }
 

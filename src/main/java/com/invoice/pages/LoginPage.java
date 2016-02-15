@@ -7,9 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by NEXUS on 31.01.2016.
- */
 public class LoginPage extends Page {
 
     @FindBy(name = "email")
@@ -30,8 +27,8 @@ public class LoginPage extends Page {
 
     @Override
     public void open() {
-        driver.get(ConfigProperties.getProperty("login.url"));
 
+        driver.get(ConfigProperties.getProperty("login.url"));
     }
 
     public LoginPage(WebDriver driver) {

@@ -25,7 +25,11 @@ public class CreatePurchaseSecondPage extends Page {
     public WebElement textNumber;
 
     @FindBy(name = "file")
-    public WebElement formForFile;
+    public WebElement fieldForFile;
+
+    @FindBy(name = "file_delay")
+    public WebElement fieldAgreementDelay;
+
 
     @FindBy(className = "icon_save_big")
     public WebElement buttonSaveAgreement;
@@ -66,12 +70,12 @@ public class CreatePurchaseSecondPage extends Page {
         if (osVersion.contains("Linux")) {
             String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
             System.out.println(pathLinux);
-            formForFile.sendKeys(pathLinux);
+            fieldForFile.sendKeys(pathLinux);
         }
         else {
             String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\agreement.pdf");
             System.out.println(pathWindows);
-            formForFile.sendKeys(pathWindows);
+            fieldForFile.sendKeys(pathWindows);
         }
     }
 
@@ -106,5 +110,9 @@ public class CreatePurchaseSecondPage extends Page {
     @Override
     public void open() {
 
+    }
+
+    public void setAgreementDelay() {
+        typeHere(fieldAgreementDelay,"2");
     }
 }

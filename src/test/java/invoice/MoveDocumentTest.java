@@ -37,6 +37,7 @@ public class MoveDocumentTest extends BasicTestCase {
 
         createPurchaseSecondPage.uploadFile();
         createPurchaseSecondPage.extractNumber();
+        createPurchaseSecondPage.setAgreementDelay();
         createPurchaseSecondPage.agreement("Save");
 
         createPurchaseSecondPage.waitForLoad();

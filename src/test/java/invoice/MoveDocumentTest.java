@@ -20,6 +20,7 @@ public class MoveDocumentTest extends BasicTestCase {
     private CreatePurchaseFirstPage createPurchaseFirstPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFirstPage.class);
     private CreatePurchaseSecondPage createPurchaseSecondPage = PageFactory.initElements(getWebDriver(), CreatePurchaseSecondPage.class);
     private CreatePurchaseThirdPage createPurchaseThirdPage = PageFactory.initElements(getWebDriver(), CreatePurchaseThirdPage.class);
+    private CreatePurchaseFourthPage createPurchaseFourthPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFourthPage.class);
     private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
     private MainPage mainPage;
 
@@ -56,6 +57,8 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseSecondPage.waitForLoad();
         createPurchaseThirdPage.addProduct();
         createPurchaseThirdPage.fillProductForm();
+        createPurchaseFourthPage = createPurchaseThirdPage.saveAndInitiate();
+
 
 
     }

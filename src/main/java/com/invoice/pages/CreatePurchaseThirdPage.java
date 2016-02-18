@@ -38,17 +38,14 @@ public class CreatePurchaseThirdPage extends Page {
     @FindBy(id = "recprice_product_modal")
     WebElement fieldRecommendedProductPrice;
 
-    //@FindBy (id = "select2-chosen-24")
     @FindBy(xpath = ".//*[@id='select2-chosen-10']")
     WebElement fieldChooseProducer;
 
     @FindBy(name = "price_product")
-    //@FindBy (id = "price_product")
-            WebElement fieldProductPrice;
+    WebElement fieldProductPrice;
 
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[10]/div/div/div[3]/button[1]")
-    //   @FindBy (className = "btn-success")
-            WebElement buttonOk;
+    WebElement buttonOk;
     //Закончились элементы формы добавления продукта
     //
 
@@ -57,6 +54,9 @@ public class CreatePurchaseThirdPage extends Page {
 
     @FindBy(id = "save_and_purchase")
     WebElement buttonSaveAndInitiate;
+
+    @FindBy(id = "save_an_deliv")
+    WebElement buttonSaveAndOrder;
 
     public void addProduct() throws InterruptedException {
         buttonPlus.click();
@@ -79,11 +79,11 @@ public class CreatePurchaseThirdPage extends Page {
         buttonOk.click();
     }
 
-    public AddDocumentFourthPage saveAndInitiate() throws InterruptedException {
+    public CreatePurchaseFourthPage saveAndInitiate() throws InterruptedException {
         Thread.sleep(2000);
-        buttonSaveAndInitiate.click();
+        buttonSaveAndOrder.click();
         Thread.sleep(2000);
-        return PageFactory.initElements(driver, AddDocumentFourthPage.class);
+        return PageFactory.initElements(driver, CreatePurchaseFourthPage.class);
     }
 
     public CreatePurchaseThirdPage(WebDriver driver) {

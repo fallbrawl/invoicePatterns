@@ -30,7 +30,6 @@ public class CreatePurchaseSecondPage extends Page {
     @FindBy(name = "file_delay")
     public WebElement fieldAgreementDelay;
 
-
     @FindBy(className = "icon_save_big")
     public WebElement buttonSaveAgreement;
 

@@ -57,7 +57,13 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseSecondPage.waitForLoad();
         createPurchaseThirdPage.addProduct();
         createPurchaseThirdPage.fillProductForm();
-        createPurchaseFourthPage = createPurchaseThirdPage.saveAndInitiate();
+        createPurchaseThirdPage.saveAndInitiate();
+        createPurchaseThirdPage.upl();
+       // createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();
+
+       // createPurchaseFourthPage.upl();
+       // createPurchaseFourthPage.sendToTransit();
+
 
 
 

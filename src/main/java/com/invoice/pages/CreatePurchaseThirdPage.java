@@ -1,6 +1,7 @@
 package com.invoice.pages;
 
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,7 +61,6 @@ public class CreatePurchaseThirdPage extends Page {
     WebElement buttonSaveAndOrder;
 
     @FindBy(name = "date_transit_form")
-    //@FindBy(id = "dp1455802276348")
     WebElement fieldCalendar;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
@@ -72,9 +72,17 @@ public class CreatePurchaseThirdPage extends Page {
     @FindBy(className = "btn-success")
     WebElement buttonOkOnTransit;
 
-    //@FindBy(xpath = ".//input[@type='file'] ")
+    @FindBy(className = "modal-content")
+    WebElement iFrame;
+
+    @FindBy(className = "qq-upload-button")
+    WebElement buttonUpload;
+
+    //@FindBy(xpath = "//input[@type='file']")
+
     @FindBy(name = "file")
-    WebElement fieldUploadFile;
+    //@FindBy (className = "qq-uploader")
+            WebElement fieldUploadFile;
 
     public void addProduct() throws InterruptedException {
         buttonPlus.click();
@@ -109,30 +117,41 @@ public class CreatePurchaseThirdPage extends Page {
 //         fieldCalendar.click();
 //         cellNeededDate.click();
 
-       // uploadFile(fieldUploadFile);
-         buttonOkOnTransit.click();
+        // uploadFile(fieldUploadFile);
+        buttonOkOnTransit.click();
         return PageFactory.initElements(driver, CreatePurchaseFourthPage.class);
     }
 
     public void upl() throws InterruptedException {
         Thread.sleep(1000);
-
-        //new WebDriverWait(driver,2).until(ExpectedConditions.visibilityOf(fieldUploadFile));
-
-        System.out.println("visible! " + fieldUploadFile.getSize());
-        String osVersion = System.getProperty("os.name");
-        System.out.println(osVersion);
-
-        if (osVersion.contains("Linux")) {
-            String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
-            System.out.println(pathLinux);
-            fieldUploadFile.sendKeys(pathLinux);
-        }
-        else {
-            String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\agreement.pdf");
-            System.out.println(pathWindows);
-            fieldUploadFile.sendKeys(pathWindows);
-        }
+        String s = " ";
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        //executor.executeScript("focus();", fieldUploadFile);
+        executor.executeScript("arguments[0].value='C:\\Users\\NEXUS\\projects\\invoicePatterns\\src\\\\main\\Resources\\agreement.pdf';", fieldUploadFile);
+        //executor.executeScript("document.getElementsByName('file')[0].value='C:\\Users\\NEXUS\\projects\\invoicePatterns\\src\\main\\Resources\\agreement.pdf';", fieldUploadFile);
+        // executor.executeScript("arguments[0].click();", fieldUploadFile);
+        // executor.executeScript(s + "s.click();", fieldUploadFile);
+//        driver.switchTo().alert();
+//        fieldUploadFile.click();
+//        System.out.println(buttonUpload.getText());
+//        buttonUpload.click();
+//        driver.switchTo().frame(1);
+//        new WebDriverWait(driver,2).until(ExpectedConditions.visibilityOf(fieldUploadFile));
+//        if (fieldUploadFile.isDisplayed()) {
+//            System.out.println("visible! ");
+//        }
+//        String osVersion = System.getProperty("os.name");
+//        System.out.println(osVersion);
+//
+//        if (osVersion.contains("Linux")) {
+//            String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
+//            System.out.println(pathLinux);
+//            fieldUploadFile.sendKeys(pathLinux);
+//        } else {
+//            String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\agreement.pdf");
+//            System.out.println(pathWindows);
+//            fieldUploadFile.sendKeys(pathWindows);
+//        }
     }
 
 

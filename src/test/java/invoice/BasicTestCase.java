@@ -4,7 +4,9 @@ import com.invoice.data.UserData;
 import com.invoice.utils.ConfigProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -42,6 +44,7 @@ public class BasicTestCase {
             cliArgsCap.add("--webdriver-loglevel=NONE");
             caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
             //Logger.getLogger(PhantomJSDriverService.class.getName()).setLevel(Level.OFF);
+            //driver = new InternetExplorerDriver();
             driver = new FirefoxDriver();
             //driver = new PhantomJSDriver(caps);
             driver.manage().window().maximize();

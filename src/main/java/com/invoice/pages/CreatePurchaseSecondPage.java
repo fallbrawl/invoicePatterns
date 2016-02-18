@@ -73,6 +73,8 @@ public class CreatePurchaseSecondPage extends Page {
         }
         else {
             String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\agreement.pdf");
+           // String pathWindows = "http://invoicedev.php.attractgroup.com/public/uploads/document/6453eeb01a0e4442f0ca06e5a59b1c68.pdf";
+
             System.out.println(pathWindows);
             fieldForFile.sendKeys(pathWindows);
         }

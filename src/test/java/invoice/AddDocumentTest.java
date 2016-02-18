@@ -48,6 +48,7 @@ public class AddDocumentTest extends BasicTestCase {
         managersPage.open();
         UtilStore.reload(getWebDriver());
         managersPage.checkAndSave();
+        managersPage.enter();
         UtilStore.goBack(getWebDriver());
 
         secondPage.waitForLoad();

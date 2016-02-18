@@ -42,8 +42,8 @@ public class BasicTestCase {
             cliArgsCap.add("--webdriver-loglevel=NONE");
             caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
             //Logger.getLogger(PhantomJSDriverService.class.getName()).setLevel(Level.OFF);
-
-            driver = new PhantomJSDriver(caps);
+            driver = new FirefoxDriver();
+            //driver = new PhantomJSDriver(caps);
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp_wait")), TimeUnit.SECONDS);
         }

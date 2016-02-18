@@ -86,7 +86,9 @@ public class UtilStore {
     }
 
     public static void reload(WebDriver webDriver) {
+
         webDriver.navigate().refresh();
+        System.out.println("RELOADED!");
 
     }
 

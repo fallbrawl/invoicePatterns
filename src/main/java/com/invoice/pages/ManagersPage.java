@@ -32,10 +32,9 @@ public class ManagersPage extends Page {
     @FindBy(className = "btn-danger")
     public WebElement buttonCancel;
 
-    public void checkAndSave() throws InterruptedException {
-
+    public void checkAndSave() {
         buttonCheck.click();
-        body.sendKeys(Keys.ENTER);
+
     }
 
     public void save() {

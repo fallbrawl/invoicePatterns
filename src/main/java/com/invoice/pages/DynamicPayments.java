@@ -26,7 +26,8 @@ public class DynamicPayments extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement neededDate;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[6]/div/div/div[3]/button[1]")
+    @FindBy(className = "btn-success")
+    //@FindBy(xpath = ".//*[@id='body-wrapper']/div[6]/div/div/div[3]/button[1]")
     WebElement buttonOk;
 
     public String target = UtilStore.nameOfDocument1;

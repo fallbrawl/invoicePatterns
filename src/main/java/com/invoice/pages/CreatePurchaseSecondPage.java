@@ -1,8 +1,5 @@
 package com.invoice.pages;
 
-import com.invoice.utils.ConfigProperties;
-import com.invoice.utils.UtilStore;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -10,16 +7,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by paul on 01.02.16.
+ * Created by paul on 17.02.16.
  */
-public class AddDocumentSecondPage extends Page {
+public class CreatePurchaseSecondPage extends Page {
 
     private String documentName = null;
+
+    public CreatePurchaseSecondPage(WebDriver driver) {
+        super(driver);
+    }
 
     @FindBy(css = "li.active")
     public WebElement textNumber;
@@ -30,11 +30,11 @@ public class AddDocumentSecondPage extends Page {
     @FindBy(className = "icon_save_big")
     public WebElement buttonSaveAgreement;
 
-    @FindBy(className = "icon_in_big")
-    public WebElement buttonUseAgreement;
-
     @FindBy(className = "fa-envelope")
     public WebElement buttonSendAgreement;
+
+    @FindBy(className = "icon_in_big")
+    public WebElement buttonUseAgreement;
 
     @FindBy(className = "loader_wrapper")
     public WebElement loader;
@@ -58,6 +58,7 @@ public class AddDocumentSecondPage extends Page {
     }
 
     public void uploadFile() {
+
         String osVersion = System.getProperty("os.name");
         System.out.println(osVersion);
 
@@ -94,14 +95,12 @@ public class AddDocumentSecondPage extends Page {
         }
     }
 
-    public AddDocumentThirdPage toTheNextStep() {
-
+    public CreatePurchaseThirdPage toTheNextStep() {
+//        for (WebElement anAllElementsInList : allElementsInList) {
+//            System.out.println("Element: " + anAllElementsInList.getText());
+//        }
         allElementsInList.get(2).click();
-        return PageFactory.initElements(driver,AddDocumentThirdPage.class);
-    }
-
-    public AddDocumentSecondPage(WebDriver driver) {
-        super(driver);
+        return PageFactory.initElements(driver,CreatePurchaseThirdPage.class);
     }
 
     @Override
@@ -109,5 +108,3 @@ public class AddDocumentSecondPage extends Page {
 
     }
 }
-
-

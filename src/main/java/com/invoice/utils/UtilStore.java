@@ -15,7 +15,7 @@ import static com.jayway.restassured.RestAssured.given;
  * Created by paul on 01.02.16.
  */
 public class UtilStore {
-
+    public static String nameProduct = ("product " + UtilStore.addDate());
     public static String nameOfDocument1 = "documentcreated1 " + addDate();
     public static String nameOfDocument2 = "documentcreated2 " + addDate();
 

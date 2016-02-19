@@ -2,6 +2,7 @@ package invoice;
 
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.remote.server.handler.interactions.touch.Move;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
@@ -22,6 +23,8 @@ public class MoveDocumentTest extends BasicTestCase {
     private CreatePurchaseThirdPage createPurchaseThirdPage = PageFactory.initElements(getWebDriver(), CreatePurchaseThirdPage.class);
     private CreatePurchaseFourthPage createPurchaseFourthPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFourthPage.class);
     private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
+    private MovePage movePage = PageFactory.initElements(getWebDriver(), MovePage.class);
+    private PartiesPage partiesPage = PageFactory.initElements(getWebDriver(), PartiesPage.class);
     private MainPage mainPage;
 
     @Test
@@ -81,12 +84,27 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseFourthPage.setCalendar2();
         createPurchaseFourthPage.saveDocumentAndTransfer();
         createPurchaseFourthPage.waitForLoad();
+        UtilStore.goBack(getWebDriver());
+        createPurchaseFourthPage.init();
 
+        managersPage.open();
+        managersPage.checkAndSave();
+        managersPage.enter();
+        UtilStore.reload(getWebDriver());
+        UtilStore.reload(getWebDriver());
+        managersPage.checkAndSave();
+        managersPage.enter();
+        UtilStore.goBack(getWebDriver());
+        createPurchaseFourthPage.init();
+        UtilStore.reload(getWebDriver());
+        createPurchaseFourthPage.saveDocumentAndTransfer();
 
+        movePage.open();
+       // movePage.assertThatProductIsPresentOnPartiesPage();
 
-
-
-
+        partiesPage.open();
+        partiesPage.findProduct();
+        partiesPage.fillFields();
 
 
     }

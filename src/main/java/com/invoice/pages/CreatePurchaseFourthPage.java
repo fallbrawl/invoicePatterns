@@ -37,7 +37,10 @@ public class CreatePurchaseFourthPage extends Page{
     @FindBy(name = "receive_date[4]")
     WebElement fieldCalendar2;
 
-    @FindBy (className = "normal_transit_step normal_transit_step_4")
+    @FindBy(xpath = ".//*[@id='form-edit_transit']/div[2]/div/div/div/div[1]/div[4]/div/div[2]/div[2]/div/div[1]/span")
+    WebElement check2;
+
+    @FindBy (xpath = ".//*[@id='body-wrapper']/div[1]/div[1]/div[3]/section/div[2]/div[9]/div[1]/div/a[1]")
     WebElement buttonSaveDocumentsAndAcceptTransfer;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
@@ -85,7 +88,7 @@ public class CreatePurchaseFourthPage extends Page{
 
     public void init() {
 
-        System.out.println("INIT " + check.getText());
+        System.out.println("INIT " + check2.getText());
 
     }
 

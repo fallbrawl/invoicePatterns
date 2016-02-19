@@ -27,6 +27,7 @@ public class CreatePurchaseFirstPage extends Page {
     public void enterNames() {
         typeHere(fieldNameOne, UtilStore.nameOfDocument1);
         typeHere(fieldNameTwo, UtilStore.nameOfDocument2);
+
     }
 
     public CreatePurchaseSecondPage toTheNextStep(){

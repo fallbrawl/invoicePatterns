@@ -1,13 +1,10 @@
 package com.invoice.pages;
 
 import com.invoice.utils.UtilStore;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by paul on 17.02.16.
@@ -78,6 +75,8 @@ public class CreatePurchaseThirdPage extends Page {
     @FindBy(xpath = ".//*[@id='file_upload_div_invoicefact_date']/div/div[2]/input")
     WebElement fieldUploadFile;
 
+
+
     public void addProduct() throws InterruptedException {
         buttonPlus.click();
         Thread.sleep(1000);
@@ -89,7 +88,9 @@ public class CreatePurchaseThirdPage extends Page {
     }
 
     public void fillProductForm() throws InterruptedException {
-        typeHere(fieldProductName, "product " + UtilStore.addDate());
+
+        typeHere(fieldProductName, UtilStore.nameProduct);
+        System.out.println("nameproduct " + UtilStore.nameProduct);
         typeHere(fieldProductCode, "607" + UtilStore.addDate());
         fieldCategory.click();
         Thread.sleep(500);

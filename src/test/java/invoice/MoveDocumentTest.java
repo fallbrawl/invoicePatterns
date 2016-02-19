@@ -34,13 +34,12 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseFirstPage.enterNames();
         createPurchaseFirstPage.acceptPurchase();
         createPurchaseSecondPage.waitForLoad();
-        createPurchaseSecondPage = createPurchaseFirstPage.toTheNextStep();
 
+        createPurchaseSecondPage = createPurchaseFirstPage.toTheNextStep();
         createPurchaseSecondPage.uploadFile();
         createPurchaseSecondPage.extractNumber();
         createPurchaseSecondPage.setAgreementDelay();
         createPurchaseSecondPage.agreement("Save");
-
         createPurchaseSecondPage.waitForLoad();
         createPurchaseSecondPage.agreement("Send");
 
@@ -55,14 +54,37 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseSecondPage.waitForLoad();
         createPurchaseThirdPage = createPurchaseSecondPage.toTheNextStep();
         createPurchaseSecondPage.waitForLoad();
+
         createPurchaseThirdPage.addProduct();
         createPurchaseThirdPage.fillProductForm();
         createPurchaseThirdPage.saveAndInitiate();
+        createPurchaseThirdPage.setCalendar();
         createPurchaseThirdPage.upl();
-       // createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();
 
-       // createPurchaseFourthPage.upl();
-       // createPurchaseFourthPage.sendToTransit();
+        createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();
+        createPurchaseFourthPage.init();
+
+        managersPage.open();
+        UtilStore.reload(getWebDriver());
+        managersPage.checkAndSave();
+        managersPage.enter();
+        UtilStore.goBack(getWebDriver());
+        createPurchaseFourthPage.init();
+
+        UtilStore.reload(getWebDriver());
+        createPurchaseFourthPage.uploadNaklad();
+        createPurchaseFourthPage.uploadInvoice();
+        createPurchaseFourthPage.setNumber1();
+        createPurchaseFourthPage.setNumber2();
+
+        createPurchaseFourthPage.setCalendar1();
+        createPurchaseFourthPage.setCalendar2();
+        createPurchaseFourthPage.saveDocumentAndTransfer();
+        createPurchaseFourthPage.waitForLoad();
+
+
+
+
 
 
 

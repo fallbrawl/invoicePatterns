@@ -43,8 +43,11 @@ public class BasicTestCase {
             ArrayList<String> cliArgsCap = new ArrayList<String>();
             cliArgsCap.add("--webdriver-loglevel=NONE");
             caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+
+            System.setProperty("webdriver.chrome.driver", "/home/paul/Downloads/chromedriver");
+
             //Logger.getLogger(PhantomJSDriverService.class.getName()).setLevel(Level.OFF);
-            //driver = new InternetExplorerDriver();
+
             driver = new FirefoxDriver();
             //driver = new PhantomJSDriver(caps);
             driver.manage().window().maximize();

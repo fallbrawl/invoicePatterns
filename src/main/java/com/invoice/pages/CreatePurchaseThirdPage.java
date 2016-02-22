@@ -124,6 +124,7 @@ public class CreatePurchaseThirdPage extends Page {
     }
 
     public CreatePurchaseFourthPage sendToTransit() throws InterruptedException {
+        Thread.sleep(1000);
         buttonOkOnTransit.click();
         return PageFactory.initElements(driver, CreatePurchaseFourthPage.class);
     }

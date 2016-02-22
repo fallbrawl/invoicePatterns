@@ -2,7 +2,6 @@ package invoice;
 
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
-import org.openqa.selenium.remote.server.handler.interactions.touch.Move;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 

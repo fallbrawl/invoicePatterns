@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="suite1">
-    <!--<test verbose="2" name="com.umbrella.test">-->
+    <test verbose="2" name="com.umbrella.test">
 
-        <!--<packages>-->
-            <!--<package name="com.umbrella.test"/>-->
-            <!---->
-        <!--</packages>-->
+        <packages>
+            <package name="com.umbrella.test"/>
 
-    <!--</test>-->
+        </packages>
+
+    </test>
 
 
-        <test name="Method Test Cases" >
-            <classes>
-                <class name="invoice.AddDocumentTest">
-                    <methods>
-                        <exclude name="addDocument" />
-                    </methods>
-                </class>
-                <class name="invoice.Bug001">
-                    <methods>
-                        <exclude name="testBug001" />
-                    </methods>
-                </class>
-                <class name="invoice.CheckHttpResponses">
-                    <methods>
-                        <exclude name="checkPesponse" />
-                    </methods>
-                </class>
-                <class name="invoice.LoginTest">
-                    <methods>
-                        <include name="testLogin" />
-                    </methods>
-                </class>
-                <class name="invoice.MoveDocumentTest">
-                    <methods>
-                        <exclude name="moveDocument" />
-                    </methods>
-                </class>
-            </classes>
-        </test>
+        <!--<test name="Method Test Cases" >-->
+            <!--<classes>-->
+                <!--<class name="invoice.AddDocumentTest">-->
+                    <!--<methods>-->
+                        <!--<exclude name="addDocument" />-->
+                    <!--</methods>-->
+                <!--</class>-->
+                <!--<class name="invoice.Bug001">-->
+                    <!--<methods>-->
+                        <!--<exclude name="testBug001" />-->
+                    <!--</methods>-->
+                <!--</class>-->
+                <!--<class name="invoice.CheckHttpResponses">-->
+                    <!--<methods>-->
+                        <!--<exclude name="checkPesponse" />-->
+                    <!--</methods>-->
+                <!--</class>-->
+                <!--<class name="invoice.LoginTest">-->
+                    <!--<methods>-->
+                        <!--<include name="testLogin" />-->
+                    <!--</methods>-->
+                <!--</class>-->
+                <!--<class name="invoice.MoveDocumentTest">-->
+                    <!--<methods>-->
+                        <!--<exclude name="moveDocument" />-->
+                    <!--</methods>-->
+                <!--</class>-->
+            <!--</classes>-->
+        <!--</test>-->
 
 </suite>

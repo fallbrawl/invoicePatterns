@@ -41,11 +41,4 @@
             </classes>
         </test>
 
-
-    <test verbose="2" name="exampletest1">
-        <classes>
-            <class name="invoice.LoginTest" />
-        </classes>
-    </test>
-
 </suite>

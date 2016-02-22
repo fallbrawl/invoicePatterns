@@ -2,15 +2,12 @@ package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by paul on 19.02.16.
- */
+
 public class PartiesPage extends Page {
 
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div/div/div/form/div/div/div[2]/div/div[2]/input")
@@ -44,7 +41,7 @@ public class PartiesPage extends Page {
     }
 
     public void findProduct() throws InterruptedException {
-       // typeHere(fieldSearch, "product 2016/02/22 13:24:38");
+       //typeHere(fieldSearch, "product 2016/02/22 13:24:38");
         typeHere(fieldSearch, UtilStore.nameProduct);
         Thread.sleep(500);
 
@@ -59,7 +56,7 @@ public class PartiesPage extends Page {
 
     public void fillFields() throws InterruptedException {
         Thread.sleep(500);
-        typeHere(fieldPartyNumber, Keys.BACK_SPACE);
+       // typeHere(fieldPartyNumber, Keys.BACK_SPACE);
         Thread.sleep(500);
         typeHere(fieldPartyNumber, "1");
         Thread.sleep(1000);

@@ -5,12 +5,11 @@
 
         <packages>
             <package name="com.umbrella.test"/>
-
         </packages>
 
     </test>
 
-
+</suite>
         <!--<test name="Method Test Cases" >-->
             <!--<classes>-->
                 <!--<class name="invoice.AddDocumentTest">-->
@@ -41,4 +40,3 @@
             <!--</classes>-->
         <!--</test>-->
 
-</suite>

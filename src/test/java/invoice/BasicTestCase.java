@@ -66,7 +66,7 @@ public class BasicTestCase {
 
     public void shutDown() {
 
-        // driver.quit();
+         driver.quit();
     }
 
 }

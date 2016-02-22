@@ -13,7 +13,7 @@ public class PartiesPage extends Page {
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div/div/div/form/div/div/div[2]/div/div[2]/input")
     WebElement fieldPartyNumber;
 
-    @FindBy (name = "active_from")
+    @FindBy(name = "active_from")
     WebElement fieldCalendar;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
@@ -41,7 +41,7 @@ public class PartiesPage extends Page {
     }
 
     public void findProduct() throws InterruptedException {
-       //typeHere(fieldSearch, "product 2016/02/22 13:24:38");
+        // typeHere(fieldSearch, "product 2016/02/22 13:45:40");
         typeHere(fieldSearch, UtilStore.nameProduct);
         Thread.sleep(500);
 
@@ -56,8 +56,9 @@ public class PartiesPage extends Page {
 
     public void fillFields() throws InterruptedException {
         Thread.sleep(500);
-       // typeHere(fieldPartyNumber, Keys.BACK_SPACE);
+        // typeHere(fieldPartyNumber, Keys.BACK_SPACE);
         Thread.sleep(500);
+        fieldPartyNumber.click();
         typeHere(fieldPartyNumber, "1");
         Thread.sleep(1000);
         fieldCalendar.click();

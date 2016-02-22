@@ -23,12 +23,6 @@ public class ManagersPage extends Page {
     @FindBy(className = "btn-success")
     public WebElement buttonDone;
 
-    @FindBy(className = "modal-content")
-    public WebElement dialog;
-
-    @FindBy(tagName = "body")
-    public WebElement body;
-
     @FindBy(className = "btn-danger")
     public WebElement buttonCancel;
 

@@ -64,7 +64,7 @@ public class CreatePurchaseThirdPage extends Page {
     WebElement cellNeededDate;
 
     @FindBy(id = "ui-datepicker-div")
-    WebElement fieldWholeCalendar;
+    WebElement fieldWholeCalendar; //not used
 
     @FindBy(className = "btn-success")
     WebElement buttonOkOnTransit;

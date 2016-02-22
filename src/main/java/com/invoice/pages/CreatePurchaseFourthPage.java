@@ -54,7 +54,6 @@ public class CreatePurchaseFourthPage extends Page{
         }
     }
 
-
     public void uploadInvoice() {
         String osVersion = System.getProperty("os.name");
         System.out.println(osVersion);

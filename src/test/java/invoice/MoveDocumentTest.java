@@ -25,6 +25,8 @@ public class MoveDocumentTest extends BasicTestCase {
     private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
     private MovePage movePage = PageFactory.initElements(getWebDriver(), MovePage.class);
     private PartiesPage partiesPage = PageFactory.initElements(getWebDriver(), PartiesPage.class);
+    private MovementPage movementPage = PageFactory.initElements(getWebDriver(), MovementPage.class);
+    private PitchPage pitchPage = PageFactory.initElements(getWebDriver(), PitchPage.class);
     private MainPage mainPage;
 
     @Test
@@ -97,14 +99,27 @@ public class MoveDocumentTest extends BasicTestCase {
         UtilStore.goBack(getWebDriver());
         createPurchaseFourthPage.init();
         UtilStore.reload(getWebDriver());
-//        createPurchaseFourthPage.saveDocumentAndTransfer();
 
         movePage.open();
-       // movePage.assertThatProductIsPresentOnPartiesPage();
 
         partiesPage.open();
         partiesPage.findProduct();
+        partiesPage.selectItem();
         partiesPage.fillFields();
+        movementPage = partiesPage.acceptMoving();
+
+        partiesPage.waitForLoad();
+        movementPage.save();
+        movementPage.enter();
+        movementPage.waitForLoad();
+        movementPage.switchToLabelDone();
+        pitchPage = movementPage.openNeededParty();
+
+        pitchPage.moveFromParty();
+
+        movementPage = pitchPage.moveFromStore();
+        movementPage.save();
+        movementPage.enter();
 
 
     }

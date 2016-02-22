@@ -97,7 +97,7 @@ public class MoveDocumentTest extends BasicTestCase {
         UtilStore.goBack(getWebDriver());
         createPurchaseFourthPage.init();
         UtilStore.reload(getWebDriver());
-        createPurchaseFourthPage.saveDocumentAndTransfer();
+//        createPurchaseFourthPage.saveDocumentAndTransfer();
 
         movePage.open();
        // movePage.assertThatProductIsPresentOnPartiesPage();

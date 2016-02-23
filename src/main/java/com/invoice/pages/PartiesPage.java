@@ -53,11 +53,11 @@ public class PartiesPage extends Page {
     }
 
     public void selectItem() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonSelectItem.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonSelectItem.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 //        JavascriptExecutor executor = (JavascriptExecutor) driver;
 //        executor.executeScript("focus();", buttonSelectItem);
 //        executor.executeScript("arguments[0].click();", buttonSelectItem);
@@ -67,11 +67,11 @@ public class PartiesPage extends Page {
     }
 
     public void fillFields() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         // typeHere(fieldPartyNumber, Keys.BACK_SPACE);
         fieldPartyNumber.click();
         typeHere(fieldPartyNumber, "1");
-        Thread.sleep(500);
+        Thread.sleep(1000);
         fieldCalendar.click();
         cellNeededDate.click();
 

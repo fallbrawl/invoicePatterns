@@ -58,16 +58,23 @@ public class CreatePurchaseThirdPage extends Page {
     WebElement buttonSaveAndOrder;
 
     @FindBy(name = "date_transit_form")
-    WebElement fieldCalendar;
+    WebElement fieldCalendarTransit;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
-    WebElement cellNeededDate;
+    WebElement cellCalendarDateToday;
+
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
+    //@FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/span")
+    WebElement getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth;
 
     @FindBy(id = "ui-datepicker-div")
     WebElement fieldWholeCalendar; //not used
 
     @FindBy(className = "btn-success")
     WebElement buttonOkOnTransit;
+
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
+    public WebElement buttonGoToTheNextMonthInCalendar;
 
     @FindBy(className = "qq-upload-button")
     WebElement buttonUpload;
@@ -139,9 +146,24 @@ public class CreatePurchaseThirdPage extends Page {
 
     }
 
-    public void setCalendar() throws InterruptedException {
+    public void setCalendar(String whatDate) throws InterruptedException {
+        if (whatDate.equals("thisDay")) {
+            Thread.sleep(500);
+            fieldCalendarTransit.click();
+            cellCalendarDateToday.click();
+        }
+        else if (whatDate.equals("firstDayOfTHeSecondWeekOnTheNextMonth")){
+            Thread.sleep(500);
+            fieldCalendarTransit.click();
+            buttonGoToTheNextMonthInCalendar.click();
+            Thread.sleep(500);
+            getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth.click();
+        }
+    }
+
+    public void go() throws InterruptedException {
         Thread.sleep(1000);
-        fieldCalendar.click();
-        cellNeededDate.click();
+        buttonOkOnTransit.click();
+
     }
 }

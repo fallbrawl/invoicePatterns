@@ -31,10 +31,6 @@ public class ManagersPage extends Page {
 
     }
 
-    public void save() {
-
-        buttonCheck.click();
-    }
 
     public void enter() throws InterruptedException {
 

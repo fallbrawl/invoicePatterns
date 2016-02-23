@@ -17,6 +17,15 @@ public class AddDocumentSecondPage extends Page {
 
     private String documentName = null;
 
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
+    public WebElement buttonGoToTheNextMonthInCalendar;
+
+    @FindBy(name = "file_delay")
+    public WebElement fieldAgreementDelay;
+
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
+    public WebElement cellFirstDayOfTheNextWeekInCalendar;
+
     @FindBy(css = "li.active")
     public WebElement textNumber;
 
@@ -37,6 +46,9 @@ public class AddDocumentSecondPage extends Page {
 
     @FindAll(@FindBy(className = "btn-primary"))
     public List<WebElement> allElementsInList;
+
+    @FindBy (name = "date_to_file")
+    public WebElement fieldCalendarForFile;
 
     public void extractNumber() {
 
@@ -88,6 +100,20 @@ public class AddDocumentSecondPage extends Page {
             default:
                 throw new NoSuchFieldException();
         }
+    }
+
+    public void setAgreementDelay() throws InterruptedException {
+        Thread.sleep(1000);
+        typeHere(fieldAgreementDelay,"7");
+    }
+
+    public void setBestBefore() throws InterruptedException {
+        fieldCalendarForFile.click();
+        Thread.sleep(500);
+        buttonGoToTheNextMonthInCalendar.click();
+        Thread.sleep(500);
+        cellFirstDayOfTheNextWeekInCalendar.click();
+
     }
 
     public AddDocumentThirdPage toTheNextStep() {

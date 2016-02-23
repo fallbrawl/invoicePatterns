@@ -23,7 +23,6 @@ public class PartiesPage extends Page {
     @FindBy(id = "select2-chosen-2")
     WebElement selectStore;
 
-
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/form/div/button")
     WebElement buttonSelectItem;
 
@@ -46,18 +45,16 @@ public class PartiesPage extends Page {
         //  typeHere(fieldSearch, "product 2016/02/22 10:03:14");
         Thread.sleep(500);
         typeHere(fieldSearch, UtilStore.nameProduct);
-        Thread.sleep(500);
-
 
 
     }
 
     public void selectItem() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(500);
         buttonSelectItem.click();
-        Thread.sleep(1000);
-        buttonSelectItem.click();
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
+//        buttonSelectItem.click();
+//        Thread.sleep(1000);
 //        JavascriptExecutor executor = (JavascriptExecutor) driver;
 //        executor.executeScript("focus();", buttonSelectItem);
 //        executor.executeScript("arguments[0].click();", buttonSelectItem);

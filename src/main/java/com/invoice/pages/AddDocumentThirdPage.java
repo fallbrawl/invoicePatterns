@@ -1,5 +1,6 @@
 package com.invoice.pages;
 
+import com.invoice.utils.UtilStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -30,9 +31,9 @@ public class AddDocumentThirdPage extends Page{
 
     public void enterNameOfProduct() throws InterruptedException {
         fieldForName.click();
-        typeHere(fieldForName,"Яб");
+        typeHere(fieldForName, UtilStore.nameProduct);
         Thread.sleep(1000);
-        typeHere(fieldForName, Keys.ARROW_DOWN);
+        //typeHere(fieldForName, Keys.ARROW_DOWN);
         typeHere(fieldForName, Keys.ENTER);
     }
 

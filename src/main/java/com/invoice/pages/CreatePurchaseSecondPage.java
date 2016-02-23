@@ -30,11 +30,20 @@ public class CreatePurchaseSecondPage extends Page {
     @FindBy(name = "file_delay")
     public WebElement fieldAgreementDelay;
 
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
+    public WebElement buttonGoToTheNextMonthInCalendar;
+
+    @FindBy (name = "date_to_file")
+    public WebElement fieldCalendarForFile;
+
     @FindBy(className = "icon_save_big")
     public WebElement buttonSaveAgreement;
 
     @FindBy(className = "fa-envelope")
     public WebElement buttonSendAgreement;
+
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
+    public WebElement cellFirstDayOfTheNextWeekInCalendar;
 
     @FindBy(className = "icon_in_big")
     public WebElement buttonUseAgreement;
@@ -101,9 +110,6 @@ public class CreatePurchaseSecondPage extends Page {
     }
 
     public CreatePurchaseThirdPage toTheNextStep() {
-//        for (WebElement anAllElementsInList : allElementsInList) {
-//            System.out.println("Element: " + anAllElementsInList.getText());
-//        }
         allElementsInList.get(2).click();
         return PageFactory.initElements(driver,CreatePurchaseThirdPage.class);
     }
@@ -114,6 +120,17 @@ public class CreatePurchaseSecondPage extends Page {
     }
 
     public void setAgreementDelay() {
-        typeHere(fieldAgreementDelay,"2");
+        typeHere(fieldAgreementDelay,"7");
+    }
+
+    public void setBestBefore() throws InterruptedException {
+        fieldCalendarForFile.click();
+        Thread.sleep(500);
+        buttonGoToTheNextMonthInCalendar.click();
+        Thread.sleep(500);
+        cellFirstDayOfTheNextWeekInCalendar.click();
+
+        
+
     }
 }

@@ -62,7 +62,7 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseThirdPage.addProduct();
         createPurchaseThirdPage.fillProductForm();
         createPurchaseThirdPage.saveAndInitiate();
-        createPurchaseThirdPage.setCalendar();
+        createPurchaseThirdPage.setCalendar("thisDay");
         createPurchaseThirdPage.upl();
 
         createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();

@@ -93,7 +93,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
         purchasePage.acceptOrder();
 
         purchasePage.waitForLoad();
-        purchasePage.initPurchasePage();
+        purchasePage.initPage();
 
         UtilStore.reload(getWebDriver());
 
@@ -108,10 +108,32 @@ public class NotReadyToBuyTest extends BasicTestCase {
         secondPage.waitForLoad();
         secondPage.agreement("Use");
         secondPage.waitForLoad();
+
         thirdPage = secondPage.toTheNextStep();
         thirdPage.enterNameOfProduct();
         thirdPage.addProduct();
+        thirdPage.waitForLoad();
+        thirdPage.save();
+        thirdPage.waitForLoad();
+
+        dynamicPayments.open();
+        dynamicPayments.openPayWindow();
+        dynamicPayments.setValuesPayWindow();
+        dynamicPayments.uploadFile();
+        dynamicPayments.confirmPayment();
+        dynamicPayments.waitForLoad();
+        dynamicPayments.initPage();
+        UtilStore.goBack(getWebDriver());
+
+        thirdPage.waitForLoad();
+//        thirdPage.save();
+//        thirdPage.waitForLoad();
+        UtilStore.reload(getWebDriver());
         thirdPage.saveAndInitiate();
+        thirdPage.waitForLoad();
+        thirdPage.reserveAndInitiate();
+
+
 
 //        managersPage.open();
 //        UtilStore.reload(getWebDriver());

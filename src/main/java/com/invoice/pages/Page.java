@@ -7,6 +7,9 @@ public abstract class Page {
 
     protected WebDriver driver;
 
+    @FindBy(className = "copyright")
+    WebElement fieldCopyrightForInit;
+
     @FindBy(className = "loader_wrapper")
     public WebElement loader;
 
@@ -53,6 +56,10 @@ public abstract class Page {
         elementToTypeIn.sendKeys(whatKey);
     }
 
+    public void initPage() {
+        System.out.println("Initializing  " + fieldCopyrightForInit.getText());
+    }
+
     public abstract void open();
 
     protected void click(WebElement elementToClickOn) {
@@ -64,6 +71,8 @@ public abstract class Page {
             Thread.sleep(3000);
         }
     }
+
+
 
     public void submit(WebElement elementToSubmit) {
         elementToSubmit.click();

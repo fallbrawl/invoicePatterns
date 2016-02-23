@@ -80,6 +80,6 @@ public class DynamicPayments extends Page {
 
     public void confirmPayment() {
         buttonOk.click();
-        driver.navigate().back();
+        //driver.navigate().back();
     }
 }

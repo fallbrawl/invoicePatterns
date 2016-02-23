@@ -10,8 +10,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class PurchasePage extends Page {
 
-    @FindBy(className = "copyright")
-    WebElement fieldCopyrightForInit;
+
 
     @FindBy(linkText = "Принять поставку")
     WebElement linkAcceptOrder;
@@ -21,6 +20,10 @@ public class PurchasePage extends Page {
 
     @FindBy(name = "number[4]")
     WebElement fieldNumber2;
+
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
+    //@FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/span")
+            WebElement getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth;
 
     @FindBy(xpath = ".//*[@id='popup_file_upload_div_naklad_date']/div/div[2]/input")
     public WebElement fieldUploadNaklad;
@@ -92,7 +95,7 @@ public class PurchasePage extends Page {
         fieldCalendar1.click();
         buttonGoToTheNextMonthInCalendar.click();
 
-        cellNeededDate.click();
+        getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth.click();
     }
 
     public void setNumber1() {
@@ -105,7 +108,7 @@ public class PurchasePage extends Page {
         fieldCalendar2.click();
         buttonGoToTheNextMonthInCalendar.click();
 
-        cellNeededDate.click();
+        getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth.click();
     }
 
     public void setNumber2() {
@@ -117,7 +120,5 @@ public class PurchasePage extends Page {
         buttonSaveDocumentsAndAcceptTransfer.click();
     }
 
-    public void initPurchasePage() {
-        System.out.println("Initializing PURCHASEPAGE " + fieldCopyrightForInit.getText());
-    }
+
 }

@@ -2,6 +2,7 @@ package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +23,7 @@ public class PartiesPage extends Page {
     @FindBy(id = "select2-chosen-2")
     WebElement selectStore;
 
+
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/form/div/button")
     WebElement buttonSelectItem;
 
@@ -41,9 +43,12 @@ public class PartiesPage extends Page {
     }
 
     public void findProduct() throws InterruptedException {
-        // typeHere(fieldSearch, "product 2016/02/22 13:45:40");
+        //  typeHere(fieldSearch, "product 2016/02/22 10:03:14");
+        Thread.sleep(500);
         typeHere(fieldSearch, UtilStore.nameProduct);
         Thread.sleep(500);
+
+
 
     }
 
@@ -52,15 +57,21 @@ public class PartiesPage extends Page {
         buttonSelectItem.click();
         Thread.sleep(500);
         buttonSelectItem.click();
+        Thread.sleep(500);
+//        JavascriptExecutor executor = (JavascriptExecutor) driver;
+//        executor.executeScript("focus();", buttonSelectItem);
+//        executor.executeScript("arguments[0].click();", buttonSelectItem);
+
+        System.out.println("Button clicked!");
+
     }
 
     public void fillFields() throws InterruptedException {
         Thread.sleep(500);
         // typeHere(fieldPartyNumber, Keys.BACK_SPACE);
-        Thread.sleep(500);
         fieldPartyNumber.click();
         typeHere(fieldPartyNumber, "1");
-        Thread.sleep(1000);
+        Thread.sleep(500);
         fieldCalendar.click();
         cellNeededDate.click();
 

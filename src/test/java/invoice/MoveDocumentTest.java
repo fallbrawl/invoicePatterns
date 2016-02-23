@@ -99,7 +99,7 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseFourthPage.init();
         UtilStore.reload(getWebDriver());
 
-        movePage.open();
+       // movePage.open();
 
         partiesPage.open();
         partiesPage.findProduct();

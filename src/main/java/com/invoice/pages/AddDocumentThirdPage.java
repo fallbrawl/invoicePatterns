@@ -33,11 +33,12 @@ public class AddDocumentThirdPage extends Page {
     public void enterNameOfProduct() throws InterruptedException {
         fieldForName.click();
         typeHere(fieldForName, UtilStore.nameProduct);
-        Thread.sleep(500);
+
 
     }
 
     public void addProduct() throws InterruptedException {
+        Thread.sleep(2000);
         buttonPlus.click();
         Thread.sleep(500);
 
@@ -49,13 +50,14 @@ public class AddDocumentThirdPage extends Page {
     }
 
     public AddDocumentFourthPage saveAndInitiate() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         buttonSaveAndInitiate.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         return PageFactory.initElements(driver, AddDocumentFourthPage.class);
     }
 
-    public void reserveAndInitiate() {
+    public void reserveAndInitiate() throws InterruptedException {
+        Thread.sleep(1000);
         buttonReserveAndInitiate.click();
     }
 

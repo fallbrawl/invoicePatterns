@@ -2,7 +2,9 @@ package invoice;
 
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class NotReadyToBuyTest extends BasicTestCase {
@@ -21,6 +23,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
 //    Все.
 
     //Initializing objects via PageFactory
+
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
     private CreatePurchaseFirstPage createPurchaseFirstPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFirstPage.class);
     private CreatePurchaseSecondPage createPurchaseSecondPage = PageFactory.initElements(getWebDriver(), CreatePurchaseSecondPage.class);
@@ -35,6 +38,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
     private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
+    private ReservedPage reservedPage = PageFactory.initElements(getWebDriver(), ReservedPage.class);
 
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
@@ -48,24 +52,21 @@ public class NotReadyToBuyTest extends BasicTestCase {
         createPurchaseFirstPage.open();
         createPurchaseFirstPage.enterNames();
         createPurchaseFirstPage.acceptPurchase();
-        createPurchaseSecondPage.waitForLoad();
 
+        createPurchaseSecondPage.waitForLoad();
         createPurchaseSecondPage = createPurchaseFirstPage.toTheNextStep();
         createPurchaseSecondPage.uploadFile();
-        createPurchaseSecondPage.extractNumber();
         createPurchaseSecondPage.setAgreementDelay();
         createPurchaseSecondPage.setBestBefore();
         createPurchaseSecondPage.agreement("Save");
 
-
-       // createPurchaseSecondPage.waitForLoad();
-       // createPurchaseSecondPage.agreement("Send");
-       // managersPage.open();                  для НЕ эгоиста подписываю документы в бухгалтерии
-       // UtilStore.reload(getWebDriver());
-       // managersPage.checkAndSave();
-       // managersPage.enter();
-       // UtilStore.goBack(getWebDriver());
-
+        // createPurchaseSecondPage.waitForLoad();
+        // createPurchaseSecondPage.agreement("Send");
+        // managersPage.open();                  для НЕ эгоиста подписываю документы в бухгалтерии
+        // UtilStore.reload(getWebDriver());
+        // managersPage.checkAndSave();
+        // managersPage.enter();
+        // UtilStore.goBack(getWebDriver());
 
         createPurchaseSecondPage.waitForLoad();
         createPurchaseSecondPage.agreement("Use");
@@ -80,9 +81,8 @@ public class NotReadyToBuyTest extends BasicTestCase {
         createPurchaseThirdPage.setCalendar("firstDayOfTHeSecondWeekOnTheNextMonth");
         createPurchaseThirdPage.upl();
         createPurchaseThirdPage.go();
+        createPurchaseThirdPage.waitForLoad();
 
-        //createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();
-     //   UtilStore.reload(getWebDriver());
         purchasePage.openOrder();
         purchasePage.setCalendar1();
         purchasePage.uploadNaklad();
@@ -99,20 +99,18 @@ public class NotReadyToBuyTest extends BasicTestCase {
 
         firstPage.open();
         firstPage.enterNames();
+
         secondPage = firstPage.toTheNextStep();
         secondPage.uploadFile();
-//        secondPage.extractNumber();
-//        secondPage.setAgreementDelay(); разобраться
-//        secondPage.setBestBefore();
         secondPage.agreement("Save");
         secondPage.waitForLoad();
         secondPage.agreement("Use");
         secondPage.waitForLoad();
 
         thirdPage = secondPage.toTheNextStep();
+        thirdPage.initPage();
         thirdPage.enterNameOfProduct();
         thirdPage.addProduct();
-        thirdPage.waitForLoad();
         thirdPage.save();
         thirdPage.waitForLoad();
 
@@ -126,14 +124,23 @@ public class NotReadyToBuyTest extends BasicTestCase {
         UtilStore.goBack(getWebDriver());
 
         thirdPage.waitForLoad();
-//        thirdPage.save();
-//        thirdPage.waitForLoad();
+        createPurchaseSecondPage.extractNumber();
         UtilStore.reload(getWebDriver());
         thirdPage.saveAndInitiate();
         thirdPage.waitForLoad();
         thirdPage.reserveAndInitiate();
 
+        UtilStore.reload(getWebDriver());
 
+        reservedPage.open();
+        reservedPage.initPage();
+        reservedPage.unattach();
+        reservedPage.enter();
+        reservedPage.waitForLoad();
+
+        mainPage.open();
+        mainPage.initPage();
+        Assert.assertTrue(driver.findElements(By.linkText(createPurchaseSecondPage.documentName)).size() == 1);
 
 //        managersPage.open();
 //        UtilStore.reload(getWebDriver());
@@ -152,10 +159,6 @@ public class NotReadyToBuyTest extends BasicTestCase {
 //        UtilStore.reload(getWebDriver());
 //        UtilStore.reload(getWebDriver());
 //        purchasePage.open();
-
-
-
-
 
     }
 }

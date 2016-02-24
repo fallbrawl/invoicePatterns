@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 public class CreatePurchaseSecondPage extends Page {
 
-    private String documentName = null;
+    public String documentName = null;
 
     public CreatePurchaseSecondPage(WebDriver driver) {
         super(driver);
@@ -60,7 +60,7 @@ public class CreatePurchaseSecondPage extends Page {
 
         System.out.println("Text is : " + mydata);
 
-        Pattern pattern = Pattern.compile("S[\\d -]*");
+        Pattern pattern = Pattern.compile("S[\\d-]*");
         Matcher matcher = pattern.matcher(mydata);
 
         if (matcher.find()) {

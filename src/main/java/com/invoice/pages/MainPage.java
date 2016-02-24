@@ -1,5 +1,6 @@
 package com.invoice.pages;
 
+import com.invoice.utils.ConfigProperties;
 import org.openqa.selenium.WebDriver;
 
 
@@ -8,15 +9,16 @@ import org.openqa.selenium.WebDriver;
  */
 public class MainPage extends Page {
 
-
     public MainPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
     public void open() {
-
+        driver.get(ConfigProperties.getProperty("mainpage.url"));
     }
+
+
 
     public boolean isLoggedIn() {
         if (driver.getTitle().equals("Заказы на продажу"))

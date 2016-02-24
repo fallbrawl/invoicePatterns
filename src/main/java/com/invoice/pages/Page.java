@@ -43,22 +43,22 @@ public abstract class Page {
             String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
             System.out.println(pathLinux);
             formForFile.sendKeys(pathLinux);
-        }
-        else {
+        } else {
             String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\agreement.pdf");
             System.out.println(pathWindows);
             formForFile.sendKeys(pathWindows);
         }
     }
 
-
     protected void typeHere(WebElement elementToTypeIn, Keys whatKey) {
         elementToTypeIn.sendKeys(whatKey);
     }
 
     public void initPage() {
-        System.out.println("Initializing  " + fieldCopyrightForInit.getText());
+        System.out.println("Initializing  " + fieldCopyrightForInit.getText() + " " + driver.getTitle());
     }
+
+
 
     public abstract void open();
 
@@ -71,8 +71,6 @@ public abstract class Page {
             Thread.sleep(3000);
         }
     }
-
-
 
     public void submit(WebElement elementToSubmit) {
         elementToSubmit.click();

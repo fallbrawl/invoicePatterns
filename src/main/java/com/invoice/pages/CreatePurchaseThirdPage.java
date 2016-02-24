@@ -6,10 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by paul on 17.02.16.
  */
 public class CreatePurchaseThirdPage extends Page {
+
+    public String documentBill = null;
 
     @FindBy(id = "autocomplete_document_product")
     WebElement fieldForName;
@@ -67,11 +72,17 @@ public class CreatePurchaseThirdPage extends Page {
     //@FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/span")
     WebElement getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth;
 
+    @FindBy(css = "li.active")
+    WebElement textNumber;
+
     @FindBy(id = "ui-datepicker-div")
     WebElement fieldWholeCalendar; //not used
 
     @FindBy(className = "btn-success")
     WebElement buttonOkOnTransit;
+
+    @FindBy(xpath = ".//*[@id='form-add_edit_product']/div[3]/div/a")
+    WebElement buttonAddCategory;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
     public WebElement buttonGoToTheNextMonthInCalendar;
@@ -79,9 +90,14 @@ public class CreatePurchaseThirdPage extends Page {
     @FindBy(className = "qq-upload-button")
     WebElement buttonUpload;
 
+    @FindBy(xpath = ".//*[@id='load-content']/div/a[2]")
+    WebElement buttonAcceptNewCategoryName;
+
+    @FindBy(id = "name_category")
+    WebElement fieldEnterNewCategoryName;
+
     @FindBy(xpath = ".//*[@id='file_upload_div_invoicefact_date']/div/div[2]/input")
     WebElement fieldUploadFile;
-
 
 
     public void addProduct() throws InterruptedException {
@@ -94,14 +110,40 @@ public class CreatePurchaseThirdPage extends Page {
         buttonSave.click();
     }
 
+    public void extractNumber() {
+
+        String mydata = textNumber.getText();
+
+        System.out.println("Text is : " + mydata);
+
+        Pattern pattern = Pattern.compile("S[\\d -]*-\\d");
+        Matcher matcher = pattern.matcher(mydata);
+
+        if (matcher.find()) {
+            documentBill = matcher.group(0);
+            System.out.println("EXTRACTED regex expression " + documentBill);
+        }
+        else {
+            System.out.println("NOTHING WAS FOUND ");
+        }
+    }
+
     public void fillProductForm() throws InterruptedException {
 
         typeHere(fieldProductName, UtilStore.nameProduct);
         System.out.println("nameproduct " + UtilStore.nameProduct);
         typeHere(fieldProductCode, "607" + UtilStore.addDate());
-        fieldCategory.click();
+
+        //fieldCategory.click();
         Thread.sleep(500);
-        fieldCategoryHighlighted.click();
+        buttonAddCategory.click();
+        Thread.sleep(500);
+        typeHere(fieldEnterNewCategoryName, "dfjgdk");
+        Thread.sleep(500);
+        buttonAcceptNewCategoryName.click();
+        Thread.sleep(500);
+
+        // fieldCategoryHighlighted.click();
         typeHere(fieldRecommendedProductPrice, "2");
         typeHere(fieldProductPrice, "40");
         buttonOkOnTransit.click();
@@ -151,8 +193,7 @@ public class CreatePurchaseThirdPage extends Page {
             Thread.sleep(500);
             fieldCalendarTransit.click();
             cellCalendarDateToday.click();
-        }
-        else if (whatDate.equals("firstDayOfTHeSecondWeekOnTheNextMonth")){
+        } else if (whatDate.equals("firstDayOfTHeSecondWeekOnTheNextMonth")) {
             Thread.sleep(500);
             fieldCalendarTransit.click();
             buttonGoToTheNextMonthInCalendar.click();

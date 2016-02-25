@@ -28,16 +28,9 @@ public class NotReadyToBuyTest extends BasicTestCase {
     private CreatePurchaseFirstPage createPurchaseFirstPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFirstPage.class);
     private CreatePurchaseSecondPage createPurchaseSecondPage = PageFactory.initElements(getWebDriver(), CreatePurchaseSecondPage.class);
     private CreatePurchaseThirdPage createPurchaseThirdPage = PageFactory.initElements(getWebDriver(), CreatePurchaseThirdPage.class);
-    private CreatePurchaseFourthPage createPurchaseFourthPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFourthPage.class);
-    private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
-    private MovePage movePage = PageFactory.initElements(getWebDriver(), MovePage.class);
-    private PartiesPage partiesPage = PageFactory.initElements(getWebDriver(), PartiesPage.class);
-    private MovementPage movementPage = PageFactory.initElements(getWebDriver(), MovementPage.class);
-    private PitchPage pitchPage = PageFactory.initElements(getWebDriver(), PitchPage.class);
     private PurchasePage purchasePage = PageFactory.initElements(getWebDriver(), PurchasePage.class);
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
-    private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
     private ReservedPage reservedPage = PageFactory.initElements(getWebDriver(), ReservedPage.class);
 
     private MainPage mainPage;
@@ -46,6 +39,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
 
     @Test
     public void notReadyToBuy() throws NoSuchFieldException, InterruptedException {
+
         loginPage.open();
         mainPage = loginPage.loginAs(admin);
 

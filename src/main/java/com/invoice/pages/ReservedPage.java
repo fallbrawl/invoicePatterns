@@ -9,8 +9,8 @@ import org.openqa.selenium.support.FindBy;
  * Created by paul on 24.02.16.
  */
 public class ReservedPage extends Page {
-
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[5]/div[2]/div[1]/table/tbody/tr[1]/td[11]/a")
+    @FindBy(className = "btn-danger")
+    //@FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[5]/div[2]/div[1]/table/tbody/tr[1]/td[11]/a")
     WebElement buttonUnattach;
 
     @FindBy(className = "btn-success")

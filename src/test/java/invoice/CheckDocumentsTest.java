@@ -19,6 +19,10 @@ public class CheckDocumentsTest extends BasicTestCase {
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
     private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
     private AddDocumentFifthPage fifthPage = PageFactory.initElements(getWebDriver(), AddDocumentFifthPage.class);
+    private AddDocumentSixthPage sixthPage = PageFactory.initElements(getWebDriver(), AddDocumentSixthPage.class);
+    private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
+    private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
+    private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
 
 
     private MainPage mainPage;
@@ -61,11 +65,23 @@ public class CheckDocumentsTest extends BasicTestCase {
         thirdPage.waitForLoad();
         thirdPage.save();
         thirdPage.waitForLoad();
-        fourthPage = thirdPage.saveAndInitiate();
 
+        fourthPage = thirdPage.saveAndInitiate();
         fourthPage.waitForLoad();
         fourthPage.initPage();
+
         fifthPage = fourthPage.buyForAll();
+        fifthPage.enterProviderName();
+
+        sixthPage = fifthPage.formPurchase();
+        sixthPage.uploadFile();
+        sixthPage.agreement("Save");
+        sixthPage.waitForLoad();
+        sixthPage.agreement("Use");
+        sixthPage.waitForLoad();
+
+        seventhPage = sixthPage.toTheNextStep();
+
 
 
 

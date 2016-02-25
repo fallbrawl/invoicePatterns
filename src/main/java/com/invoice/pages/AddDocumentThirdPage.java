@@ -34,7 +34,11 @@ public class AddDocumentThirdPage extends Page {
         fieldForName.click();
         typeHere(fieldForName, UtilStore.nameProduct);
 
+    }
 
+    public void enterExistingNameOfProduct() throws InterruptedException {
+        fieldForName.click();
+        typeHere(fieldForName, "product 2016/02/24 15:33:38");
     }
 
     public void addProduct() throws InterruptedException {
@@ -45,6 +49,7 @@ public class AddDocumentThirdPage extends Page {
     }
 
     public void save() throws InterruptedException {
+
         buttonSave.click();
         Thread.sleep(500);
     }

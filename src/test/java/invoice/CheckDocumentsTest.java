@@ -15,13 +15,11 @@ import org.testng.annotations.Test;
 public class CheckDocumentsTest extends BasicTestCase {
 
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
-    private CreatePurchaseFirstPage createPurchaseFirstPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFirstPage.class);
-    private CreatePurchaseSecondPage createPurchaseSecondPage = PageFactory.initElements(getWebDriver(), CreatePurchaseSecondPage.class);
-    private CreatePurchaseThirdPage createPurchaseThirdPage = PageFactory.initElements(getWebDriver(), CreatePurchaseThirdPage.class);
-    private PurchasePage purchasePage = PageFactory.initElements(getWebDriver(), PurchasePage.class);
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
-    private ReservedPage reservedPage = PageFactory.initElements(getWebDriver(), ReservedPage.class);
+    private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
+    private AddDocumentFifthPage fifthPage = PageFactory.initElements(getWebDriver(), AddDocumentFifthPage.class);
+
 
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
@@ -46,10 +44,31 @@ public class CheckDocumentsTest extends BasicTestCase {
 
         thirdPage = secondPage.toTheNextStep();
         thirdPage.initPage();
-        thirdPage.enterNameOfProduct();
+        thirdPage.enterExistingNameOfProduct();
         thirdPage.addProduct();
         thirdPage.save();
         thirdPage.waitForLoad();
+
+        dynamicPayments.open();
+        dynamicPayments.openPayWindow();
+        dynamicPayments.setValuesPayWindow();
+        dynamicPayments.uploadFile();
+        dynamicPayments.confirmPayment();
+        dynamicPayments.waitForLoad();
+        dynamicPayments.initPage();
+        UtilStore.goBack(getWebDriver());
+
+        thirdPage.waitForLoad();
+        thirdPage.save();
+        thirdPage.waitForLoad();
+        fourthPage = thirdPage.saveAndInitiate();
+
+        fourthPage.waitForLoad();
+        fourthPage.initPage();
+        fifthPage = fourthPage.buyForAll();
+
+
+
 
     }
 }

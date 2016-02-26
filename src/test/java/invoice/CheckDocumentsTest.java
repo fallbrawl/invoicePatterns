@@ -21,7 +21,6 @@ public class CheckDocumentsTest extends BasicTestCase {
     private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
     private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
 
-
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
@@ -88,7 +87,30 @@ public class CheckDocumentsTest extends BasicTestCase {
         seventhPage.saveAndDelivery();
         seventhPage.fillDeliveryForm();
         seventhPage.uploadFile2();
-        seventhPage.confirmDeliveryForm();
+
+        eighthPage = seventhPage.confirmDeliveryForm();
+        eighthPage.waitForLoad();
+        eighthPage.setCalendar1();
+        eighthPage.uploadNaklad();
+        eighthPage.setNumber2();
+        eighthPage.setCalendar2();
+        eighthPage.setNumber1();
+        eighthPage.uploadInvoice();
+
+        ninethPage = eighthPage.acceptOrder();
+        //ninethPage.open();
+        ninethPage.waitForLoad();
+        ninethPage.waitForLoad();
+        ninethPage.fullShipment();
+        ninethPage.fillFullShipmentForm();
+        ninethPage.waitForLoad();
+        ninethPage.checkDocs("Bill");
+        ninethPage.initPage();
+        ninethPage.checkDocs("Invoice");
+        ninethPage.initPage();
+        ninethPage.checkDocs("BillFacture");
+
+    //    UtilStore.goBack();
        // eighthPage = seventhPage.acceptDelivery();
     }
 }

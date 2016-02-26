@@ -3,13 +3,14 @@ package com.invoice.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by paul on 24.02.16.
  */
 public class AddDocumentSeventhPage extends Page {
 
-    @FindBy (id = "pay_transit")
+    @FindBy(id = "pay_transit")
     WebElement buttonPayTransit;
 
     @FindBy(name = "sum_payment")
@@ -18,7 +19,7 @@ public class AddDocumentSeventhPage extends Page {
     @FindBy(name = "file_text")
     WebElement inputNumber;
 
-    @FindBy (id = "save_an_deliv")
+    @FindBy(id = "save_an_deliv")
     WebElement buttonSaveAndDelivery;
 
     @FindBy(name = "date_form")
@@ -43,8 +44,8 @@ public class AddDocumentSeventhPage extends Page {
     WebElement fieldUploadFile;
 
 
-
-    public void setValuesPayWindow() {
+    public void setValuesPayWindow() throws InterruptedException {
+        Thread.sleep(1000);
         typeHere(inputSum, "345435");
         typeHere(inputNumber, "345345");
         inputDate.click();
@@ -71,7 +72,7 @@ public class AddDocumentSeventhPage extends Page {
 
     }
 
-    public void saveAndDelivery(){
+    public void saveAndDelivery() {
         buttonSaveAndDelivery.click();
     }
 
@@ -114,8 +115,9 @@ public class AddDocumentSeventhPage extends Page {
         }
     }
 
-    public void confirmDeliveryForm() throws InterruptedException {
+    public AddDocumentEighthPage confirmDeliveryForm() throws InterruptedException {
         Thread.sleep(1000);
         buttonOk.click();
+        return PageFactory.initElements(driver, AddDocumentEighthPage.class);
     }
 }

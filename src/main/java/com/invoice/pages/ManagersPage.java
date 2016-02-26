@@ -31,7 +31,6 @@ public class ManagersPage extends Page {
 
     }
 
-
     public void enter() throws InterruptedException {
 
         WebDriverWait wait = new WebDriverWait(driver, 2);

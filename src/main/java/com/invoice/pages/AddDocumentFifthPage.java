@@ -6,9 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by paul on 24.02.16.
- */
 public class AddDocumentFifthPage extends Page {
 
     @FindBy(id = "v-name_user_info")
@@ -36,7 +33,7 @@ public class AddDocumentFifthPage extends Page {
     public AddDocumentSixthPage formPurchase() throws InterruptedException {
         Thread.sleep(1000);
         buttonFormPurchase.click();
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         buttonAcceptFormPurchase.click();
 
         return PageFactory.initElements(driver, AddDocumentSixthPage.class);

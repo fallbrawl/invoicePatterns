@@ -7,10 +7,7 @@ package invoice;
 import org.testng.annotations.Test;
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class CheckDocumentsTest extends BasicTestCase {
 
@@ -81,10 +78,17 @@ public class CheckDocumentsTest extends BasicTestCase {
         sixthPage.waitForLoad();
 
         seventhPage = sixthPage.toTheNextStep();
-
-
-
-
-
+        seventhPage.waitForLoad();
+        seventhPage.openPayWindow();
+        seventhPage.setValuesPayWindow();
+        seventhPage.uploadFile1();
+        seventhPage.confirmPayment();
+        seventhPage.waitForLoad();
+        seventhPage.initPage();
+        seventhPage.saveAndDelivery();
+        seventhPage.fillDeliveryForm();
+        seventhPage.uploadFile2();
+        seventhPage.confirmDeliveryForm();
+       // eighthPage = seventhPage.acceptDelivery();
     }
 }

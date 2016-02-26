@@ -45,15 +45,15 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseSecondPage.setAgreementDelay();
         createPurchaseSecondPage.agreement("Save");
         createPurchaseSecondPage.waitForLoad();
-        createPurchaseSecondPage.agreement("Send");
-
-        managersPage.open();
-        UtilStore.reload(getWebDriver());
-        managersPage.checkAndSave();
-        managersPage.enter();
-        UtilStore.goBack(getWebDriver());
-
-        createPurchaseSecondPage.waitForLoad();
+//        createPurchaseSecondPage.agreement("Send");
+//
+//        managersPage.open();
+//        UtilStore.reload(getWebDriver());
+//        managersPage.checkAndSave();
+//        managersPage.enter();
+//        UtilStore.goBack(getWebDriver());
+//
+//        createPurchaseSecondPage.waitForLoad();
         createPurchaseSecondPage.agreement("Use");
         createPurchaseSecondPage.waitForLoad();
         createPurchaseThirdPage = createPurchaseSecondPage.toTheNextStep();
@@ -119,6 +119,7 @@ public class MoveDocumentTest extends BasicTestCase {
         movementPage = pitchPage.moveFromStore();
         movementPage.save();
         movementPage.enter();
+
 
 
     }

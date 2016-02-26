@@ -11,6 +11,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CheckDocumentsTest extends BasicTestCase {
 
+    //1. Товарный договор, добавляем товары, проходим цепочку,
+    // совершаем отгрузку - проверяем нет ли ошибок при отгрытии отгрузочных документов
+    // (счет, накладная, счет-фактура)
+
+
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);

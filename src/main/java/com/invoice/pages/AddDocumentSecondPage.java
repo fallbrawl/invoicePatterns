@@ -1,5 +1,6 @@
 package com.invoice.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -32,6 +33,15 @@ public class AddDocumentSecondPage extends Page {
     @FindBy(name = "file")
     public WebElement formForFile;
 
+    @FindBy(xpath = ".//*[@id='select2-chosen-12']")
+    WebElement dropdownSetTypeOfAgreement;
+
+    @FindBy(id = "select2-result-label-21")
+    WebElement dropdownvariantTypeOfAgreementServices;
+
+    @FindBy(id = "s2id_autogen12_search")
+    WebElement fieldForSearchTypeOfAgreement;
+
     @FindBy(className = "icon_save_big")
     public WebElement buttonSaveAgreement;
 
@@ -63,6 +73,19 @@ public class AddDocumentSecondPage extends Page {
             documentName = matcher.group(0);
             System.out.println("EXTRACTED regex expression " + documentName);
         }
+    }
+
+    public void setTypeOfAgreementService() throws InterruptedException {
+        Thread.sleep(500);
+        dropdownSetTypeOfAgreement.click();
+        Thread.sleep(500);
+        fieldForSearchTypeOfAgreement.click();
+        Thread.sleep(500);
+        typeHere(fieldForSearchTypeOfAgreement,"Услуги");
+        Thread.sleep(500);
+        typeHere(fieldForSearchTypeOfAgreement,Keys.ENTER);
+
+
     }
 
     public void uploadFile() {

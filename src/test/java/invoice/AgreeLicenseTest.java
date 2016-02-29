@@ -1,38 +1,33 @@
 package invoice;
 
-/**
- * Created by paul on 24.02.16.
- */
-
-import org.testng.annotations.Test;
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
-public class CheckDocumentsTest extends BasicTestCase {
-
-    //1. Товарный договор, добавляем товары, проходим цепочку,
-    // совершаем отгрузку - проверяем нет ли ошибок при отгрытии отгрузочных документов
-    // (счет, накладная, счет-фактура)
-
+/**
+ * Created by paul on 29.02.16.
+ */
+public class AgreeLicenseTest extends BasicTestCase {
 
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
+    private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
     private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
     private AddDocumentFifthPage fifthPage = PageFactory.initElements(getWebDriver(), AddDocumentFifthPage.class);
     private AddDocumentSixthPage sixthPage = PageFactory.initElements(getWebDriver(), AddDocumentSixthPage.class);
     private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
     private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
-    private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
 
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
+
     @Test
 
-    public void checkDocumentTest() throws NoSuchFieldException, InterruptedException {
+    public void agreeLicenseTest() throws InterruptedException, NoSuchFieldException {
 
         loginPage.open();
         mainPage = loginPage.loginAs(admin);
@@ -42,6 +37,7 @@ public class CheckDocumentsTest extends BasicTestCase {
 
         secondPage = firstPage.toTheNextStep();
         secondPage.uploadFile();
+        secondPage.setTypeOfAgreementService("Лицензионный");
         secondPage.agreement("Save");
         secondPage.waitForLoad();
         secondPage.agreement("Use");
@@ -49,8 +45,10 @@ public class CheckDocumentsTest extends BasicTestCase {
 
         thirdPage = secondPage.toTheNextStep();
         thirdPage.initPage();
-        thirdPage.enterExistingNameOfProduct();
+        thirdPage.setNumberOfItems();
         thirdPage.addProduct();
+        thirdPage.fillProductForm();
+        thirdPage.waitForLoad();
         thirdPage.save();
         thirdPage.waitForLoad();
 
@@ -62,7 +60,10 @@ public class CheckDocumentsTest extends BasicTestCase {
         dynamicPayments.waitForLoad();
         dynamicPayments.initPage();
         UtilStore.goBack(getWebDriver());
+        dynamicPayments.waitForLoad();
 
+        thirdPage = secondPage.toTheNextStep();
+        UtilStore.reload(getWebDriver());
         thirdPage.waitForLoad();
         thirdPage.save();
         thirdPage.waitForLoad();
@@ -73,9 +74,12 @@ public class CheckDocumentsTest extends BasicTestCase {
 
         fifthPage = fourthPage.buyForAll();
         fifthPage.enterProviderName();
-
+        fifthPage.initPurchase();
+        fifthPage.waitForLoad();
         sixthPage = fifthPage.formPurchase();
+
         sixthPage.uploadFile();
+        sixthPage.setTypeOfAgreement("Лицензионный");
         sixthPage.agreement("Save");
         sixthPage.waitForLoad();
         sixthPage.agreement("Use");
@@ -95,27 +99,21 @@ public class CheckDocumentsTest extends BasicTestCase {
 
         eighthPage = seventhPage.confirmDeliveryForm();
         eighthPage.waitForLoad();
-        eighthPage.setCalendar1();
-        eighthPage.uploadNaklad();
-        eighthPage.setNumber2();
-        eighthPage.setCalendar2();
-        eighthPage.setNumber1();
-        eighthPage.uploadInvoice();
+        eighthPage.uploadAct();
+        eighthPage.setCalendar3FirstDay();
+        eighthPage.setNumber3();
 
         ninethPage = eighthPage.acceptOrder();
-        //ninethPage.open();
         ninethPage.waitForLoad();
         ninethPage.waitForLoad();
-        ninethPage.fullShipment(); //тут что то запорол
-        ninethPage.fillFullShipmentForm();
+        ninethPage.setFullLoad();
+        ninethPage.waitForLoad();
+        ninethPage.fullShipmentForLicenseAgreement();
         ninethPage.waitForLoad();
         ninethPage.checkDocs("Bill");
         ninethPage.initPage();
-        ninethPage.checkDocs("Invoice");
+        ninethPage.checkDocs("Act");
         ninethPage.initPage();
-        ninethPage.checkDocs("BillFacture");
 
-    //    UtilStore.goBack();
-       // eighthPage = seventhPage.acceptDelivery();
     }
 }

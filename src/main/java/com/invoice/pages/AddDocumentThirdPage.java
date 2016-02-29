@@ -70,7 +70,7 @@ public class AddDocumentThirdPage extends Page {
 
     public void enterExistingNameOfProduct() throws InterruptedException {
         fieldForName.click();
-        typeHere(fieldForName, "product 2016/02/24 15:33:38");
+        typeHere(fieldForName, "product 2016/02/28 22:43:42");
     }
 
     public void setOfferService() throws InterruptedException {

@@ -1,5 +1,6 @@
 package com.invoice.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -35,6 +36,15 @@ public class AddDocumentSixthPage extends Page{
 
     @FindBy (name = "date_to_file")
     public WebElement fieldCalendarForFile;
+
+    @FindBy(xpath = ".//*[@id='select2-chosen-10']")
+    WebElement dropdownSetTypeOfAgreement;
+
+    @FindBy(id = "select2-result-label-18")
+    WebElement dropdownvariantTypeOfAgreementServices;
+
+    @FindBy(id = "s2id_autogen10_search")
+    WebElement fieldForSearchTypeOfAgreement;
 
 
     public void uploadFile() {
@@ -72,6 +82,29 @@ public class AddDocumentSixthPage extends Page{
             default:
                 throw new NoSuchFieldException();
         }
+    }
+
+    public void setTypeOfAgreement(String whatType) throws InterruptedException, NoSuchFieldException {
+        Thread.sleep(500);
+        dropdownSetTypeOfAgreement.click();
+        Thread.sleep(500);
+        fieldForSearchTypeOfAgreement.click();
+        Thread.sleep(500);
+        switch (whatType) {
+            case "Услуги":
+                typeHere(fieldForSearchTypeOfAgreement, "Услуги");
+                break;
+            case "Товарный":
+                typeHere(fieldForSearchTypeOfAgreement, "Товарный");
+                break;
+            case "Лицензионный":
+                typeHere(fieldForSearchTypeOfAgreement, "Лицензионный");
+                break;
+            default: throw new NoSuchFieldException();
+        }
+        Thread.sleep(500);
+        typeHere(fieldForSearchTypeOfAgreement,Keys.ENTER);
+
     }
 
     public AddDocumentSeventhPage toTheNextStep() {

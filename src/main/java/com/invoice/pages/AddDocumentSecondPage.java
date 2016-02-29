@@ -75,16 +75,26 @@ public class AddDocumentSecondPage extends Page {
         }
     }
 
-    public void setTypeOfAgreementService() throws InterruptedException {
+    public void setTypeOfAgreementService(String whatType) throws InterruptedException, NoSuchFieldException {
         Thread.sleep(500);
         dropdownSetTypeOfAgreement.click();
         Thread.sleep(500);
         fieldForSearchTypeOfAgreement.click();
         Thread.sleep(500);
-        typeHere(fieldForSearchTypeOfAgreement,"Услуги");
+        switch (whatType) {
+            case "Услуги":
+                typeHere(fieldForSearchTypeOfAgreement, "Услуги");
+                break;
+            case "Товарный":
+                typeHere(fieldForSearchTypeOfAgreement, "Товарный");
+                break;
+            case "Лицензионный":
+                typeHere(fieldForSearchTypeOfAgreement, "Лицензионный");
+                break;
+            default: throw new NoSuchFieldException();
+        }
         Thread.sleep(500);
         typeHere(fieldForSearchTypeOfAgreement,Keys.ENTER);
-
 
     }
 

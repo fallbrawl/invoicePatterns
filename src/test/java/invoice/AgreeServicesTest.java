@@ -19,11 +19,6 @@ public class AgreeServicesTest extends BasicTestCase {
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
-    private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
-    private AddDocumentFifthPage fifthPage = PageFactory.initElements(getWebDriver(), AddDocumentFifthPage.class);
-    private AddDocumentSixthPage sixthPage = PageFactory.initElements(getWebDriver(), AddDocumentSixthPage.class);
-    private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
-    private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
     private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
 
     private MainPage mainPage;
@@ -33,6 +28,7 @@ public class AgreeServicesTest extends BasicTestCase {
     @Test
 
     public void agreeServicesTest() throws NoSuchFieldException, InterruptedException {
+
         loginPage.open();
         mainPage = loginPage.loginAs(admin);
 
@@ -41,7 +37,7 @@ public class AgreeServicesTest extends BasicTestCase {
 
         secondPage = firstPage.toTheNextStep();
         secondPage.uploadFile();
-        secondPage.setTypeOfAgreementService();
+        secondPage.setTypeOfAgreementService("Услуги");
         secondPage.agreement("Save");
         secondPage.waitForLoad();
         secondPage.agreement("Use");
@@ -66,14 +62,19 @@ public class AgreeServicesTest extends BasicTestCase {
         dynamicPayments.waitForLoad();
         dynamicPayments.initPage();
         UtilStore.goBack(getWebDriver());
-
         thirdPage.waitForLoad();
         UtilStore.reload(driver);
+
         ninethPage = thirdPage.saveAndLoad();
         ninethPage.waitForLoad();
         ninethPage.waitForLoad();
         ninethPage.setFullLoad();
-
         ninethPage.waitForLoad();
         ninethPage.fullShipment();
+        ninethPage.waitForLoad();
+        ninethPage.checkDocs("Bill");
+        ninethPage.initPage();
+        ninethPage.checkDocs("Act");
+        ninethPage.initPage();
+        ninethPage.checkDocs("BillFacture");
     }}

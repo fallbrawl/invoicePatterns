@@ -36,11 +36,23 @@ public class AddDocumentNinethPage extends Page {
     @FindBy(linkText = "Счёт-фактура")
     WebElement linkBillFacture;
 
+    @FindBy(linkText = "Акт")
+    WebElement linkAct;
+
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[4]/div[1]/ul/li[4]/a/span")
     WebElement step4;
 
     @FindBy(css = "#body-wrapper > div.modal.fade.in > div > div > div.modal-footer > button.btn.btn-sm.btn-success")
     WebElement buttonOk;
+
+    public void fullShipmentForLicenseAgreement() throws InterruptedException {
+        Thread.sleep(500);
+        fieldCalendarAct.click();
+        Thread.sleep(500);
+        cellCalendarDateToday.click();
+        Thread.sleep(500);
+        buttonOk.click();
+    }
 
     public void fullShipment() throws InterruptedException {
 
@@ -129,6 +141,21 @@ public class AddDocumentNinethPage extends Page {
                 driver.close();
                 driver.switchTo().window(tabs2.get(0));
                 break;
+
+            case "Act":
+                linkAct.click();
+                Thread.sleep(1000);
+
+                driver.getWindowHandles();
+                ArrayList<String> tabs3 = new ArrayList<>(driver.getWindowHandles());
+                System.out.println("size" + tabs3.size());
+                driver.switchTo().window(tabs3.get(1));
+                driver.get(driver.getCurrentUrl() + "1");
+                System.out.println(driver.getPageSource().contains("Акт"));
+                driver.close();
+                driver.switchTo().window(tabs3.get(0));
+                break;
+
             default:
                 throw new NoSuchElementException("Invalid document name");
         }

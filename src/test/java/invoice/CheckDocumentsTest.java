@@ -106,7 +106,7 @@ public class CheckDocumentsTest extends BasicTestCase {
         //ninethPage.open();
         ninethPage.waitForLoad();
         ninethPage.waitForLoad();
-        ninethPage.fullShipment();
+        ninethPage.fullShipment(); //тут что то запорол
         ninethPage.fillFullShipmentForm();
         ninethPage.waitForLoad();
         ninethPage.checkDocs("Bill");

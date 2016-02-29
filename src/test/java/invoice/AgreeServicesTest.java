@@ -1,6 +1,7 @@
 package invoice;
 
 import com.invoice.pages.*;
+import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
@@ -48,8 +49,31 @@ public class AgreeServicesTest extends BasicTestCase {
 
         thirdPage = secondPage.toTheNextStep();
         thirdPage.initPage();
-        thirdPage.enterExistingNameOfProduct();
+        thirdPage.setNumberOfItems();
+
         thirdPage.addProduct();
+        thirdPage.fillProductForm();
+        thirdPage.waitForLoad();
+        thirdPage.setOfferService();
         thirdPage.save();
         thirdPage.waitForLoad();
+
+        dynamicPayments.open();
+        dynamicPayments.openPayWindow();
+        dynamicPayments.setValuesPayWindow();
+        dynamicPayments.uploadFile();
+        dynamicPayments.confirmPayment();
+        dynamicPayments.waitForLoad();
+        dynamicPayments.initPage();
+        UtilStore.goBack(getWebDriver());
+
+        thirdPage.waitForLoad();
+        UtilStore.reload(driver);
+        ninethPage = thirdPage.saveAndLoad();
+        ninethPage.waitForLoad();
+        ninethPage.waitForLoad();
+        ninethPage.setFullLoad();
+
+        ninethPage.waitForLoad();
+        ninethPage.fullShipment();
     }}

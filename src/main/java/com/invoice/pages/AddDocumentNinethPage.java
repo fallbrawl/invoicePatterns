@@ -21,6 +21,9 @@ public class AddDocumentNinethPage extends Page {
     @FindBy(name = "invoice[4]")
     WebElement fieldCalendarBill;
 
+    @FindBy(name = "invoice[3]")
+    WebElement fieldCalendarAct;
+
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement cellCalendarDateToday;
 
@@ -40,8 +43,17 @@ public class AddDocumentNinethPage extends Page {
     WebElement buttonOk;
 
     public void fullShipment() throws InterruptedException {
+
         Thread.sleep(500);
-        buttonFullShipment.click();
+        fieldCalendarBill.click();
+        Thread.sleep(500);
+        cellCalendarDateToday.click();
+        Thread.sleep(500);
+        fieldCalendarAct.click();
+        Thread.sleep(500);
+        cellCalendarDateToday.click();
+        Thread.sleep(500);
+        buttonOk.click();
     }
 
     public void fillFullShipmentForm() throws InterruptedException {
@@ -66,6 +78,10 @@ public class AddDocumentNinethPage extends Page {
     public void open() {
         driver.get("http://invoicedev.php.attractgroup.com/public/document/show/63");
 
+    }
+
+    public void setFullLoad(){
+        buttonFullShipment.click();
     }
 
     public void checkDocs(String what) throws InterruptedException {

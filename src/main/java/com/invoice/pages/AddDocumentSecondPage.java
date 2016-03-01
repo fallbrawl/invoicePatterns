@@ -33,7 +33,8 @@ public class AddDocumentSecondPage extends Page {
     @FindBy(name = "file")
     public WebElement formForFile;
 
-    @FindBy(xpath = ".//*[@id='select2-chosen-12']")
+    @FindBy(css = "#select2-chosen-12")
+    //@FindBy(xpath = ".//*[@id='select2-chosen-12']")
     WebElement dropdownSetTypeOfAgreement;
 
     @FindBy(id = "select2-result-label-21")
@@ -82,6 +83,7 @@ public class AddDocumentSecondPage extends Page {
         fieldForSearchTypeOfAgreement.click();
         Thread.sleep(500);
         switch (whatType) {
+
             case "Услуги":
                 typeHere(fieldForSearchTypeOfAgreement, "Услуги");
                 break;
@@ -91,6 +93,7 @@ public class AddDocumentSecondPage extends Page {
             case "Лицензионный":
                 typeHere(fieldForSearchTypeOfAgreement, "Лицензионный");
                 break;
+
             default: throw new NoSuchFieldException();
         }
         Thread.sleep(500);

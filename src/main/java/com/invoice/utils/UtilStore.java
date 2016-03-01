@@ -18,14 +18,6 @@ public class UtilStore {
     public static String nameProduct = ("product " + UtilStore.addDate());
     public static String nameOfDocument1 = "documentcreated1 " + addDate();
     public static String nameOfDocument2 = "documentcreated2 " + addDate();
-    public static int wow = 7+7;
-    public static String name = ("product " + "2016/02/23 " + "10:11:" + wow);
-
-    public static void logout(WebDriver drv) {
-        drv.findElement(By.className("account-dropdown")).click();
-        waitForElementsPresence(drv, 2, "dropdown-menu-right", 'c');
-        drv.findElement(By.linkText("Выйти")).click();
-    }
 
     public static boolean checkHttpResponseCode(String url) {
         com.jayway.restassured.response.Response response =

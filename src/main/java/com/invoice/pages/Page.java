@@ -2,6 +2,7 @@ package com.invoice.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public abstract class Page {
 
@@ -18,6 +19,9 @@ public abstract class Page {
 
     @FindBy(className = "account-dropdown")
     public WebElement panelAccount;
+
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/header/div[3]/ul/li[2]/ul/li[3]/a")
+    public WebElement linkProfile;
 
     public Page(WebDriver driver) {
         this.driver = driver;
@@ -85,5 +89,11 @@ public abstract class Page {
         }
     }
 
+    public ProfilePage openProfile() throws InterruptedException {
+        panelAccount.click();
+        Thread.sleep(1000);
+        linkProfile.click();
 
+        return PageFactory.initElements(driver,ProfilePage.class);
+    }
 }

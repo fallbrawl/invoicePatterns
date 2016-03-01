@@ -33,6 +33,7 @@ public class AddDocumentFifthPage extends Page {
     public void initPurchase() throws InterruptedException {
         Thread.sleep(1000);
         buttonFormPurchase.click();
+
     }
 
     public AddDocumentSixthPage formPurchase() throws InterruptedException {

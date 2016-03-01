@@ -10,8 +10,8 @@ import org.openqa.selenium.support.FindBy;
  * Created by paul on 01.03.16.
  */
 public class ProfilePage extends Page {
-    int whatLink = -1;
-    String currentStore;
+    private int whatLink = -1;
+    private String currentStore;
 
     @FindBy(id = "select2-chosen-1")
     WebElement dropdownSetStore;
@@ -70,7 +70,14 @@ public class ProfilePage extends Page {
     }
 
     public String getCurrentStore() {
+
         currentStore = fieldCurrentStore.getText();
+        System.out.println("Склад изначальный: " + currentStore);
+        return currentStore;
+    }
+
+    public String getStore() {
+
         System.out.println("Склад изначальный: " + currentStore);
         return currentStore;
     }

@@ -35,6 +35,7 @@ public class StoreBugFirstTest extends BasicTestCase {
     private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
     private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
     private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
+    private ReservedPage reservedPage = PageFactory.initElements(getWebDriver(), ReservedPage.class);
 
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
@@ -71,7 +72,6 @@ public class StoreBugFirstTest extends BasicTestCase {
         profilePage = thirdPage.openProfile(); // в профиле чекаю
         profilePage.setStore();
         profilePage.initPage();
-        UtilStore.reload(getWebDriver());
         profilePage.getCurrentStore();
         profilePage.saveProfile();
         profilePage.initPage();
@@ -79,10 +79,6 @@ public class StoreBugFirstTest extends BasicTestCase {
 
         thirdPage.waitForLoad();
         thirdPage.initPage();
-//        thirdPage = secondPage.toTheNextStep();
-//        thirdPage.initPage();
-//        thirdPage.save();
-//        thirdPage.waitForLoad();
 
         dynamicPayments.open();
         dynamicPayments.openPayWindow();
@@ -92,13 +88,8 @@ public class StoreBugFirstTest extends BasicTestCase {
         dynamicPayments.waitForLoad();
         dynamicPayments.initPage();
         UtilStore.goBack(getWebDriver());
-//        thirdPage = secondPage.toTheNextStep();
-//        thirdPage.waitForLoad();
-//        thirdPage.initPage();
         UtilStore.reload(driver);
 
-
-//        UtilStore.goBack(getWebDriver());
         thirdPage.initPage();
         fourthPage = thirdPage.saveAndInitiate();
         fourthPage.waitForLoad();
@@ -140,12 +131,15 @@ public class StoreBugFirstTest extends BasicTestCase {
 
         ninethPage = eighthPage.acceptOrder();
         ninethPage.waitForLoad();
-       // ninethPage.waitForLoad();
         ninethPage.initPage();
         Assert.assertTrue(driver.getPageSource().contains("Формируем пакет отгрузочных документов на подпись"));
         profilePage = ninethPage.openProfile();
         System.out.println("Sklad " + profilePage.getCurrentStore());
         Assert.assertTrue(driver.getPageSource().contains(profilePage.getCurrentStore()));
+
+        reservedPage.open();
+        reservedPage.initPage();
+        Assert.assertTrue(driver.getPageSource().contains(profilePage.getStore()));
 
 
 

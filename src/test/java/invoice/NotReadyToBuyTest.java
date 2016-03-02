@@ -113,7 +113,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
         dynamicPayments.setValuesPayWindow();
         dynamicPayments.uploadFile();
         dynamicPayments.confirmPayment();
-        dynamicPayments.waitForLoad();
+//        dynamicPayments.waitForLoad();
         dynamicPayments.initPage();
         UtilStore.goBack(getWebDriver());
 
@@ -121,7 +121,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
         createPurchaseSecondPage.extractNumber();
         UtilStore.reload(getWebDriver());
         thirdPage.saveAndInitiate();
-        thirdPage.waitForLoad();
+//        thirdPage.waitForLoad();
         thirdPage.reserveAndInitiate();
 
         UtilStore.reload(getWebDriver());

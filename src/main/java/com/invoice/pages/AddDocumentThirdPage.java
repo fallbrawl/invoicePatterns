@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AddDocumentThirdPage extends Page {
 
+    private int numberOfItems;
+
     @FindBy(id = "autocomplete_document_product")
     WebElement fieldForName;
 
@@ -60,7 +62,14 @@ public class AddDocumentThirdPage extends Page {
     @FindBy (xpath = "//*[@id=\"buttons_div\"]/span/button[3]")
     WebElement buttonSaveAndLoad;
 
+    @FindBy(className = "available_by_gtr_span")
+    WebElement textNumberOfItems;
 
+    public int getNumberOfItems(){
+        numberOfItems = Integer.parseInt(textNumberOfItems.getText());
+        System.out.println("Number of itemns: " + numberOfItems);
+        return numberOfItems;
+    }
 
     public void enterNameOfProduct() throws InterruptedException {
         fieldForName.click();
@@ -70,7 +79,8 @@ public class AddDocumentThirdPage extends Page {
 
     public void enterExistingNameOfProduct() throws InterruptedException {
         fieldForName.click();
-        typeHere(fieldForName, "product 2016/02/28 22:43:42");
+        System.out.println("nameproduct " + UtilStore.nameProduct);
+        typeHere(fieldForName, UtilStore.nameProduct);
     }
 
     public void setOfferService() throws InterruptedException {

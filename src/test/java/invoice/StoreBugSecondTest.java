@@ -2,27 +2,19 @@ package invoice;
 
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Created by paul on 01.03.16.
- */
-public class StoreBugFirstTest extends BasicTestCase {
+public class StoreBugSecondTest extends BasicTestCase {
 
-//    Description :
-//    Был баг. После создания счета, дойдя до Шага 3 я поменяла в профиле пользователя основной склад.
-//    Затем вернулась в счет, сделала закупку товара к своему счету и после принятия транзита в Шаге 8 - меня, вместо Шага 9, перекинуло на ШАГ 4.
-//    Перейдя в резервы я увидела, что мой товар распределился в другой счет.
-//    [17:45:39] Юлия: В первой части видео обычная цепочка с добавлением абсолютно нового товара.
+//    Во второй части видео другая цепочка:
 //    1. Создать счет, дойти до Шага 3
-//    2. Перейти в профиль пользователя и изменить основной склад
-//    3. Зайти обратно в счет, добавить товар, пройти всю цепочку.
-//    4. Проверить, что после Шага 8 ты переходишь на Шаг 9
-//    5. Проверить, что на странице "Резерв" в столбце "Склад" отображается твой текущий основной склад
-//
+//    2. Добавить товар, который есть на складе (для этого сначала создай инициативную закупку на этот товар)
+//    3. Убедись, что после добавления товара есть текст "Доступно на складах: *число больше 0*"
+//    4. Перейти в профиль пользователя и изменить основной склад
+//    5. Пройти всю цепочку (проверить, чтобы четко переходило по шагам, без перепрыгивания на Шаг 4)
+//    6. Проверить, что на странице "Резерв" в столбце "Склад" отображается твой текущий основной склад
 //    http://www.screencast.com/t/vrovAmfUIuM
 
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
@@ -36,17 +28,82 @@ public class StoreBugFirstTest extends BasicTestCase {
     private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
     private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
     private ReservedPage reservedPage = PageFactory.initElements(getWebDriver(), ReservedPage.class);
-
+    private CreatePurchaseFirstPage createPurchaseFirstPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFirstPage.class);
+    private CreatePurchaseSecondPage createPurchaseSecondPage = PageFactory.initElements(getWebDriver(), CreatePurchaseSecondPage.class);
+    private CreatePurchaseThirdPage createPurchaseThirdPage = PageFactory.initElements(getWebDriver(), CreatePurchaseThirdPage.class);
+    private CreatePurchaseFourthPage createPurchaseFourthPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFourthPage.class);
+    private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
+    private MovePage movePage = PageFactory.initElements(getWebDriver(), MovePage.class);
+    private PartiesPage partiesPage = PageFactory.initElements(getWebDriver(), PartiesPage.class);
+    private MovementPage movementPage = PageFactory.initElements(getWebDriver(), MovementPage.class);
+    private PitchPage pitchPage = PageFactory.initElements(getWebDriver(), PitchPage.class);
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
     @Test
+    public void storeBugSecondTest() throws Exception {
 
-    public void storeBugFirstTest() throws NoSuchFieldException, InterruptedException {
 
         loginPage.open();
         mainPage = loginPage.loginAs(admin);
+
+        createPurchaseFirstPage.open();
+        createPurchaseFirstPage.enterNames();
+        createPurchaseFirstPage.acceptPurchase();
+        createPurchaseSecondPage.waitForLoad();
+
+        createPurchaseSecondPage = createPurchaseFirstPage.toTheNextStep();
+        createPurchaseSecondPage.uploadFile();
+        createPurchaseSecondPage.extractNumber();
+        createPurchaseSecondPage.setAgreementDelay();
+        createPurchaseSecondPage.agreement("Save");
+        createPurchaseSecondPage.waitForLoad();
+//        createPurchaseSecondPage.agreement("Send");
+//
+//        managersPage.open();
+//        UtilStore.reload(getWebDriver());
+//        managersPage.checkAndSave();
+//        managersPage.enter();
+//        UtilStore.goBack(getWebDriver());
+//
+//        createPurchaseSecondPage.waitForLoad();
+        createPurchaseSecondPage.agreement("Use");
+        createPurchaseSecondPage.waitForLoad();
+        createPurchaseThirdPage = createPurchaseSecondPage.toTheNextStep();
+        createPurchaseSecondPage.waitForLoad();
+        createPurchaseThirdPage.setNumberOfItems("100");
+        createPurchaseThirdPage.addProduct();
+        createPurchaseThirdPage.fillProductForm();
+        createPurchaseThirdPage.initPage();
+        createPurchaseThirdPage.saveAndInitiate();
+        createPurchaseThirdPage.setCalendar("thisDay");
+        createPurchaseThirdPage.upl();
+
+        createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();
+        createPurchaseFourthPage.init();
+
+//        managersPage.open();
+//        UtilStore.reload(getWebDriver());
+//        managersPage.checkAndSave();
+//        managersPage.enter();
+//        UtilStore.goBack(getWebDriver());
+//        createPurchaseFourthPage.init();
+//
+//        UtilStore.reload(getWebDriver());
+        createPurchaseFourthPage.uploadNaklad();
+        createPurchaseFourthPage.uploadInvoice();
+        createPurchaseFourthPage.setNumber1();
+        createPurchaseFourthPage.setNumber2();
+
+        createPurchaseFourthPage.setCalendar1();
+        createPurchaseFourthPage.setCalendar2();
+        createPurchaseFourthPage.saveDocumentAndTransfer();
+        createPurchaseFourthPage.waitForLoad();
+        UtilStore.goBack(getWebDriver());
+        createPurchaseFourthPage.init();
+        UtilStore.reload(getWebDriver());
+        createPurchaseFourthPage.init();
 
         firstPage.open();
         firstPage.enterNames();
@@ -61,10 +118,15 @@ public class StoreBugFirstTest extends BasicTestCase {
         thirdPage = secondPage.toTheNextStep();
 
         thirdPage.initPage();
-        thirdPage.setNumberOfItems();
+        //    thirdPage.setNumberOfItems();
+        thirdPage.enterExistingNameOfProduct();
         thirdPage.addProduct();
-        thirdPage.fillProductForm();
-        thirdPage.waitForLoad();
+        thirdPage.initPage();
+
+        Assert.assertTrue(thirdPage.getNumberOfItems() > 0); //кол-во элементов больше нуля
+
+        //       thirdPage.fillProductForm();
+//        thirdPage.waitForLoad();
         thirdPage.initPage();
         thirdPage.save();
         thirdPage.waitForLoad();
@@ -94,7 +156,7 @@ public class StoreBugFirstTest extends BasicTestCase {
         UtilStore.reload(getWebDriver());
         thirdPage.initPage();
         fourthPage = thirdPage.saveAndInitiate();
-//        fourthPage.waitForLoad();
+      //  fourthPage.waitForLoad();
         fourthPage.initPage();
 
         fifthPage = fourthPage.buyForAll();
@@ -132,6 +194,7 @@ public class StoreBugFirstTest extends BasicTestCase {
         eighthPage.uploadInvoice();
 
         ninethPage = eighthPage.acceptOrder();
+
         ninethPage.waitForLoad();
         ninethPage.initPage();
         Assert.assertTrue(driver.getPageSource().contains("Формируем пакет отгрузочных документов на подпись"));

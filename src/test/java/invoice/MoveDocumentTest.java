@@ -11,7 +11,8 @@ import org.testng.annotations.Test;
 public class MoveDocumentTest extends BasicTestCase {
 
     //    http://screencast.com/t/o5nKHxIIHog
-    //    Закупка с новым товаром (лучше добавлять новый товар, чтобы он не закрепился автоматически за каким-нибудь старым счетом и тест не завалился),принятие транзита.
+    //    Закупка с новым товаром
+    //    (лучше добавлять новый товар, чтобы он не закрепился автоматически за каким-нибудь старым счетом и тест не завалился), принятие транзита.
     //    Перемещение этого товара с помощью меню Перемещение, затем принятие перемещения на странице "Движение товара".
     //    После этого перейти в новосозданную партию и переместить товар из партии.
     //    Затем принять его на странице "Движение товара".
@@ -68,14 +69,14 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();
         createPurchaseFourthPage.init();
 
-        managersPage.open();
-        UtilStore.reload(getWebDriver());
-        managersPage.checkAndSave();
-        managersPage.enter();
-        UtilStore.goBack(getWebDriver());
-        createPurchaseFourthPage.init();
-
-        UtilStore.reload(getWebDriver());
+//        managersPage.open();
+//        UtilStore.reload(getWebDriver());
+//        managersPage.checkAndSave();
+//        managersPage.enter();
+//        UtilStore.goBack(getWebDriver());
+//        createPurchaseFourthPage.init();
+//
+//        UtilStore.reload(getWebDriver());
         createPurchaseFourthPage.uploadNaklad();
         createPurchaseFourthPage.uploadInvoice();
         createPurchaseFourthPage.setNumber1();
@@ -87,17 +88,17 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseFourthPage.waitForLoad();
         UtilStore.goBack(getWebDriver());
         createPurchaseFourthPage.init();
-
-        managersPage.open();
-        managersPage.checkAndSave();
-        managersPage.enter();
-        UtilStore.reload(getWebDriver());
-        UtilStore.reload(getWebDriver());
-        managersPage.checkAndSave();
-        managersPage.enter();
-        UtilStore.goBack(getWebDriver());
-        createPurchaseFourthPage.init();
-        UtilStore.reload(getWebDriver());
+//
+//        managersPage.open();
+//        managersPage.checkAndSave();
+//        managersPage.enter();
+//        UtilStore.reload(getWebDriver());
+//        UtilStore.reload(getWebDriver());
+//        managersPage.checkAndSave();
+//        managersPage.enter();
+//        UtilStore.goBack(getWebDriver());
+//        createPurchaseFourthPage.init();
+//        UtilStore.reload(getWebDriver());
 
        // movePage.open();
 

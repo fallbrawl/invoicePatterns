@@ -16,8 +16,15 @@ public class ReservedPage extends Page {
     @FindBy(className = "btn-success")
     WebElement buttonOk;
 
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[5]/div[1]/div[1]/table/tbody/tr[1]/td[9]/div/a")
+    WebElement linkStore;
+
     public ReservedPage(WebDriver driver) {
         super(driver);
+    }
+
+    public WebElement getLinkStore(){
+        return linkStore;
     }
 
     public void unattach() {

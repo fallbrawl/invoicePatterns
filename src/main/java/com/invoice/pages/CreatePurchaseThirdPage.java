@@ -70,7 +70,7 @@ public class CreatePurchaseThirdPage extends Page {
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
     //@FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/span")
-    WebElement getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth;
+            WebElement getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth;
 
     @FindBy(css = "li.active")
     WebElement textNumber;
@@ -99,6 +99,10 @@ public class CreatePurchaseThirdPage extends Page {
     @FindBy(xpath = ".//*[@id='file_upload_div_invoicefact_date']/div/div[2]/input")
     WebElement fieldUploadFile;
 
+    // @FindBy(xpath = "//*[@id=\"recprice_product\"]")
+    @FindBy(className = "product_add_document_recalc")
+    WebElement fieldNumberOfItems;
+
 
     public void addProduct() throws InterruptedException {
         buttonPlus.click();
@@ -122,9 +126,19 @@ public class CreatePurchaseThirdPage extends Page {
         if (matcher.find()) {
             documentBill = matcher.group(0);
             System.out.println("EXTRACTED regex expression " + documentBill);
-        }
-        else {
+        } else {
             System.out.println("NOTHING WAS FOUND ");
+        }
+    }
+
+    public void setNumberOfItems(String howMuch) throws Exception {
+
+        //If you'll be processing the number as text, then change:
+
+        if (howMuch.matches("[0-9]+") && howMuch.length() > 0) {
+            typeHere(fieldNumberOfItems, "100");
+        } else {
+            throw new Exception("Enter a number!");
         }
     }
 

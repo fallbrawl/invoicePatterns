@@ -1,6 +1,8 @@
 package com.invoice.pages;
 
+import org.openqa.jetty.html.List;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -13,6 +15,9 @@ public abstract class Page {
 
     @FindBy(className = "loader_wrapper")
     public WebElement loader;
+
+    @FindAll(@FindBy(className = "loader_wrapper"))
+    public java.util.List<WebElement> loaderArray;
 
     @FindBy(name = "Выйти")
     public WebElement linkExit;
@@ -62,8 +67,6 @@ public abstract class Page {
         System.out.println("Initializing  " + fieldCopyrightForInit.getText() + " " + driver.getTitle());
     }
 
-
-
     public abstract void open();
 
     protected void click(WebElement elementToClickOn) {
@@ -71,10 +74,19 @@ public abstract class Page {
     }
 
     public void waitForLoad() throws InterruptedException {
-        if (loader.isDisplayed()) {
-            Thread.sleep(3000);
+//        if (loader.isDisplayed()) {
+//            Thread.sleep(3500);
+//        }
+        if (loaderArray.size() > 0) {
+            Thread.sleep(3500);
         }
     }
+
+//    public void waitForLoadExperimental() throws InterruptedException {
+//        if (loaderArray.size() > 0) {
+//            Thread.sleep(3500);
+//        }
+//    }
 
     public void submit(WebElement elementToSubmit) {
         elementToSubmit.click();
@@ -94,6 +106,6 @@ public abstract class Page {
         Thread.sleep(1000);
         linkProfile.click();
 
-        return PageFactory.initElements(driver,ProfilePage.class);
+        return PageFactory.initElements(driver, ProfilePage.class);
     }
 }

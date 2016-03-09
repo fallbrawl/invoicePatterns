@@ -8,15 +8,6 @@ import org.testng.annotations.Test;
 
 public class StoreBugSecondTest extends BasicTestCase {
 
-//    Во второй части видео другая цепочка:
-//    1. Создать счет, дойти до Шага 3
-//    2. Добавить товар, который есть на складе (для этого сначала создай инициативную закупку на этот товар)
-//    3. Убедись, что после добавления товара есть текст "Доступно на складах: *число больше 0*"
-//    4. Перейти в профиль пользователя и изменить основной склад
-//    5. Пройти всю цепочку (проверить, чтобы четко переходило по шагам, без перепрыгивания на Шаг 4)
-//    6. Проверить, что на странице "Резерв" в столбце "Склад" отображается твой текущий основной склад
-//    http://www.screencast.com/t/vrovAmfUIuM
-
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
@@ -32,14 +23,18 @@ public class StoreBugSecondTest extends BasicTestCase {
     private CreatePurchaseSecondPage createPurchaseSecondPage = PageFactory.initElements(getWebDriver(), CreatePurchaseSecondPage.class);
     private CreatePurchaseThirdPage createPurchaseThirdPage = PageFactory.initElements(getWebDriver(), CreatePurchaseThirdPage.class);
     private CreatePurchaseFourthPage createPurchaseFourthPage = PageFactory.initElements(getWebDriver(), CreatePurchaseFourthPage.class);
-    private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
-    private MovePage movePage = PageFactory.initElements(getWebDriver(), MovePage.class);
-    private PartiesPage partiesPage = PageFactory.initElements(getWebDriver(), PartiesPage.class);
-    private MovementPage movementPage = PageFactory.initElements(getWebDriver(), MovementPage.class);
-    private PitchPage pitchPage = PageFactory.initElements(getWebDriver(), PitchPage.class);
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
+
+    //    Во второй части видео другая цепочка:
+//    1. Создать счет, дойти до Шага 3
+//    2. Добавить товар, который есть на складе (для этого сначала создай инициативную закупку на этот товар)
+//    3. Убедись, что после добавления товара есть текст "Доступно на складах: *число больше 0*"
+//    4. Перейти в профиль пользователя и изменить основной склад
+//    5. Пройти всю цепочку (проверить, чтобы четко переходило по шагам, без перепрыгивания на Шаг 4)
+//    6. Проверить, что на странице "Резерв" в столбце "Склад" отображается твой текущий основной склад
+//    http://www.screencast.com/t/vrovAmfUIuM
 
     @Test
     public void storeBugSecondTest() throws Exception {
@@ -59,17 +54,9 @@ public class StoreBugSecondTest extends BasicTestCase {
         createPurchaseSecondPage.setAgreementDelay();
         createPurchaseSecondPage.agreement("Save");
         createPurchaseSecondPage.waitForLoad();
-//        createPurchaseSecondPage.agreement("Send");
-//
-//        managersPage.open();
-//        UtilStore.reload(getWebDriver());
-//        managersPage.checkAndSave();
-//        managersPage.enter();
-//        UtilStore.goBack(getWebDriver());
-//
-//        createPurchaseSecondPage.waitForLoad();
         createPurchaseSecondPage.agreement("Use");
         createPurchaseSecondPage.waitForLoad();
+
         createPurchaseThirdPage = createPurchaseSecondPage.toTheNextStep();
         createPurchaseSecondPage.waitForLoad();
         createPurchaseThirdPage.setNumberOfItems("100");
@@ -82,15 +69,6 @@ public class StoreBugSecondTest extends BasicTestCase {
 
         createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();
         createPurchaseFourthPage.init();
-
-//        managersPage.open();
-//        UtilStore.reload(getWebDriver());
-//        managersPage.checkAndSave();
-//        managersPage.enter();
-//        UtilStore.goBack(getWebDriver());
-//        createPurchaseFourthPage.init();
-//
-//        UtilStore.reload(getWebDriver());
         createPurchaseFourthPage.uploadNaklad();
         createPurchaseFourthPage.uploadInvoice();
         createPurchaseFourthPage.setNumber1();
@@ -118,15 +96,12 @@ public class StoreBugSecondTest extends BasicTestCase {
         thirdPage = secondPage.toTheNextStep();
 
         thirdPage.initPage();
-        //    thirdPage.setNumberOfItems();
         thirdPage.enterExistingNameOfProduct();
         thirdPage.addProduct();
         thirdPage.initPage();
 
         Assert.assertTrue(thirdPage.getNumberOfItems() > 0); //кол-во элементов больше нуля
 
-        //       thirdPage.fillProductForm();
-//        thirdPage.waitForLoad();
         thirdPage.initPage();
         thirdPage.save();
         thirdPage.waitForLoad();
@@ -147,7 +122,6 @@ public class StoreBugSecondTest extends BasicTestCase {
         dynamicPayments.setValuesPayWindow();
         dynamicPayments.uploadFile();
         dynamicPayments.confirmPayment();
-//        dynamicPayments.waitForLoad();
         dynamicPayments.initPage();
         UtilStore.goBack(getWebDriver());
         UtilStore.reload(driver);
@@ -155,8 +129,8 @@ public class StoreBugSecondTest extends BasicTestCase {
         thirdPage.initPage();
         UtilStore.reload(getWebDriver());
         thirdPage.initPage();
+
         fourthPage = thirdPage.saveAndInitiate();
-      //  fourthPage.waitForLoad();
         fourthPage.initPage();
 
         fifthPage = fourthPage.buyForAll();

@@ -25,6 +25,14 @@ public class LoginPage extends Page {
         return PageFactory.initElements(driver, MainPage.class);
     }
 
+    public MainPage loginAs(String newUserEmail, String newUserPassword) throws InterruptedException {
+        Thread.sleep(1000);
+        typeHere(fieldEmailLogin, newUserEmail);
+        typeHere(fieldPasswordLogin, newUserPassword);
+        buttonEnterLogin.submit();
+        return PageFactory.initElements(driver, MainPage.class);
+    }
+
     @Override
     public void open() {
 

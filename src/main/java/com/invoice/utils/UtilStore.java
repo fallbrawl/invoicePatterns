@@ -15,9 +15,10 @@ import static com.jayway.restassured.RestAssured.given;
  * Created by paul on 01.02.16.
  */
 public class UtilStore {
-    public static String nameProduct = ("product " + UtilStore.addDate());
-    public static String nameOfDocument1 = "documentcreated1 " + addDate();
-    public static String nameOfDocument2 = "documentcreated2 " + addDate();
+    public static String nameProduct = ("product " + UtilStore.addDateForProduct());
+    public static String userEmail = ("email" + UtilStore.addDateForEmail());
+    public static String nameOfDocument1 = "documentcreated1 " + addDateForProduct();
+    public static String nameOfDocument2 = "documentcreated2 " + addDateForProduct();
 
     public static boolean checkHttpResponseCode(String url) {
         com.jayway.restassured.response.Response response =
@@ -36,8 +37,16 @@ public class UtilStore {
     }
 
 
-    public static String addDate() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    public static String addDateForProduct() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/ddHH:mm:ss");
+        //get current date time with Date()
+        Date date = new Date();
+        String dateAndTimeAttachment = dateFormat.format(date);
+        return dateAndTimeAttachment;
+    }
+
+    public static String addDateForEmail() {
+        DateFormat dateFormat = new SimpleDateFormat("HHmmss");
         //get current date time with Date()
         Date date = new Date();
         String dateAndTimeAttachment = dateFormat.format(date);

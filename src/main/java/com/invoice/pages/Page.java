@@ -19,7 +19,7 @@ public abstract class Page {
     @FindAll(@FindBy(className = "loader_wrapper"))
     public java.util.List<WebElement> loaderArray;
 
-    @FindBy(name = "Выйти")
+    @FindBy(linkText = "Выйти")
     public WebElement linkExit;
 
     @FindBy(className = "account-dropdown")
@@ -32,9 +32,9 @@ public abstract class Page {
         this.driver = driver;
     }
 
-    public void logout(WebDriver drv) throws InterruptedException {
+    public void logout() throws InterruptedException {
         panelAccount.click();
-        Thread.sleep(1000);
+        Thread.sleep(500);
         linkExit.click();
     }
 
@@ -108,4 +108,6 @@ public abstract class Page {
 
         return PageFactory.initElements(driver, ProfilePage.class);
     }
+
+
 }

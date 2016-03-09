@@ -20,10 +20,13 @@ public class WarehousePage extends Page {
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[2]/div/ul/li[last()-1]/a")
     WebElement buttonLastPage;
 
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[3]/div/a[1]")
+    WebElement linkEditNewStore;
+
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[2]/div/a")
     public WebElement linkNewStore;
 
-    @FindAll(@FindBy(linkText = "Редактировать"))
+    @FindAll(@FindBy(className = "link_divider"))
     List<WebElement> linkArrayEditStores;
 
     public WarehousePage(WebDriver driver) {
@@ -46,10 +49,20 @@ public class WarehousePage extends Page {
     }
 
     public void checkNumberOfStores() throws InterruptedException {
-        if (linkArrayEditStores.size() > 10) {
-            Thread.sleep(1000);
+
+        System.out.println(linkArrayEditStores.size());
+
+        if (linkArrayEditStores.size() == 10) {
+            Thread.sleep(500);
             System.out.println(buttonLastPage.getText());
             buttonLastPage.click();
+            Thread.sleep(500);
         }
+    }
+
+    public EditWarehousePage editStore() throws InterruptedException {
+        linkEditNewStore.click();
+        Thread.sleep(1000);
+        return PageFactory.initElements(driver, EditWarehousePage.class);
     }
 }

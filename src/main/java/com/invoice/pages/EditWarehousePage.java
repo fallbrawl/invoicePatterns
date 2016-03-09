@@ -16,10 +16,15 @@ import java.util.List;
  */
 public class EditWarehousePage extends Page {
 
-    List<String> arrayOfNamesSellersAndManagers = new ArrayList<String>();
+    public List<String> arrayOfNamesSellersAndManagers = new ArrayList<String>();
+    public int i = 0;
+    public String[] arrayOfNamesSellersAndManagers1;
 
     @FindBy(name = "name_warehouse")
-    WebElement fieldNameWarehouse;
+    public WebElement fieldNameWarehouse;
+
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
+    public WebElement textNameOfStore;
 
     @FindAll(@FindBy(className = "select2-choices"))
     List<WebElement> dropdownArrayManagersWarehouse;
@@ -95,14 +100,28 @@ public class EditWarehousePage extends Page {
         for (WebElement a : elementsManagersAndSellersAfterDeletion) {
 
             arrayOfNamesSellersAndManagers.add(a.getText());
+            arrayOfNamesSellersAndManagers1[i] = arrayOfNamesSellersAndManagers.get(i);
+            i++;
 
         }
     }
 
     public WarehousePage acceptNewStore() {
-
         buttonSaveNewStore.click();
         return PageFactory.initElements(driver, WarehousePage.class);
 
+    }
+
+    public boolean checkThatChangesAreSaved() {
+        for (WebElement a : elementsManagersAndSellersAfterDeletion) {
+            System.out.println("Size " + arrayOfNamesSellersAndManagers1.length);
+            System.out.println(arrayOfNamesSellersAndManagers1[1]);
+            if (a.getText() != arrayOfNamesSellersAndManagers.get(i)) {
+
+                return false;
+            }
+            i++;
+        }
+        return true;
     }
 }

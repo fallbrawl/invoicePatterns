@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,7 @@ import java.util.List;
  */
 public class EditWarehousePage extends Page {
 
-    public List<String> arrayOfNamesSellersAndManagers = new ArrayList<String>();
-    public int i = 0;
-    public String[] arrayOfNamesSellersAndManagers1;
+    public int numberOfElementsAfterDeletion;
 
     @FindBy(name = "name_warehouse")
     public WebElement fieldNameWarehouse;
@@ -61,48 +60,41 @@ public class EditWarehousePage extends Page {
 
         dropdownArrayManagersWarehouse.get(0).click();
         Thread.sleep(1000);
-
         dropdownArrayVariantsManagersWarehouse.get(3).click();
         Thread.sleep(1000);
 
+        dropdownArrayManagersWarehouse.get(1).click();
+        Thread.sleep(500);
+        dropdownArrayVariantsManagersWarehouse.get(2).click();
+        Thread.sleep(500);
+
+        dropdownArrayDeleteEntriesWarehouse.get(0).click();
+        Thread.sleep(500);
+
         dropdownArrayManagersWarehouse.get(0).click();
         Thread.sleep(1000);
-
         dropdownArrayVariantsManagersWarehouse.get(2).click();
         Thread.sleep(1000);
 
-        dropdownArrayManagersWarehouse.get(0).click();
+        dropdownArrayManagersWarehouse.get(1).click();
+        Thread.sleep(1000);
+        dropdownArrayVariantsManagersWarehouse.get(3).click();
+        Thread.sleep(500);
+        dropdownArrayDeleteEntriesWarehouse.get(2).click();
         Thread.sleep(1000);
 
+        dropdownArrayManagersWarehouse.get(0).click();
+        Thread.sleep(1000);
         dropdownArrayVariantsManagersWarehouse.get(1).click();
         Thread.sleep(1000);
 
-        dropdownArrayManagersWarehouse.get(1).click();
-        Thread.sleep(500);
-
-        dropdownArrayVariantsManagersWarehouse.get(3).click();
-        Thread.sleep(500);
-
-        dropdownArrayManagersWarehouse.get(1).click();
-        Thread.sleep(500);
-
-        dropdownArrayVariantsManagersWarehouse.get(2).click();
-        Thread.sleep(500);
-
-        dropdownArrayDeleteEntriesWarehouse.get(4).click();
-        Thread.sleep(500);
-
-        dropdownArrayDeleteEntriesWarehouse.get(1).click();
-        Thread.sleep(1000);
-
-        System.out.println("Size " + elementsManagersAndSellersAfterDeletion.size());
+        numberOfElementsAfterDeletion = elementsManagersAndSellersAfterDeletion.size();
+        System.out.println("Number " + numberOfElementsAfterDeletion);
 
         for (WebElement a : elementsManagersAndSellersAfterDeletion) {
 
-            arrayOfNamesSellersAndManagers.add(a.getText());
-            arrayOfNamesSellersAndManagers1[i] = arrayOfNamesSellersAndManagers.get(i);
-            i++;
-
+            System.out.println(a.getText());
+            UtilStore.arrayOfNamesSellersAndManagers.add(a.getText());
         }
     }
 
@@ -113,14 +105,13 @@ public class EditWarehousePage extends Page {
     }
 
     public boolean checkThatChangesAreSaved() {
-        for (WebElement a : elementsManagersAndSellersAfterDeletion) {
-            System.out.println("Size " + arrayOfNamesSellersAndManagers1.length);
-            System.out.println(arrayOfNamesSellersAndManagers1[1]);
-            if (a.getText() != arrayOfNamesSellersAndManagers.get(i)) {
 
+        for (String a : UtilStore.arrayOfNamesSellersAndManagers) {
+            System.out.println("assert" + a);
+            if (!driver.getPageSource().contains(a) || elementsManagersAndSellersAfterDeletion.size() != numberOfElementsAfterDeletion) {
                 return false;
             }
-            i++;
+
         }
         return true;
     }

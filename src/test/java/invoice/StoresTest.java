@@ -51,10 +51,10 @@ public class StoresTest extends BasicTestCase {
 
         Assert.assertTrue(warehousePage.linkNewStore.getText().equals("wow " + UtilStore.nameProduct)); //склад добавился ?
 
-        editWarehousePage = warehousePage.editStore(); //TODO: ПЕРЕПИСАТЬ ассерты внутрь страниц, на которых выполняются
+        warehousePage.editStore(); //TODO: ПЕРЕПИСАТЬ ассерты внутрь страниц, на которых выполняются
 
         Assert.assertTrue(editWarehousePage.textNameOfStore.getText().contains("wow " + UtilStore.nameProduct)); //тот ли склад редактирую ?
-        Assert.assertTrue(editWarehousePage.checkThatChangesAreSaved());
+        Assert.assertTrue(editWarehousePage.checkThatChangesAreSaved()); //количество продавцов и менеджеров равно предыдущему И имена совпадают ?
 
     }
 

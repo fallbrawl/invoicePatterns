@@ -2,11 +2,13 @@ package com.invoice.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import static com.jayway.restassured.RestAssured.given;
@@ -19,7 +21,8 @@ public class UtilStore {
     public static String userEmail = ("email" + UtilStore.addDateForEmail());
     public static String nameOfDocument1 = "documentcreated1 " + addDateForProduct();
     public static String nameOfDocument2 = "documentcreated2 " + addDateForProduct();
-
+    public static ArrayList<String> arrayOfNamesSellersAndManagers = new ArrayList<String>();
+    public static ArrayList<WebElement> arrayForSmth = new ArrayList<>();
     public static boolean checkHttpResponseCode(String url) {
         com.jayway.restassured.response.Response response =
                 given().get(url)

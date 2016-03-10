@@ -71,12 +71,13 @@ public class DynamicPayments extends Page {
         typeHere(inputSum, "345435");
         typeHere(inputNumber, "345345");
         inputDate.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         neededDate.click();
+        Thread.sleep(500);
     }
 
-    public void confirmPayment() {
+    public void confirmPayment() throws InterruptedException {
         buttonOk.click();
-        //driver.navigate().back();
+        Thread.sleep(500);
     }
 }

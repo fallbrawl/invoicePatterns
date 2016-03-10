@@ -21,16 +21,9 @@ public class StoresTest extends BasicTestCase {
 //    10. Проверить, что склад удалился
 
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
-    private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
-    private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
-    private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
-    private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
-    private AddDocumentFifthPage fifthPage = PageFactory.initElements(getWebDriver(), AddDocumentFifthPage.class);
-    private AddDocumentSixthPage sixthPage = PageFactory.initElements(getWebDriver(), AddDocumentSixthPage.class);
-    private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
-    private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
     private WarehousePage warehousePage = PageFactory.initElements(getWebDriver(), WarehousePage.class);
     private EditWarehousePage editWarehousePage = PageFactory.initElements(getWebDriver(), EditWarehousePage.class);
+    private WarehouseStandalonePage warehouseStandalonePage = PageFactory.initElements(getWebDriver(), WarehouseStandalonePage.class);
 
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
@@ -55,7 +48,14 @@ public class StoresTest extends BasicTestCase {
 
         Assert.assertTrue(editWarehousePage.textNameOfStore.getText().contains("wow " + UtilStore.nameProduct)); //тот ли склад редактирую ?
         Assert.assertTrue(editWarehousePage.checkThatChangesAreSaved()); //количество продавцов и менеджеров равно предыдущему И имена совпадают ?
-
+        editWarehousePage.goToStores();
+        warehousePage.checkNumberOfStores();
+        warehousePage.enterStorePage();
+        Assert.assertTrue(warehouseStandalonePage.isRightWarehouse()); //Тот ли склад открылся ?
+        warehouseStandalonePage.goToStores();
+        warehousePage.checkNumberOfStores();
+        warehousePage.deleteStore();
+        Assert.assertTrue(warehousePage.isStorePresentAfterDeletion());
     }
 
 }

@@ -47,7 +47,7 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
         secondPage.waitForLoad();
 
         thirdPage = secondPage.toTheNextStep();
-        thirdPage.initPage();
+       // thirdPage.initPage();
         thirdPage.enterExistingNameOfProduct();
         thirdPage.addProduct();
         thirdPage.save();
@@ -60,6 +60,7 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
         dynamicPayments.confirmPayment();
         dynamicPayments.waitForLoad();
         dynamicPayments.initPage();
+        UtilStore.reload(getWebDriver());
         UtilStore.goBack(getWebDriver());
 
         thirdPage.waitForLoad();
@@ -113,7 +114,5 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
         ninethPage.initPage();
         ninethPage.checkDocs("BillFacture");
 
-    //    UtilStore.goBack();
-       // eighthPage = seventhPage.acceptDelivery();
     }
 }

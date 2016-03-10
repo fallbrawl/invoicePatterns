@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +22,9 @@ public class EditWarehousePage extends Page {
 
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
     public WebElement textNameOfStore;
+
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[1]/a")
+    public  WebElement linkStores;
 
     @FindAll(@FindBy(className = "select2-choices"))
     List<WebElement> dropdownArrayManagersWarehouse;
@@ -111,8 +112,14 @@ public class EditWarehousePage extends Page {
             if (!driver.getPageSource().contains(a) || elementsManagersAndSellersAfterDeletion.size() != numberOfElementsAfterDeletion) {
                 return false;
             }
-
         }
         return true;
     }
+
+    public void goToStores() throws InterruptedException {
+        Thread.sleep(1000);
+        linkStores.click();
+    }
+
+
 }

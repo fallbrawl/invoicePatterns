@@ -1,6 +1,8 @@
 package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
+import com.invoice.utils.UtilStore;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -28,6 +30,12 @@ public class WarehousePage extends Page {
 
     @FindAll(@FindBy(className = "link_divider"))
     List<WebElement> linkArrayEditStores;
+
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[3]/div/a[2]")
+    WebElement linkDeleteStore;
+
+    @FindBy(className = "btn-success")
+    WebElement buttonOk;
 
     public WarehousePage(WebDriver driver) {
         super(driver);
@@ -58,11 +66,40 @@ public class WarehousePage extends Page {
             buttonLastPage.click();
             Thread.sleep(500);
         }
+
     }
 
     public EditWarehousePage editStore() throws InterruptedException {
         linkEditNewStore.click();
         Thread.sleep(1000);
         return PageFactory.initElements(driver, EditWarehousePage.class);
+    }
+
+    public void goToLastPage() throws InterruptedException {
+        Thread.sleep(1000);
+        buttonLastPage.click();
+    }
+
+    public void enterStorePage() throws InterruptedException {
+        Thread.sleep(1000);
+        driver.findElement(By.linkText("wow " + UtilStore.nameProduct)).click();
+    }
+
+    public void deleteStore() throws InterruptedException {
+        Thread.sleep(1000);
+        linkDeleteStore.click();
+        Thread.sleep(1000);
+        buttonOk.click();
+    }
+
+    public boolean isStorePresentAfterDeletion() throws InterruptedException {
+        Thread.sleep(1000);
+        if (driver.getPageSource().contains("wow " + UtilStore.nameProduct))
+        {
+            return false;
+
+        }
+        else return true;
+
     }
 }

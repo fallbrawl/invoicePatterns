@@ -25,7 +25,7 @@ public class AddDocumentThirdPage extends Page {
 
     @FindBy(xpath = ".//*[@id='buttons_div']/a[1]")
     WebElement buttonSave;
-    //*[@id="buttons_div"]/a[1]  //*[@id="buttons_div"]/a[1]
+
     @FindBy(id = "save_and_purchase")
     WebElement buttonSaveAndInitiate;
 
@@ -79,8 +79,8 @@ public class AddDocumentThirdPage extends Page {
 
     public void enterExistingNameOfProduct() throws InterruptedException {
         fieldForName.click();
-        System.out.println("nameproduct " + UtilStore.nameProduct);
-        typeHere(fieldForName, UtilStore.nameProduct);
+        //System.out.println("nameproduct " + UtilStore.nameProduct);
+        typeHere(fieldForName, "product 2016/03/01 14:49:17");
     }
 
     public void setOfferService() throws InterruptedException {
@@ -111,7 +111,6 @@ public class AddDocumentThirdPage extends Page {
         System.out.println("nameproduct " + UtilStore.nameProduct);
         typeHere(fieldProductCode, "607" + UtilStore.addDateForProduct());
 
-        //fieldCategory.click();
         Thread.sleep(500);
         buttonAddCategory.click();
         Thread.sleep(500);
@@ -120,7 +119,6 @@ public class AddDocumentThirdPage extends Page {
         buttonAcceptNewCategoryName.click();
         Thread.sleep(500);
 
-        // fieldCategoryHighlighted.click();
         typeHere(fieldRecommendedProductPrice, "2");
         typeHere(fieldProductPrice, "40");
         buttonOkOnTransit.click();

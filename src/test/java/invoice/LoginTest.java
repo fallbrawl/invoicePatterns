@@ -3,6 +3,7 @@ package invoice;
 import com.invoice.pages.LoginPage;
 import com.invoice.pages.MainPage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
@@ -16,10 +17,13 @@ public class LoginTest extends BasicTestCase {
     private MainPage mainPage;
 
     @Test
-    public void testLogin() throws Exception{
-        loginPage.open();
-        mainPage = loginPage.loginAs(admin);
-        assertTrue(mainPage.isLoggedIn());
-
+    public void testLogin() throws Exception {
+        try {
+            loginPage.open();
+            mainPage = loginPage.loginAs(admin);
+            assertTrue(mainPage.isLoggedIn());
+        } catch (Exception e) {
+            Assert.fail();
+        }
     }
 }

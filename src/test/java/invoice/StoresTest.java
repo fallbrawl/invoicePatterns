@@ -48,13 +48,17 @@ public class StoresTest extends BasicTestCase {
 
         Assert.assertTrue(editWarehousePage.textNameOfStore.getText().contains("wow " + UtilStore.nameProduct)); //тот ли склад редактирую ?
         Assert.assertTrue(editWarehousePage.checkThatChangesAreSaved()); //количество продавцов и менеджеров равно предыдущему И имена совпадают ?
+
         editWarehousePage.goToStores();
         warehousePage.checkNumberOfStores();
         warehousePage.enterStorePage();
+
         Assert.assertTrue(warehouseStandalonePage.isRightWarehouse()); //Тот ли склад открылся ?
+
         warehouseStandalonePage.goToStores();
         warehousePage.checkNumberOfStores();
         warehousePage.deleteStore();
+
         Assert.assertTrue(warehousePage.isStorePresentAfterDeletion());
     }
 

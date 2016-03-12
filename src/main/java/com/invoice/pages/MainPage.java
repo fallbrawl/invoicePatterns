@@ -21,7 +21,7 @@ public class MainPage extends Page {
 
 
     public boolean isLoggedIn() {
-        if (driver.getTitle().equals("Заказы на продажу"))
+        if (driver.getTitle().equals("За1казы на продажу"))
             return true;
         else
             return false;

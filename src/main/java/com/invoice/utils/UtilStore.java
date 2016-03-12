@@ -1,11 +1,13 @@
 package com.invoice.utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class UtilStore {
     public static String nameOfDocument2 = "documentcreated2 " + addDateForProduct();
     public static ArrayList<String> arrayOfNamesSellersAndManagers = new ArrayList<String>();
     public static ArrayList<WebElement> arrayForSmth = new ArrayList<>();
+
     public static boolean checkHttpResponseCode(String url) {
         com.jayway.restassured.response.Response response =
                 given().get(url)
@@ -55,6 +58,9 @@ public class UtilStore {
         String dateAndTimeAttachment = dateFormat.format(date);
         return dateAndTimeAttachment;
     }
+
+
+
 
 
     public static void waitForElementsAbsence(WebDriver drv, int howLong, String classOfelementToWaitFor) {

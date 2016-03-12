@@ -2,21 +2,22 @@ package invoice;
 
 import com.invoice.data.UserData;
 import com.invoice.utils.ConfigProperties;
-import org.openqa.selenium.By;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by NEXUS on 01.02.2016.
@@ -56,17 +57,26 @@ public class BasicTestCase {
         return driver;
     }
 
-    @BeforeTest
+    @BeforeMethod
 
     public void setUp() {
 //        driver.manage().window().maximize();
     }
 
-    @AfterTest
+    @AfterMethod
+//
+//    public void shutDown() {
+//
 
-    public void shutDown() {
-
-         //driver.quit();
+    public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
+        if (testResult.getStatus() == ITestResult.FAILURE) {
+            System.out.println(testResult.getStatus());
+            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(scrFile, new File("/home/paul/testScreenShot.jpg"));
+        }
     }
+//    }
+
+
 
 }

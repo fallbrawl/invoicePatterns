@@ -51,7 +51,19 @@ public class ClientsEntireTest extends BasicTestCase {
         Assert.assertTrue(specificClientPage.ensureDocumentDeleted());
 
         specificClientPage.goToClientsList();
-        listClientPage.
+
+        listClientPage.openAccount();
+        listClientPage.open();
+
+        listClientPage.openReturns();
+        listClientPage.open();
+        listClientPage.openLastCreatedClient();
+
+        specificClientPage.deleteUser();
+        Assert.assertTrue(listClientPage.isClientDeleted());
+
+
+
 
     }
 

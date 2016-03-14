@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
  * Created by paul on 12.03.16.
  */
 public class SpecificClientPage extends Page {
-    private final String dff = UtilStore.nameProduct;
+
     private boolean isDocumentDeleted;
 
     @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
@@ -60,10 +60,17 @@ public class SpecificClientPage extends Page {
 
     @FindBy(xpath = "//*[@id=\"agreement-table\"]/tbody/tr/td[5]")
     WebElement fieldTypeOfAgreement;
-//    //td/a[text()=\"" + target + "\"]/../../td[8]/a[2]
+
 
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[1]/div/a")
     WebElement linkAccountClient;
+
+    @FindBy(className = "btn-danger")
+    WebElement buttonDeleteUser;
+
+    @FindBy(css = "#body-wrapper > div.modal.fade.in > div > div > div.modal-footer > button.btn.btn-sm.btn-success")
+    WebElement buttonConfirmDeleteUser;
+
 
     public boolean ensureThatOpenedRightClient() {
         System.out.println("Редактирование клиента " + "\"" + "client " + UtilStore.nameProduct + "\"");
@@ -156,7 +163,13 @@ public class SpecificClientPage extends Page {
         linkClientsList.click();
     }
 
-    public void goToClientAccount(){
+    public void deleteUser() throws InterruptedException {
+        Thread.sleep(1000);
+        buttonDeleteUser.click();
+        Thread.sleep(1000);
+        buttonConfirmDeleteUser.click();
 
     }
+
+
 }

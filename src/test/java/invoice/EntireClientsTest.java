@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 /**
  * Created by paul on 10.03.16.
  */
-public class ClientsEntireTest extends BasicTestCase {
+public class EntireClientsTest extends BasicTestCase {
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
     private AddClientPage addClientPage = PageFactory.initElements(getWebDriver(), AddClientPage.class);
     private ListClientPage listClientPage = PageFactory.initElements(getWebDriver(), ListClientPage.class);

@@ -78,21 +78,19 @@ public class BasicTestCase {
             System.out.println(osVersion);
 
             if (osVersion.contains("Linux")) {
-                String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources");
+                String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/Screenshot.jpg");
                 System.out.println(pathLinux);
                 FileUtils.copyFile(scrFile, new File(pathLinux));
 
             } else {
-                String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources");
+                String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\Screenshot.jpg");
                 System.out.println(pathWindows);
                 FileUtils.copyFile(scrFile, new File(pathWindows));
 
             }
 
         }
-    }
 //    }
 
 
-
-}
+    }}

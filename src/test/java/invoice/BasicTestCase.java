@@ -4,6 +4,7 @@ import com.invoice.data.UserData;
 import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -34,12 +35,13 @@ public class BasicTestCase {
 
     protected WebDriver getWebDriver() {
         if (driver == null) {
-            DesiredCapabilities caps = new DesiredCapabilities();
+
+            DesiredCapabilities caps = DesiredCapabilities.firefox();
             caps.setJavascriptEnabled(true);
 
             //caps.setCapability("takesScreenshot", true);
             //caps.setCapability("screen-resolution", "1280x1024");
-            caps.setCapability("screen-resolution", "640x480");
+            //caps.setCapability("screen-resolution", "640x480");
             //caps.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
             //caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "C:\\Users\\USER\\Downloads\\phantomjs-2.0.0-windows\\bin\\phantomjs.exe");
 
@@ -52,8 +54,10 @@ public class BasicTestCase {
             //Logger.getLogger(PhantomJSDriverService.class.getName()).setLevel(Level.OFF);
 
             driver = new FirefoxDriver(caps);
+            driver.manage().window().setSize(new Dimension(1920,1080));
             //driver = new PhantomJSDriver(caps);
-            driver.manage().window().maximize();
+
+            //driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp_wait")), TimeUnit.SECONDS);
         }
         return driver;

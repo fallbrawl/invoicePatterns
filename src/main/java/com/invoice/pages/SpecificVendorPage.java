@@ -140,7 +140,7 @@ public class SpecificVendorPage extends Page {
     }
 
     public void deleteDocument() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(4000);
         buttonDeleteDocument.click();
         Thread.sleep(1000);
         buttonOkDelete.click();

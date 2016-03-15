@@ -21,13 +21,13 @@ public class SpecificVendorPage extends Page {
     WebElement buttonChangeData;
 
     @FindBy(name = "fact_address")
-    WebElement fieldClientAddress;
+    WebElement fieldVendorAddress;
 
     @FindBy(className = "submit_btn")
     WebElement buttonSave;
 
     @FindBy(name = "file")
-    WebElement formUploadDocumentForClient;
+    WebElement formUploadDocumentForVendor;
 
     @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[4]/div/div/div[2]/div[3]/form[2]/div/a")
     WebElement buttonSaveNewDocument;
@@ -41,8 +41,8 @@ public class SpecificVendorPage extends Page {
     @FindBy(name = "file_delay")
     WebElement fieldDelay;
 
-    @FindBy(linkText = "Клиенты")
-    WebElement linkClientsList;
+    @FindBy(linkText = "Поставщики")
+    WebElement linkVendorsList;
 
     @FindBy(css = "#agreement-table > tbody > tr > td:nth-child(7) > a > i")
     //@FindBy(xpath = "//*[@id=\"agreement-table\"]/tbody/tr/td[7]/a[2]")
@@ -56,14 +56,14 @@ public class SpecificVendorPage extends Page {
     WebElement cellFirstDayOfTheNextWeekInCalendar;
 
     @FindBy(name = "date_to_file")
-    WebElement fieldDateForClientAgreement;
+    WebElement fieldDateForVendorAgreement;
 
     @FindBy(xpath = "//*[@id=\"agreement-table\"]/tbody/tr/td[5]")
     WebElement fieldTypeOfAgreement;
 
 
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[1]/div/a")
-    WebElement linkAccountClient;
+    WebElement linkAccountVendor;
 
     @FindBy(className = "btn-danger")
     WebElement buttonDeleteUser;
@@ -72,10 +72,10 @@ public class SpecificVendorPage extends Page {
     WebElement buttonConfirmDeleteUser;
 
 
-    public boolean ensureThatOpenedRightClient() {
-        System.out.println("Редактирование поставщика " + "\"" + "client " + UtilStore.nameProduct + "\"");
+    public boolean ensureThatOpenedRightVendor() {
+        System.out.println("Редактирование поставщика " + "\"" + "vendor " + UtilStore.nameProduct + "\"");
         System.out.println(textForAssert.getText());
-        if (textForAssert.getText().equals("Редактирование поставщика " + "\"" + "client " + UtilStore.nameProduct + "\"")) {
+        if (textForAssert.getText().equals("Редактирование поставщика " + "\"" + "vendor " + UtilStore.nameProduct + "\"")) {
             return true;
         } else return false;
     }
@@ -89,23 +89,23 @@ public class SpecificVendorPage extends Page {
 
     }
 
-    public void enableEditingClientProperties() throws InterruptedException {
+    public void enableEditingVendorProperties() throws InterruptedException {
         Thread.sleep(1000);
         buttonChangeData.click();
     }
 
     public void enterNewAddress() {
-        typeHere(fieldClientAddress, UtilStore.nameProduct);
+        typeHere(fieldVendorAddress, UtilStore.nameProduct);
     }
 
-    public ListClientPage save() throws InterruptedException {
+    public ListVendorPage save() throws InterruptedException {
         Thread.sleep(1000);
         buttonSave.click();
-        return PageFactory.initElements(driver, ListClientPage.class);
+        return PageFactory.initElements(driver, ListVendorPage.class);
     }
 
     public boolean ensureThatDataIsSaved() {
-        if (fieldClientAddress.getText().equals(UtilStore.nameProduct))
+        if (fieldVendorAddress.getText().equals(UtilStore.nameProduct))
             return true;
         else return false;
     }
@@ -116,7 +116,7 @@ public class SpecificVendorPage extends Page {
     }
 
     public void addNewDocument() {
-        uploadFile(formUploadDocumentForClient);
+        uploadFile(formUploadDocumentForVendor);
     }
 
     public void setDelay() {
@@ -125,7 +125,7 @@ public class SpecificVendorPage extends Page {
 
     public void setDate() throws InterruptedException {
         Thread.sleep(1000);
-        fieldDateForClientAgreement.click();
+        fieldDateForVendorAgreement.click();
         Thread.sleep(1000);
         cellFirstDayOfTheNextWeekInCalendar.click();
 
@@ -157,10 +157,10 @@ public class SpecificVendorPage extends Page {
         return false;
     }
 
-    public void goToClientsList() throws InterruptedException {
+    public void goToVendorsList() throws InterruptedException {
         UtilStore.reload(driver);
         Thread.sleep(1000);
-        linkClientsList.click();
+        linkVendorsList.click();
     }
 
     public void deleteUser() throws InterruptedException {

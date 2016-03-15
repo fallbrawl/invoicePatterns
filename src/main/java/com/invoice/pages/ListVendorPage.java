@@ -16,39 +16,41 @@ public class ListVendorPage extends Page {
     public String productNameForXpath = UtilStore.nameProduct;
 
 
-    public void openAccount() throws InterruptedException {
+    public void openTransit() throws InterruptedException {
 
-        WebElement accountLink = driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[1]/div/a[text()=" + "\'client " + productNameForXpath + "\'" + "]/../../../td[2]/div/a"));
+        WebElement accountLink = driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[1]/td[1]/div/a[text()=" + "\'vendor " + productNameForXpath + "\'" + "]/../../../td[2]/div/a"));
         System.out.println(accountLink.getText());
         accountLink.click();
         Thread.sleep(1000);
+        UtilStore.reload(driver);
     }
 
     public void openReturns() throws InterruptedException {
 
-        WebElement returnLink = driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[1]/div/a[text()=" + "\'client " + productNameForXpath + "\'" + "]/../../../td[5]/div/a"));
+        WebElement returnLink = driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[1]/td[1]/div/a[text()=" + "\'vendor " + productNameForXpath + "\'" + "]/../../../td[5]/div/a"));
         System.out.println(returnLink.getText());
         returnLink.click();
         Thread.sleep(1000);
-        driver.getWindowHandles();
-        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        System.out.println("size" + tabs.size());
-        driver.switchTo().window(tabs.get(1));
-        driver.close();
-        driver.switchTo().window(tabs.get(0));
+        UtilStore.reload(driver);
+//        driver.getWindowHandles();
+//        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+//        System.out.println("size" + tabs.size());
+//        driver.switchTo().window(tabs.get(1));
+//        driver.close();
+//        driver.switchTo().window(tabs.get(0));
     }
 
 
-    public SpecificClientPage openLastCreatedClient() throws InterruptedException {
+    public SpecificVendorPage openLastCreatedVendor() throws InterruptedException {
 
         Thread.sleep(1000);
-        driver.findElement(By.linkText("client " + UtilStore.nameProduct)).click();
+        driver.findElement(By.linkText("vendor " + UtilStore.nameProduct)).click();
         return null;
     }
 
-    public boolean isClientDeleted() throws InterruptedException {
+    public boolean isVendorDeleted() throws InterruptedException {
         Thread.sleep(2000);
-        if (driver.getPageSource().contains("client " + UtilStore.nameProduct)) {
+        if (driver.getPageSource().contains("vendor " + UtilStore.nameProduct)) {
             return false;
         } else {
             return true;

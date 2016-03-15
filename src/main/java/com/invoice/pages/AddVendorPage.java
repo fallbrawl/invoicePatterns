@@ -12,19 +12,19 @@ import org.openqa.selenium.support.FindBy;
 public class AddVendorPage extends Page {
 
     @FindBy(id = "name_user_info")
-    WebElement fieldNameClient;
+    WebElement fieldNameVendor;
 
     @FindBy(className = "submit_btn")
-    WebElement buttonSubmitClient;
+    WebElement buttonSubmitVendor;
 
-    public void enterClientName() throws InterruptedException {
+    public void enterVendorName() throws InterruptedException {
         Thread.sleep(500);
-        typeHere(fieldNameClient, "client " + UtilStore.nameProduct);
+        typeHere(fieldNameVendor, "vendor " + UtilStore.nameProduct);
         Thread.sleep(500);
     }
 
-    public void submitNewClient(){
-        buttonSubmitClient.click();
+    public void submitNewVendor(){
+        buttonSubmitVendor.click();
     }
 
     public AddVendorPage(WebDriver driver) {

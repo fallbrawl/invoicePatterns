@@ -23,7 +23,8 @@ public class EntireVendorsTest extends BasicTestCase {
 
     @Test
 
-    public void entireVendorTest() throws InterruptedException {
+    public void entireVendorsTest() throws InterruptedException {
+
         loginPage.open();
         mainPage = loginPage.loginAs(admin);
 
@@ -54,7 +55,7 @@ public class EntireVendorsTest extends BasicTestCase {
 
         specificVendorPage.goToVendorsList();
 
-        listVendorPage.openAccount();
+        listVendorPage.openTransit();
         listVendorPage.open();
 
         listVendorPage.openReturns();

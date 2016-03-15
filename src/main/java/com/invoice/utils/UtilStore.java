@@ -1,9 +1,11 @@
 package com.invoice.utils;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,7 +40,6 @@ public class UtilStore {
         }
     }
 
-
     public static String addDateForProduct() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/ddHH:mm:ss");
         //get current date time with Date()
@@ -57,38 +58,6 @@ public class UtilStore {
 
 
 
-
-
-    public static void waitForElementsAbsence(WebDriver drv, int howLong, String classOfelementToWaitFor) {
-        WebDriverWait wait = new WebDriverWait(drv, howLong);
-
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.className(classOfelementToWaitFor)));
-        System.out.println("\n$$$$$$$$$$$$$$ " + classOfelementToWaitFor + " on the page " + drv.getCurrentUrl() + " has begun his work!$$$$$$$$$$$$$$$$");
-
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className(classOfelementToWaitFor)));
-        System.out.println("\n$$$$$$$$$$$$$$ " + classOfelementToWaitFor + " on the page " + drv.getCurrentUrl() + " has ended his work!$$$$$$$$$$$$$$$$");
-    }
-
-    public static void waitForElementsPresence(WebDriver drv, int howLong, String elementToWaitFor, char typeOfIdentifier) {
-
-        WebDriverWait wait = new WebDriverWait(drv, howLong);
-
-        switch (typeOfIdentifier) {
-            case 'i':
-                wait.until(ExpectedConditions.presenceOfElementLocated(By.id(elementToWaitFor)));
-                break;
-            case 'c':
-                wait.until(ExpectedConditions.presenceOfElementLocated(By.className(elementToWaitFor)));
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid identifier: " + typeOfIdentifier);
-        }
-
-        System.out.println("\n$$$$$$$$$$$$$$ " + elementToWaitFor + " on the page " + drv.getCurrentUrl() + " is present!$$$$$$$$$$$$$$$$");
-
-    }
-
-
     public static void goBack(WebDriver webDriver) {
         webDriver.navigate().back();
     }
@@ -103,4 +72,6 @@ public class UtilStore {
     public static void goForward(WebDriver webDriver) {
         webDriver.navigate().forward();
     }
+
+
 }

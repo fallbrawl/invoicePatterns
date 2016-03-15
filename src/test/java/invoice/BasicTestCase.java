@@ -2,6 +2,7 @@ package invoice;
 
 import com.invoice.data.UserData;
 import com.invoice.utils.ConfigProperties;
+import com.invoice.utils.UtilStore;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -72,7 +73,22 @@ public class BasicTestCase {
         if (testResult.getStatus() == ITestResult.FAILURE) {
             System.out.println(testResult.getStatus());
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(scrFile, new File("/home/paul/testScreenShot.jpg"));
+
+            String osVersion = System.getProperty("os.name");
+            System.out.println(osVersion);
+
+            if (osVersion.contains("Linux")) {
+                String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources");
+                System.out.println(pathLinux);
+                FileUtils.copyFile(scrFile, new File(pathLinux));
+
+            } else {
+                String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources");
+                System.out.println(pathWindows);
+                FileUtils.copyFile(scrFile, new File(pathWindows));
+
+            }
+
         }
     }
 //    }

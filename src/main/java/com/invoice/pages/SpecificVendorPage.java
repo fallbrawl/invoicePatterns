@@ -140,6 +140,7 @@ public class SpecificVendorPage extends Page {
     }
 
     public void deleteDocument() throws InterruptedException {
+        System.out.println(driver.getPageSource();
         Thread.sleep(4000);
         buttonDeleteDocument.click();
         Thread.sleep(1000);

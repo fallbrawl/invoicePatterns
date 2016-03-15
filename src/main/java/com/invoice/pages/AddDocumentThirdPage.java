@@ -100,7 +100,8 @@ public class AddDocumentThirdPage extends Page {
     }
 
     public void save() throws InterruptedException {
-
+        Thread.sleep(500);
+        UtilStore.reload(driver);
         buttonSave.click();
         Thread.sleep(500);
     }

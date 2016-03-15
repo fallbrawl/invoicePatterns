@@ -62,7 +62,7 @@ public class AgreeLicenseTest extends BasicTestCase {
         UtilStore.goBack(getWebDriver());
         dynamicPayments.waitForLoad();
 
-        thirdPage = secondPage.toTheNextStep();
+//        thirdPage = secondPage.toTheNextStep();
         UtilStore.reload(getWebDriver());
         thirdPage.waitForLoad();
         thirdPage.save();

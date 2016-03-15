@@ -33,14 +33,13 @@ public class AddDocumentSecondPage extends Page {
     @FindBy(name = "file")
     public WebElement formForFile;
 
-    @FindBy(css = "#select2-chosen-12")
-    //@FindBy(xpath = ".//*[@id='select2-chosen-12']")
+    @FindBy(id = "s2id_type_agreement")
     WebElement dropdownSetTypeOfAgreement;
 
     @FindBy(id = "select2-result-label-21")
     WebElement dropdownvariantTypeOfAgreementServices;
 
-    @FindBy(id = "s2id_autogen12_search")
+    @FindBy(className = "select2-focused")
     WebElement fieldForSearchTypeOfAgreement;
 
     @FindBy(className = "icon_save_big")
@@ -77,11 +76,13 @@ public class AddDocumentSecondPage extends Page {
     }
 
     public void setTypeOfAgreementService(String whatType) throws InterruptedException, NoSuchFieldException {
+
         Thread.sleep(500);
         dropdownSetTypeOfAgreement.click();
         Thread.sleep(500);
         fieldForSearchTypeOfAgreement.click();
         Thread.sleep(500);
+
         switch (whatType) {
 
             case "Услуги":
@@ -152,8 +153,9 @@ public class AddDocumentSecondPage extends Page {
 
     }
 
-    public AddDocumentThirdPage toTheNextStep() {
+    public AddDocumentThirdPage toTheNextStep() throws InterruptedException {
 
+        Thread.sleep(1000);
         allElementsInList.get(2).click();
         return PageFactory.initElements(driver,AddDocumentThirdPage.class);
     }

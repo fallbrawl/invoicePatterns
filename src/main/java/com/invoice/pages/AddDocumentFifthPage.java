@@ -14,7 +14,7 @@ public class AddDocumentFifthPage extends Page {
     @FindBy(xpath = "//*[@id=\"form-edit_transit\"]/div[1]/div[1]/div[2]/div[2]/div/div/a[1]")
     WebElement buttonFormPurchase;
 
-    @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[5]/div/div/div[3]/button[1]")
+    @FindBy(className = "btn-success")
     WebElement buttonAcceptFormPurchase;
 
     public void enterProviderName() {

@@ -37,13 +37,13 @@ public class AddDocumentSixthPage extends Page{
     @FindBy (name = "date_to_file")
     public WebElement fieldCalendarForFile;
 
-    @FindBy(xpath = ".//*[@id='select2-chosen-10']")
+    @FindBy(id = "s2id_type_agreement")
     WebElement dropdownSetTypeOfAgreement;
 
     @FindBy(id = "select2-result-label-18")
     WebElement dropdownvariantTypeOfAgreementServices;
 
-    @FindBy(id = "s2id_autogen10_search")
+    @FindBy(className = "select2-focused")
     WebElement fieldForSearchTypeOfAgreement;
 
 

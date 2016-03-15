@@ -39,18 +39,19 @@ public class BasicTestCase {
 
             //caps.setCapability("takesScreenshot", true);
             //caps.setCapability("screen-resolution", "1280x1024");
+            caps.setCapability("screen-resolution", "1920x1080");
             //caps.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
             //caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "C:\\Users\\USER\\Downloads\\phantomjs-2.0.0-windows\\bin\\phantomjs.exe");
 
-            ArrayList<String> cliArgsCap = new ArrayList<String>();
-            cliArgsCap.add("--webdriver-loglevel=NONE");
-            caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+//            ArrayList<String> cliArgsCap = new ArrayList<String>();
+//            cliArgsCap.add("--webdriver-loglevel=NONE");
+//            caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
 
             System.setProperty("webdriver.chrome.driver", "/home/paul/Downloads/chromedriver");
 
             //Logger.getLogger(PhantomJSDriverService.class.getName()).setLevel(Level.OFF);
 
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(caps);
             //driver = new PhantomJSDriver(caps);
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp_wait")), TimeUnit.SECONDS);

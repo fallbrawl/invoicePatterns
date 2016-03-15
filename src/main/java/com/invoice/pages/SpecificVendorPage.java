@@ -44,7 +44,7 @@ public class SpecificVendorPage extends Page {
     @FindBy(linkText = "Поставщики")
     WebElement linkVendorsList;
 
-    @FindBy(css = "#agreement-table > tbody > tr > td:nth-child(7) > a")
+    @FindBy(css = "#agreement-table > tbody > tr > td:nth-child(7) > a ")
     //@FindBy(xpath = "//*[@id=\"agreement-table\"]/tbody/tr/td[7]/a[2]")
             //@FindBy(className = "icon_del_big_red")
             WebElement buttonDeleteDocument;

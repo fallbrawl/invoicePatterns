@@ -136,23 +136,5 @@ public class NotReadyToBuyTest extends BasicTestCase {
         mainPage.initPage();
         Assert.assertTrue(driver.findElements(By.linkText(createPurchaseSecondPage.documentName)).size() == 1);
 
-//        managersPage.open();
-//        UtilStore.reload(getWebDriver());
-//        managersPage.open();
-//        UtilStore.reload(getWebDriver());
-//        managersPage.checkAndSave();
-//        managersPage.enter();                   для НЕ эгоиста подписываю документы в бухгалтерии
-//        UtilStore.reload(getWebDriver());
-//        UtilStore.reload(getWebDriver());
-//        managersPage.checkAndSave();
-//        managersPage.enter();
-//        UtilStore.reload(getWebDriver());
-//        UtilStore.reload(getWebDriver());
-//        managersPage.checkAndSave();
-//        managersPage.enter();
-//        UtilStore.reload(getWebDriver());
-//        UtilStore.reload(getWebDriver());
-//        purchasePage.open();
-
     }
 }

@@ -30,12 +30,12 @@ public class ListClientPage extends Page {
         System.out.println(returnLink.getText());
         returnLink.click();
         Thread.sleep(1000);
-        driver.getWindowHandles();
-        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        System.out.println("size" + tabs.size());
-        driver.switchTo().window(tabs.get(1));
-        driver.close();
-        driver.switchTo().window(tabs.get(0));
+//        driver.getWindowHandles();
+//        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+//        System.out.println("size" + tabs.size());
+//        driver.switchTo().window(tabs.get(1));
+//        driver.close();
+//        driver.switchTo().window(tabs.get(0));
     }
 
 

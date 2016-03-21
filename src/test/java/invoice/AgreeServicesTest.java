@@ -77,4 +77,5 @@ public class AgreeServicesTest extends BasicTestCase {
         ninethPage.checkDocs("Act");
         ninethPage.initPage();
         ninethPage.checkDocs("BillFacture");
-    }}
+    }
+}

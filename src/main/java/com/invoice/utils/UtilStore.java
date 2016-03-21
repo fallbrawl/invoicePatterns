@@ -18,11 +18,16 @@ import static com.jayway.restassured.RestAssured.given;
  */
 public class UtilStore {
     public static String nameProduct = ("product " + UtilStore.addDateForProduct());
+    public static String sellerName = ("seller " + UtilStore.addDateForEmail());
     public static String userEmail = ("email" + UtilStore.addDateForEmail());
     public static String nameOfDocument1 = "documentcreated1 " + addDateForProduct();
     public static String nameOfDocument2 = "documentcreated2 " + addDateForProduct();
     public static ArrayList<String> arrayOfNamesSellersAndManagers = new ArrayList<String>();
     public static ArrayList<WebElement> arrayForSmth = new ArrayList<>();
+
+    public static String getSellerName(){
+        return sellerName;
+    }
 
     public static boolean checkHttpResponseCode(String url) {
         com.jayway.restassured.response.Response response =

@@ -21,6 +21,8 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
     private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
     private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
 
+    private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
+
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
@@ -35,12 +37,28 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         firstPage.enterNames();
 
         secondPage = firstPage.toTheNextStep();
+
+//        sellersPage.addNewSeller();
+//        sellersPage.fillSellersFields();
+//        sellersPage.confirmAdding();
+
         secondPage.uploadFile();
         secondPage.setTypeOfAgreementService("Услуги");
         secondPage.agreement("Save");
         secondPage.waitForLoad();
         secondPage.agreement("Use");
         secondPage.waitForLoad();
+
+        sellersPage.initPage();
+
+        sellersPage.open();
+        sellersPage.openCreatedSeller();
+        sellersPage.changeData();
+        sellersPage.setBalance();
+        sellersPage.save();
+        UtilStore.goBack(getWebDriver());
+        UtilStore.goBack(getWebDriver());
+
 
         thirdPage = secondPage.toTheNextStep();
         thirdPage.initPage();
@@ -82,36 +100,48 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         seventhPage = sixthPage.toTheNextStep();
         seventhPage.waitForLoad();
         seventhPage.openPayWindow();
-        seventhPage.setValuesPayWindow();
-        seventhPage.uploadFile1();
-        seventhPage.confirmPayment();
-        seventhPage.waitForLoad();
-        seventhPage.initPage();
-        seventhPage.saveAndDelivery();
+//        seventhPage.setValuesPayWindow();
+//        seventhPage.uploadFile1();
+//        seventhPage.confirmPayment();
+//        seventhPage.waitForLoad();
+//        seventhPage.initPage();
+//        seventhPage.saveAndDelivery();
         seventhPage.fillDeliveryForm();
         seventhPage.uploadFile2();
+        seventhPage.confirmPayment();
+        seventhPage.initPage();
+        UtilStore.reload(getWebDriver());
 
-        eighthPage = seventhPage.confirmDeliveryForm();
-        eighthPage.waitForLoad();
-        eighthPage.setCalendar2FirstDay();
-        eighthPage.uploadAct();
-        eighthPage.setNumber2();
-        eighthPage.setCalendar3FirstDay();
-        eighthPage.setNumber3();
-        eighthPage.uploadInvoice();
+        dynamicPayments.open();
+        dynamicPayments.openPayWindow();
+        dynamicPayments.setValuesPayWindow();
+        dynamicPayments.uploadFile();
+        dynamicPayments.confirmPayment();
+        dynamicPayments.waitForLoad();
+        dynamicPayments.initPage();
+        UtilStore.goBack(getWebDriver());
 
-        ninethPage = eighthPage.acceptOrder();
-        ninethPage.waitForLoad();
-        ninethPage.waitForLoad();
-        ninethPage.setFullLoad();
-        ninethPage.waitForLoad();
-        ninethPage.fullShipment();
-        ninethPage.waitForLoad();
-        ninethPage.checkDocs("Bill");
-        ninethPage.initPage();
-        ninethPage.checkDocs("Act");
-        ninethPage.initPage();
-        ninethPage.checkDocs("BillFacture");
+//        eighthPage = seventhPage.confirmDeliveryForm();
+//        eighthPage.waitForLoad();
+//        eighthPage.setCalendar2FirstDay();
+//        eighthPage.uploadAct();
+//        eighthPage.setNumber2();
+//        eighthPage.setCalendar3FirstDay();
+//        eighthPage.setNumber3();
+//        eighthPage.uploadInvoice();
+//
+//        ninethPage = eighthPage.acceptOrder();
+//        ninethPage.waitForLoad();
+//        ninethPage.waitForLoad();
+//        ninethPage.setFullLoad();
+//        ninethPage.waitForLoad();
+//        ninethPage.fullShipment();
+//        ninethPage.waitForLoad();
+//        ninethPage.checkDocs("Bill");
+//        ninethPage.initPage();
+//        ninethPage.checkDocs("Act");
+//        ninethPage.initPage();
+//        ninethPage.checkDocs("BillFacture");
 
     }
 }

@@ -1,5 +1,6 @@
-package com.invoice.pages;
+package com.invoice.pages.AddDocumentPages;
 
+import com.invoice.pages.Page;
 import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.WebDriver;

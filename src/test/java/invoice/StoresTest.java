@@ -1,6 +1,8 @@
 package invoice;
 
 import com.invoice.pages.*;
+import com.invoice.pages.AddDocumentPages.AddDocumentSecondPage;
+import com.invoice.pages.AddDocumentPages.AddDocumentThirdPage;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;

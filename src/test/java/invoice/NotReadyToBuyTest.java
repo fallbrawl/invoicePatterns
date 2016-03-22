@@ -1,6 +1,9 @@
 package invoice;
 
 import com.invoice.pages.*;
+import com.invoice.pages.AddDocumentPages.AddDocumentFirstPage;
+import com.invoice.pages.AddDocumentPages.AddDocumentSecondPage;
+import com.invoice.pages.AddDocumentPages.AddDocumentThirdPage;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
@@ -32,6 +35,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
     private ReservedPage reservedPage = PageFactory.initElements(getWebDriver(), ReservedPage.class);
+    private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
 
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
@@ -54,29 +58,37 @@ public class NotReadyToBuyTest extends BasicTestCase {
         createPurchaseSecondPage.setBestBefore();
         createPurchaseSecondPage.agreement("Save");
 
-        // createPurchaseSecondPage.waitForLoad();
-        // createPurchaseSecondPage.agreement("Send");
-        // managersPage.open();                  для НЕ эгоиста подписываю документы в бухгалтерии
-        // UtilStore.reload(getWebDriver());
-        // managersPage.checkAndSave();
-        // managersPage.enter();
-        // UtilStore.goBack(getWebDriver());
-
         createPurchaseSecondPage.waitForLoad();
         createPurchaseSecondPage.agreement("Use");
         createPurchaseSecondPage.waitForLoad();
+
+        sellersPage.initPage();
+
+        sellersPage.open();
+        sellersPage.openCreatedSeller();
+        sellersPage.changeData();
+        sellersPage.setBalance();
+        sellersPage.save();
+        UtilStore.goBack(getWebDriver());
+        UtilStore.goBack(getWebDriver());
+
         createPurchaseThirdPage = createPurchaseSecondPage.toTheNextStep();
         createPurchaseSecondPage.waitForLoad();
 
         createPurchaseThirdPage.addProduct();
         createPurchaseThirdPage.fillProductForm();
-        createPurchaseThirdPage.saveAndInitiate();
 
+      //  createPurchaseThirdPage.saveAndOrder();
+        createPurchaseThirdPage.saveAndInitiate();
         createPurchaseThirdPage.setCalendar("firstDayOfTHeSecondWeekOnTheNextMonth");
         createPurchaseThirdPage.upl();
-        createPurchaseThirdPage.go();
+        createPurchaseThirdPage.payTransit();
+        //createPurchaseThirdPage.go();
         createPurchaseThirdPage.waitForLoad();
 
+//        createPurchaseThirdPage.saveAndOrder();
+        //createPurchaseThirdPage.saveAndInitiate();
+        purchasePage.initiateDeliveryToTheStore();
         purchasePage.openOrder();
         purchasePage.setCalendar1();
         purchasePage.uploadNaklad();
@@ -112,6 +124,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
         dynamicPayments.openPayWindow();
         dynamicPayments.setValuesPayWindow();
         dynamicPayments.uploadFile();
+
         dynamicPayments.confirmPayment();
 //        dynamicPayments.waitForLoad();
         dynamicPayments.initPage();

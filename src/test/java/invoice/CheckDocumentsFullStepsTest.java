@@ -4,6 +4,7 @@ package invoice;
  * Created by paul on 24.02.16.
  */
 
+import com.invoice.pages.AddDocumentPages.*;
 import org.testng.annotations.Test;
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;

@@ -25,8 +25,8 @@ public class CreatePurchaseFirstPage extends Page {
     public WebElement buttonAcceptPurchase;
 
     public void enterNames() {
-        typeHere(fieldNameOne, UtilStore.nameOfDocument1);
-        typeHere(fieldNameTwo, UtilStore.nameOfDocument2);
+        typeHere(fieldNameOne, UtilStore.nameOfDocument2);
+        typeHere(fieldNameTwo, UtilStore.nameOfDocument1);
 
     }
 

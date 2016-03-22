@@ -3,9 +3,11 @@ package com.invoice.pages;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -78,8 +80,11 @@ public class CreatePurchaseThirdPage extends Page {
     @FindBy(id = "ui-datepicker-div")
     WebElement fieldWholeCalendar; //not used
 
-    @FindBy(className = "btn-success")
+    @FindBy(id = "modal_success")
     WebElement buttonOkOnTransit;
+
+    @FindAll(@FindBy(className = "btn-success"))
+    List<WebElement> buttonOArraykOnTransit;
 
     @FindBy(xpath = ".//*[@id='form-add_edit_product']/div[3]/div/a")
     WebElement buttonAddCategory;
@@ -99,10 +104,11 @@ public class CreatePurchaseThirdPage extends Page {
     @FindBy(xpath = ".//*[@id='file_upload_div_invoicefact_date']/div/div[2]/input")
     WebElement fieldUploadFile;
 
-    // @FindBy(xpath = "//*[@id=\"recprice_product\"]")
     @FindBy(className = "product_add_document_recalc")
     WebElement fieldNumberOfItems;
 
+    @FindBy(id = "pay_transit")
+    WebElement buttonAttachInvoice;
 
     public void addProduct() throws InterruptedException {
         buttonPlus.click();
@@ -164,9 +170,9 @@ public class CreatePurchaseThirdPage extends Page {
     }
 
     public void saveAndInitiate() throws InterruptedException {
-        Thread.sleep(2000);
-        buttonSaveAndOrder.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
+        buttonAttachInvoice.click();
+        Thread.sleep(1000);
 
     }
 
@@ -187,7 +193,7 @@ public class CreatePurchaseThirdPage extends Page {
     }
 
     public CreatePurchaseFourthPage sendToTransit() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         buttonOkOnTransit.click();
         return PageFactory.initElements(driver, CreatePurchaseFourthPage.class);
     }
@@ -216,9 +222,24 @@ public class CreatePurchaseThirdPage extends Page {
         }
     }
 
+
     public void go() throws InterruptedException {
         Thread.sleep(1000);
         buttonOkOnTransit.click();
 
     }
+
+    public void saveAndOrder() throws InterruptedException {
+        Thread.sleep(1000);
+        buttonSaveAndOrder.click();
+        Thread.sleep(500);
+    }
+
+    public void payTransit() throws InterruptedException {
+        Thread.sleep(1000);
+        buttonOArraykOnTransit.get(0).click();
+
+    }
+
+
 }

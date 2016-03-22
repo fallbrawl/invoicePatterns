@@ -1,6 +1,7 @@
 package invoice;
 
 import com.invoice.pages.*;
+import com.invoice.pages.AddDocumentPages.*;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
@@ -121,27 +122,37 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         dynamicPayments.initPage();
         UtilStore.goBack(getWebDriver());
 
-//        eighthPage = seventhPage.confirmDeliveryForm();
-//        eighthPage.waitForLoad();
-//        eighthPage.setCalendar2FirstDay();
-//        eighthPage.uploadAct();
-//        eighthPage.setNumber2();
-//        eighthPage.setCalendar3FirstDay();
-//        eighthPage.setNumber3();
-//        eighthPage.uploadInvoice();
-//
-//        ninethPage = eighthPage.acceptOrder();
-//        ninethPage.waitForLoad();
-//        ninethPage.waitForLoad();
-//        ninethPage.setFullLoad();
-//        ninethPage.waitForLoad();
-//        ninethPage.fullShipment();
-//        ninethPage.waitForLoad();
-//        ninethPage.checkDocs("Bill");
-//        ninethPage.initPage();
-//        ninethPage.checkDocs("Act");
-//        ninethPage.initPage();
-//        ninethPage.checkDocs("BillFacture");
+        seventhPage.initPage();
+        UtilStore.reload(getWebDriver());
+        seventhPage.openPayWindow();
+        seventhPage.fillDeliveryForm();
+        seventhPage.uploadFile2();
+        seventhPage.confirmPayment();
+        seventhPage.waitForLoad();
+        seventhPage.initPage();       // eighthPage = seventhPage.confirmDeliveryForm();
+        seventhPage.saveAndDelivery();
+        seventhPage.confirmPayment();
+
+        eighthPage.waitForLoad();
+        eighthPage.setCalendar2FirstDay();
+        eighthPage.uploadAct();
+        eighthPage.setNumber2();
+        eighthPage.setCalendar3FirstDay();
+        eighthPage.setNumber3();
+        eighthPage.uploadInvoice();
+
+        ninethPage = eighthPage.acceptOrder();
+        ninethPage.waitForLoad();
+        ninethPage.waitForLoad();
+        ninethPage.setFullLoad();
+        ninethPage.waitForLoad();
+        ninethPage.fullShipment();
+        ninethPage.waitForLoad();
+        ninethPage.checkDocs("Bill");
+        ninethPage.initPage();
+        ninethPage.checkDocs("Act");
+        ninethPage.initPage();
+        ninethPage.checkDocs("BillFacture");
 
     }
 }

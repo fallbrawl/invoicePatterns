@@ -32,7 +32,7 @@ public class MovementPage extends Page {
 //    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[6]/div[1]/div[1]/table/tbody/tr[1]/td[3]/div/a")
 //    public WebElement cellTransitNumber;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[6]/div[1]/div[1]/table/tbody/tr[1]/td[3]/div/a")
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[5]/div[1]/div[1]/table/tbody/tr[1]/td[3]/div/a")  //TODO: перенести из икспаза во что то более приличное
     public WebElement cellPartyNumber;
 
 //    public void getPartyNumber() {

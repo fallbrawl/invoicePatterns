@@ -1,5 +1,6 @@
-package com.invoice.pages;
+package com.invoice.pages.AddDocumentPages;
 
+import com.invoice.pages.Page;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,13 +9,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by paul on 24.02.16.
  */
-public class AddDocumentSixthPage extends Page{
+public class AddDocumentSixthPage extends Page {
 
     @FindBy(name = "file")
     public WebElement formForFile;

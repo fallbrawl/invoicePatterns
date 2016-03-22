@@ -10,10 +10,11 @@ import org.openqa.selenium.support.FindBy;
  */
 public class PurchasePage extends Page {
 
-
-
     @FindBy(linkText = "Принять поставку")
     WebElement linkAcceptOrder;
+
+    @FindBy(linkText = "Инициировать поставку на склад")
+    WebElement linkInitiateSupplyToStore;
 
     @FindBy(name = "number[2]")
     WebElement fieldNumber1;
@@ -46,6 +47,9 @@ public class PurchasePage extends Page {
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[2]/div/div/div[3]/button[1]")
     WebElement buttonSaveDocumentsAndAcceptTransfer;
 
+    @FindBy(id = "modal_success")
+    WebElement buttonYes;
+
     public PurchasePage(WebDriver driver) {
         super(driver);
     }
@@ -73,6 +77,14 @@ public class PurchasePage extends Page {
             System.out.println(pathWindows);
             fieldUploadNaklad.sendKeys(pathWindows);
         }
+    }
+
+    public void initiateDeliveryToTheStore() throws InterruptedException {
+        Thread.sleep(1000);
+        linkInitiateSupplyToStore.click();
+        Thread.sleep(1000);
+        buttonYes.click();
+
     }
 
     public void uploadInvoice() {

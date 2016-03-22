@@ -1,5 +1,6 @@
-package com.invoice.pages;
+package com.invoice.pages.AddDocumentPages;
 
+import com.invoice.pages.Page;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,7 +28,7 @@ public class AddDocumentNinethPage extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement cellCalendarDateToday;
 
-    @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[1]/div/div[3]/section/div[2]/div[7]/div[7]/div/div/div[2]/div/a")
+    @FindBy (linkText = "Счёт")
     WebElement linkBill;
 
     @FindBy(linkText = "Накладная")

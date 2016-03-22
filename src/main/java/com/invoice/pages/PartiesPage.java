@@ -5,8 +5,11 @@ import com.invoice.utils.UtilStore;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 
 public class PartiesPage extends Page {
@@ -20,8 +23,12 @@ public class PartiesPage extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement cellNeededDate;
 
-    @FindBy(id = "select2-chosen-2")
+    @FindBy(className = "select2-choice")
+    //@FindBy(id = "select2-chosen-2")
     WebElement selectStore;
+
+    @FindAll(@FindBy(className = "select2-result-label"))
+    List<WebElement> dropdownArrayElementsSelectStore;
 
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/form/div/button")
     WebElement buttonSelectItem;
@@ -71,6 +78,18 @@ public class PartiesPage extends Page {
         Thread.sleep(1000);
         fieldCalendar.click();
         cellNeededDate.click();
+        Thread.sleep(500);
+        selectStore.click();
+        Thread.sleep(500);
+
+        for (WebElement a : dropdownArrayElementsSelectStore) {
+            if (a.getText().equals("Москва-1")) {
+                a.click();
+                return;
+            }
+        }
+
+
 
     }
 

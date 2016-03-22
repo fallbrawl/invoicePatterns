@@ -1,5 +1,6 @@
-package com.invoice.pages;
+package com.invoice.pages.AddDocumentPages;
 
+import com.invoice.pages.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,6 +41,8 @@ public class AddDocumentSeventhPage extends Page {
     @FindBy(className = "btn-success")
     WebElement buttonOk;
 
+
+
     @FindBy(xpath = ".//*[@id='file_upload_div_invoicefact_date']/div/div[2]/input")
     WebElement fieldUploadFile;
 
@@ -74,6 +77,7 @@ public class AddDocumentSeventhPage extends Page {
 
     public void saveAndDelivery() {
         buttonSaveAndDelivery.click();
+
     }
 
     public AddDocumentSeventhPage(WebDriver driver) {
@@ -86,6 +90,7 @@ public class AddDocumentSeventhPage extends Page {
     }
 
     public void openPayWindow() throws InterruptedException {
+        Thread.sleep(1000);
         buttonPayTransit.click();
         Thread.sleep(1000);
     }

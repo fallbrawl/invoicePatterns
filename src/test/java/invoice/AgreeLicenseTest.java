@@ -1,6 +1,7 @@
 package invoice;
 
 import com.invoice.pages.*;
+import com.invoice.pages.AddDocumentPages.*;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
@@ -19,6 +20,8 @@ public class AgreeLicenseTest extends BasicTestCase {
     private AddDocumentSixthPage sixthPage = PageFactory.initElements(getWebDriver(), AddDocumentSixthPage.class);
     private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
     private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
+
+    private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
 
     private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
@@ -42,6 +45,16 @@ public class AgreeLicenseTest extends BasicTestCase {
         secondPage.waitForLoad();
         secondPage.agreement("Use");
         secondPage.waitForLoad();
+
+        sellersPage.initPage();
+
+        sellersPage.open();
+        sellersPage.openCreatedSeller();
+        sellersPage.changeData();
+        sellersPage.setBalance();
+        sellersPage.save();
+        UtilStore.goBack(getWebDriver());
+        UtilStore.goBack(getWebDriver());
 
         thirdPage = secondPage.toTheNextStep();
         thirdPage.initPage();
@@ -88,14 +101,40 @@ public class AgreeLicenseTest extends BasicTestCase {
         seventhPage = sixthPage.toTheNextStep();
         seventhPage.waitForLoad();
         seventhPage.openPayWindow();
-        seventhPage.setValuesPayWindow();
-        seventhPage.uploadFile1();
-        seventhPage.confirmPayment();
-        seventhPage.waitForLoad();
-        seventhPage.initPage();
-        seventhPage.saveAndDelivery();
+//        seventhPage.setValuesPayWindow();
+//        seventhPage.uploadFile1();
+//        seventhPage.confirmPayment();
+//        seventhPage.waitForLoad();
+//        seventhPage.initPage();
+//        seventhPage.saveAndDelivery();
         seventhPage.fillDeliveryForm();
         seventhPage.uploadFile2();
+        seventhPage.confirmPayment();
+        seventhPage.initPage();
+        UtilStore.reload(getWebDriver());
+
+        dynamicPayments.open();
+        dynamicPayments.openPayWindow();
+        dynamicPayments.setValuesPayWindow();
+        dynamicPayments.uploadFile();
+        dynamicPayments.confirmPayment();
+        dynamicPayments.waitForLoad();
+        dynamicPayments.initPage();
+        UtilStore.goBack(getWebDriver());
+
+        seventhPage.initPage();
+        UtilStore.reload(getWebDriver());
+        seventhPage.initPage();
+        UtilStore.reload(getWebDriver());
+        seventhPage.saveAndDelivery();
+//        seventhPage.openPayWindow();
+//        seventhPage.fillDeliveryForm();
+//        seventhPage.uploadFile2();
+//        seventhPage.confirmPayment();
+        seventhPage.waitForLoad();
+        seventhPage.initPage();       // eighthPage = seventhPage.confirmDeliveryForm();
+        //seventhPage.saveAndDelivery();
+        seventhPage.confirmPayment();
 
         eighthPage = seventhPage.confirmDeliveryForm();
         eighthPage.waitForLoad();

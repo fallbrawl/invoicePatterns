@@ -1,5 +1,6 @@
-package com.invoice.pages;
+package com.invoice.pages.AddDocumentPages;
 
+import com.invoice.pages.Page;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -27,6 +27,8 @@ public class MoveDocumentTest extends BasicTestCase {
     private PartiesPage partiesPage = PageFactory.initElements(getWebDriver(), PartiesPage.class);
     private MovementPage movementPage = PageFactory.initElements(getWebDriver(), MovementPage.class);
     private PitchPage pitchPage = PageFactory.initElements(getWebDriver(), PitchPage.class);
+    private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
+
     private MainPage mainPage;
 
     @Test
@@ -46,17 +48,19 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseSecondPage.setAgreementDelay();
         createPurchaseSecondPage.agreement("Save");
         createPurchaseSecondPage.waitForLoad();
-//        createPurchaseSecondPage.agreement("Send");
-//
-//        managersPage.open();
-//        UtilStore.reload(getWebDriver());
-//        managersPage.checkAndSave();
-//        managersPage.enter();
-//        UtilStore.goBack(getWebDriver());
-//
-//        createPurchaseSecondPage.waitForLoad();
         createPurchaseSecondPage.agreement("Use");
         createPurchaseSecondPage.waitForLoad();
+
+        sellersPage.initPage();
+
+        sellersPage.open();
+        sellersPage.openCreatedSeller();
+        sellersPage.changeData();
+        sellersPage.setBalance();
+        sellersPage.save();
+        UtilStore.goBack(getWebDriver());
+        UtilStore.goBack(getWebDriver());
+
         createPurchaseThirdPage = createPurchaseSecondPage.toTheNextStep();
         createPurchaseSecondPage.waitForLoad();
 
@@ -65,18 +69,11 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseThirdPage.saveAndInitiate();
         createPurchaseThirdPage.setCalendar("thisDay");
         createPurchaseThirdPage.upl();
+        createPurchaseThirdPage.payTransit();
+        createPurchaseThirdPage.saveAndOrder();
+        createPurchaseThirdPage.payTransit();
 
-        createPurchaseFourthPage = createPurchaseThirdPage.sendToTransit();
-        createPurchaseFourthPage.init();
 
-//        managersPage.open();
-//        UtilStore.reload(getWebDriver());
-//        managersPage.checkAndSave();
-//        managersPage.enter();
-//        UtilStore.goBack(getWebDriver());
-//        createPurchaseFourthPage.init();
-//
-//        UtilStore.reload(getWebDriver());
         createPurchaseFourthPage.uploadNaklad();
         createPurchaseFourthPage.uploadInvoice();
         createPurchaseFourthPage.setNumber1();
@@ -88,19 +85,6 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseFourthPage.waitForLoad();
         UtilStore.goBack(getWebDriver());
         createPurchaseFourthPage.init();
-//
-//        managersPage.open();
-//        managersPage.checkAndSave();
-//        managersPage.enter();
-//        UtilStore.reload(getWebDriver());
-//        UtilStore.reload(getWebDriver());
-//        managersPage.checkAndSave();
-//        managersPage.enter();
-//        UtilStore.goBack(getWebDriver());
-//        createPurchaseFourthPage.init();
-//        UtilStore.reload(getWebDriver());
-
-       // movePage.open();
 
         partiesPage.open();
         partiesPage.findProduct();

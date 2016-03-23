@@ -78,7 +78,7 @@ public class BasicTestCase {
 
     @AfterTest
     public void shutDown() {
-        driver.quit();
+        driver.close();
     }
 
     @AfterMethod

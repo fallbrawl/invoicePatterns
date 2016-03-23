@@ -42,7 +42,7 @@ public class StoreBugFirstTest extends BasicTestCase {
     private AddDocumentThirdPage thirdPage;
 
     @Test
-
+    //-Dtest=LoginTest,AgreeAndBuyServicesTest test
     public void storeBugFirstTest() throws NoSuchFieldException, InterruptedException {
 
         loginPage.open();

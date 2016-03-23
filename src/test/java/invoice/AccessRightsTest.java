@@ -52,7 +52,7 @@ public class AccessRightsTest extends BasicTestCase {
         profilePage.saveProfile();
         UtilStore.goBack(getWebDriver());
 
-        //driver.quit();
+       // driver.close();
 
 
     }

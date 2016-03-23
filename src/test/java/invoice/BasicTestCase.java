@@ -34,6 +34,8 @@ public class BasicTestCase {
     public UserData manager_seller = new UserData("pavel.a.manager_sales@attractgroup.com", "attract");
     public UserData accounter = new UserData("pavel.a.accounter@attractgroup.com", "attract");
 
+
+
     protected WebDriver getWebDriver() {
         if (driver == null) {
 
@@ -65,6 +67,10 @@ public class BasicTestCase {
     }
 
     @BeforeMethod
+
+    protected void testName(){
+        System.out.println("Test name is: "  + this.getClass().getSimpleName());
+    }
 
     public void setUp() {
 //        driver.manage().window().maximize();

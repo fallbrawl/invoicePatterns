@@ -51,7 +51,7 @@ public class AccessRightsTest extends BasicTestCase {
         profilePage.selectClient();
         profilePage.saveProfile();
 
-        driver.quit();
+        //driver.quit();
 
 
     }

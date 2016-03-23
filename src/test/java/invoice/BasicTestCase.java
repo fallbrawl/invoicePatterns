@@ -68,7 +68,7 @@ public class BasicTestCase {
 
     @BeforeMethod
 
-    protected void testName(){
+    protected void testName() {
         System.out.println("Test name is: "  + this.getClass().getSimpleName());
     }
 
@@ -78,7 +78,7 @@ public class BasicTestCase {
 
     @AfterTest
     public void shutDown() {
-        driver.close();
+       // driver.close();
     }
 
     @AfterMethod

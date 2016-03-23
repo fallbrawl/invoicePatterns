@@ -18,12 +18,10 @@ public class LoginTest extends BasicTestCase {
 
     @Test
     public void testLogin() throws Exception {
-        try {
+
             loginPage.open();
             mainPage = loginPage.loginAs(admin);
             assertTrue(mainPage.isLoggedIn());
-        } catch (Exception e) {
-            Assert.fail();
-        }
+
     }
 }

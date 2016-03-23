@@ -39,10 +39,6 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
 
         secondPage = firstPage.toTheNextStep();
 
-//        sellersPage.addNewSeller();
-//        sellersPage.fillSellersFields();
-//        sellersPage.confirmAdding();
-
         secondPage.uploadFile();
         secondPage.setTypeOfAgreementService("Услуги");
         secondPage.agreement("Save");

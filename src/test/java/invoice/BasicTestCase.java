@@ -13,6 +13,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
@@ -54,7 +55,7 @@ public class BasicTestCase {
             //Logger.getLogger(PhantomJSDriverService.class.getName()).setLevel(Level.OFF);
 
             driver = new FirefoxDriver(caps);
-            driver.manage().window().setSize(new Dimension(1920,1080));
+            driver.manage().window().setSize(new Dimension(1920, 1080));
             //driver = new PhantomJSDriver(caps);
 
             //driver.manage().window().maximize();
@@ -69,10 +70,12 @@ public class BasicTestCase {
 //        driver.manage().window().maximize();
     }
 
+    @AfterTest
+    public void shutDown() {
+        driver.close();
+    }
+
     @AfterMethod
-//
-//    public void shutDown() {
-//
 
     public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
@@ -93,9 +96,8 @@ public class BasicTestCase {
                 FileUtils.copyFile(scrFile, new File(pathWindows));
 
             }
-
         }
-//    }
+    }
 
 
-    }}
+}

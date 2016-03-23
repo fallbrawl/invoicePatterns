@@ -78,10 +78,10 @@ public class BasicTestCase {
 
     @AfterTest
     public void shutDown() {
-       // driver.close();
+
     }
 
-    @AfterMethod
+    @AfterTest
 
     public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
@@ -104,6 +104,8 @@ public class BasicTestCase {
             }
         }
     }
+
+
 
 
 }

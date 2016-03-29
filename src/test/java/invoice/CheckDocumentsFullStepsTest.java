@@ -74,6 +74,8 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
 
         fifthPage = fourthPage.buyForAll();
         fifthPage.enterProviderName();
+        fifthPage.initPurchase();
+        fifthPage.waitForLoad();
 
         sixthPage = fifthPage.formPurchase();
         sixthPage.uploadFile();
@@ -85,14 +87,34 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
         seventhPage = sixthPage.toTheNextStep();
         seventhPage.waitForLoad();
         seventhPage.openPayWindow();
-        seventhPage.setValuesPayWindow();
-        seventhPage.uploadFile1();
+        seventhPage.fillDeliveryForm();
+        seventhPage.uploadFile2();
+        //seventhPage.setValuesPayWindow();
+        //seventhPage.uploadFile1();
         seventhPage.confirmPayment();
         seventhPage.waitForLoad();
         seventhPage.initPage();
+        seventhPage.extractBuying();
+        //seventhPage.saveAndDelivery();
+
+        dynamicPayments.open();
+        dynamicPayments.openPayWindow();
+       // dynamicPayments.openBying();
+        dynamicPayments.setValuesPayWindow();
+        dynamicPayments.uploadFile();
+        dynamicPayments.confirmPayment();
+        dynamicPayments.waitForLoad();
+        dynamicPayments.initPage();
+
+        UtilStore.reload(getWebDriver());
+        UtilStore.goBack(getWebDriver());
+        seventhPage.initPage();
+
+        UtilStore.reload(getWebDriver());
         seventhPage.saveAndDelivery();
-        seventhPage.fillDeliveryForm();
-        seventhPage.uploadFile2();
+
+        //seventhPage.fillDeliveryForm();
+        //seventhPage.uploadFile2();
 
         eighthPage = seventhPage.confirmDeliveryForm();
         eighthPage.waitForLoad();
@@ -106,8 +128,9 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
         ninethPage = eighthPage.acceptOrder();
         ninethPage.waitForLoad();
         ninethPage.waitForLoad();
+        ninethPage.setFullLoad();
         ninethPage.fullShipment(); //тут что то запорол
-        ninethPage.fillFullShipmentForm();
+     //   ninethPage.fillFullShipmentForm();
         ninethPage.waitForLoad();
         ninethPage.checkDocs("Bill");
         ninethPage.initPage();

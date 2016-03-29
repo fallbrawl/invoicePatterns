@@ -34,8 +34,8 @@ public class StoresTest extends BasicTestCase {
     @Test
     public void storesTest() throws InterruptedException {
 
-        loginPage.open();
-        mainPage = loginPage.loginAs(admin);
+        //loginPage.open();
+        //mainPage = loginPage.loginAs(admin);
 
         warehousePage.open();
         editWarehousePage = warehousePage.addNewStore();

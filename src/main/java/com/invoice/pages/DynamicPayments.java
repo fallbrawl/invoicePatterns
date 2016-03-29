@@ -1,5 +1,6 @@
 package com.invoice.pages;
 
+import com.invoice.pages.AddDocumentPages.AddDocumentSeventhPage;
 import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.By;
@@ -11,6 +12,9 @@ import org.openqa.selenium.support.FindBy;
  * Created by paul on 04.02.16.
  */
 public class DynamicPayments extends Page {
+
+    private AddDocumentSeventhPage seventhPage;
+
     @FindBy(name = "sum_payment")
     WebElement inputSum;
 
@@ -22,6 +26,8 @@ public class DynamicPayments extends Page {
 
     @FindBy(name = "file")
     WebElement inputFile;
+
+
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement neededDate;
@@ -42,6 +48,8 @@ public class DynamicPayments extends Page {
         driver.get(ConfigProperties.getProperty("dynamicPayments.url"));
     }
 
+
+
     public void openPayWindow() throws InterruptedException {
         System.out.println(target);
         driver.navigate().refresh();
@@ -51,6 +59,7 @@ public class DynamicPayments extends Page {
         Thread.sleep(1000);
 
     }
+
 
     public void uploadFile() {
         String osVersion = System.getProperty("os.name");
@@ -79,5 +88,15 @@ public class DynamicPayments extends Page {
     public void confirmPayment() throws InterruptedException {
         buttonOk.click();
         Thread.sleep(500);
+    }
+
+
+
+
+    public void openBying() throws InterruptedException {
+
+        Thread.sleep(1000);
+        System.out.println("Problem: " + UtilStore.buyingNumber);
+        driver.findElement(By.linkText(UtilStore.buyingNumber)).click();
     }
 }

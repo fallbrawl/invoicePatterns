@@ -31,7 +31,7 @@ public class AccessRightsTest extends BasicTestCase {
     private UserTypePage userTypePage  = PageFactory.initElements(getWebDriver(), UserTypePage.class);
     private MainPage mainPage;
 
-    @Test
+    @Test(enabled = false)
     public void accessRightsTest() throws InterruptedException {
 
         loginPage.open();

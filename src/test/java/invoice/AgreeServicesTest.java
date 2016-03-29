@@ -29,7 +29,7 @@ public class AgreeServicesTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test
+    @Test(enabled = false)
 
     public void agreeServicesTest() throws NoSuchFieldException, InterruptedException {
 
@@ -48,6 +48,7 @@ public class AgreeServicesTest extends BasicTestCase {
         secondPage.waitForLoad();
 
         thirdPage = secondPage.toTheNextStep();
+        thirdPage.waitForLoad();
         thirdPage.initPage();
         thirdPage.setNumberOfItems();
 
@@ -69,7 +70,8 @@ public class AgreeServicesTest extends BasicTestCase {
         thirdPage.waitForLoad();
         UtilStore.reload(driver);
 
-        ninethPage = thirdPage.saveAndLoad();
+        thirdPage.saveAndLoad();
+        thirdPage.saveAndInitiate();
         ninethPage.waitForLoad();
         ninethPage.waitForLoad();
         ninethPage.setFullLoad();

@@ -1,6 +1,7 @@
 package com.invoice.pages.AddDocumentPages;
 
 import com.invoice.pages.Page;
+import com.invoice.utils.UtilStore;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
  * Created by paul on 24.02.16.
  */
 public class AddDocumentSeventhPage extends Page {
+
+    private String fieldZ;
 
     @FindBy(id = "pay_transit")
     WebElement buttonPayTransit;
@@ -41,7 +44,8 @@ public class AddDocumentSeventhPage extends Page {
     @FindBy(className = "btn-success")
     WebElement buttonOk;
 
-
+    @FindBy(xpath = ".//*[@id='form-edit_transit']/div[1]/div[4]/div[1]/div[1]/strong")
+    WebElement fieldZakupka;
 
     @FindBy(xpath = ".//*[@id='file_upload_div_invoicefact_date']/div/div[2]/input")
     WebElement fieldUploadFile;
@@ -100,8 +104,6 @@ public class AddDocumentSeventhPage extends Page {
         fieldCalendarTransit.click();
         cellCalendarDateToday.click();
         Thread.sleep(500);
-
-
     }
 
     public void uploadFile2() throws InterruptedException {
@@ -125,4 +127,12 @@ public class AddDocumentSeventhPage extends Page {
         buttonOk.click();
         return PageFactory.initElements(driver, AddDocumentEighthPage.class);
     }
+
+    public void extractBuying() {
+        fieldZ = fieldZakupka.getText();
+        System.out.println("Zakup: " + fieldZ);
+        UtilStore.buyingNumber = fieldZ;
+    }
+
+
 }

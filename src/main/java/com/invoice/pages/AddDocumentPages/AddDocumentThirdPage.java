@@ -81,7 +81,7 @@ public class AddDocumentThirdPage extends Page {
     public void enterExistingNameOfProduct() throws InterruptedException {
         fieldForName.click();
         //System.out.println("nameproduct " + UtilStore.nameProduct);
-        typeHere(fieldForName, "product 2016/03/01 14:54:53");
+        typeHere(fieldForName, "product 2016/03/01 17:36:19");
     }
 
     public void setOfferService() throws InterruptedException {

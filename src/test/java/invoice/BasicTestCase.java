@@ -30,7 +30,7 @@ public class BasicTestCase {
     public UserData manager_buyer = new UserData("pavel.a.manager.buyer@attractgroup.com", "attract");
     public UserData manager_seller = new UserData("pavel.a.manager_sales@attractgroup.com", "attract");
     public UserData accounter = new UserData("pavel.a.accounter@attractgroup.com", "attract");
-
+    private int counterForScreenshot = 0;
 
 
     protected WebDriver getWebDriver() {
@@ -66,7 +66,7 @@ public class BasicTestCase {
     @BeforeMethod
 
     protected void testName() {
-        System.out.println("Test name is: "  + this.getClass().getSimpleName());
+        System.out.println("Test name is: " + this.getClass().getSimpleName());
     }
 
     public void setUp() {
@@ -79,7 +79,7 @@ public class BasicTestCase {
 
     }
 
-    @AfterTest
+    @AfterMethod
 
     public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
@@ -90,7 +90,7 @@ public class BasicTestCase {
             System.out.println(osVersion);
 
             if (osVersion.contains("Linux")) {
-                String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/Screenshot.jpg");
+                String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/Screenshot" + counterForScreenshot + ".jpg");
                 System.out.println(pathLinux);
                 FileUtils.copyFile(scrFile, new File(pathLinux));
 
@@ -100,10 +100,9 @@ public class BasicTestCase {
                 FileUtils.copyFile(scrFile, new File(pathWindows));
 
             }
+            counterForScreenshot++;
         }
     }
-
-
 
 
 }

@@ -126,6 +126,12 @@ public class AgreeLicenseTest extends BasicTestCase {
         UtilStore.reload(getWebDriver());
         seventhPage.initPage();
         UtilStore.reload(getWebDriver());
+        seventhPage.openPayWindow();
+        seventhPage.fillDeliveryForm();
+        seventhPage.uploadFile2();
+        seventhPage.confirmPayment();
+        seventhPage.waitForLoad();
+        seventhPage.initPage();
         seventhPage.saveAndDelivery();
 //        seventhPage.openPayWindow();
 //        seventhPage.fillDeliveryForm();

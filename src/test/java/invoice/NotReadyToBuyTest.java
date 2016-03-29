@@ -44,8 +44,8 @@ public class NotReadyToBuyTest extends BasicTestCase {
     @Test
     public void notReadyToBuy() throws NoSuchFieldException, InterruptedException {
 
-        loginPage.open();
-        mainPage = loginPage.loginAs(admin);
+        //loginPage.open();
+        //mainPage = loginPage.loginAs(admin);
 
         createPurchaseFirstPage.open();
         createPurchaseFirstPage.enterNames();

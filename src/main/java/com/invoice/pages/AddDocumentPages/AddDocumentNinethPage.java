@@ -25,6 +25,9 @@ public class AddDocumentNinethPage extends Page {
     @FindBy(name = "invoice[3]")
     WebElement fieldCalendarAct;
 
+    @FindBy(className = "")
+    WebElement button;
+
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement cellCalendarDateToday;
 
@@ -58,30 +61,37 @@ public class AddDocumentNinethPage extends Page {
     public void fullShipment() throws InterruptedException {
 
         Thread.sleep(500);
-        fieldCalendarBill.click();
-        Thread.sleep(500);
-        cellCalendarDateToday.click();
-        Thread.sleep(500);
-        fieldCalendarAct.click();
-        Thread.sleep(500);
-        cellCalendarDateToday.click();
-        Thread.sleep(500);
-        buttonOk.click();
-    }
 
-    public void fillFullShipmentForm() throws InterruptedException {
-        Thread.sleep(1000);
-        fieldCalendarBill.click();
-        Thread.sleep(500);
-        cellCalendarDateToday.click();
-        Thread.sleep(500);
         fieldCalendarNaklad.click();
         Thread.sleep(500);
-        cellCalendarDateToday.click();
-        Thread.sleep(1000);
-        buttonOk.click();
 
+        cellCalendarDateToday.click();
+        Thread.sleep(500);
+        fieldCalendarBill.click();
+
+        Thread.sleep(500);
+        cellCalendarDateToday.click();
+        Thread.sleep(500);
+//        fieldCalendarAct.click();
+//        Thread.sleep(500);
+//        cellCalendarDateToday.click();
+//        Thread.sleep(500);
+        buttonOk.click();
     }
+
+//    public void fillFullShipmentForm() throws InterruptedException {
+//        Thread.sleep(1000);
+//        fieldCalendarBill.click();
+//        Thread.sleep(500);
+//        cellCalendarDateToday.click();
+//        Thread.sleep(500);
+//        fieldCalendarNaklad.click();
+//        Thread.sleep(500);
+//        cellCalendarDateToday.click();
+//        Thread.sleep(1000);
+//        buttonOk.click();
+//
+//    }
 
     public AddDocumentNinethPage(WebDriver driver) {
         super(driver);

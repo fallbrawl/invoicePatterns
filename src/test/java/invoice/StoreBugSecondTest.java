@@ -37,7 +37,7 @@ public class StoreBugSecondTest extends BasicTestCase {
 //    6. Проверить, что на странице "Резерв" в столбце "Склад" отображается твой текущий основной склад
 //    http://www.screencast.com/t/vrovAmfUIuM
 
-    @Test
+    @Test(enabled = false)
     public void storeBugSecondTest() throws Exception {
 
 

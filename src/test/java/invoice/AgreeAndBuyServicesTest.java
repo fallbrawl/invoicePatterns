@@ -31,8 +31,8 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
     @Test
     public void agreeAndBuyService() throws NoSuchFieldException, InterruptedException {
 
-        //loginPage.open();
-        //mainPage = loginPage.loginAs(admin);
+        loginPage.open();
+        mainPage = loginPage.loginAs(admin);
 
         firstPage.open();
         firstPage.enterNames();

@@ -41,7 +41,7 @@ public class StoreBugFirstTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test
+    @Test(enabled = false)
     //-Dtest=LoginTest,AgreeAndBuyServicesTest test
     public void storeBugFirstTest() throws NoSuchFieldException, InterruptedException {
 

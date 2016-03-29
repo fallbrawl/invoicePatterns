@@ -12,9 +12,11 @@ public class AddDocumentFifthPage extends Page {
     @FindBy(id = "v-name_user_info")
     WebElement fieldProviderName;
 
-    @FindBy(xpath = "//*[@id=\"form-edit_transit\"]/div[1]/div[1]/div[2]/div[2]/div/div/a[1]")
+
+    @FindBy(xpath = ".//*[@id='form-edit_transit']/div[1]/div[1]/div[2]/div[2]/div/div/a[1]")
     WebElement buttonFormPurchase;
 
+    //@FindBy(className = "btn-success")
     @FindBy(className = "btn-success")
     WebElement buttonAcceptFormPurchase;
 

@@ -22,8 +22,8 @@ public class EntireClientsTest extends BasicTestCase {
     @Test
 
     public void clientsEntireTest() throws InterruptedException {
-        loginPage.open();
-        mainPage = loginPage.loginAs(admin);
+        //loginPage.open();
+        //mainPage = loginPage.loginAs(admin);
 
         addClientPage.open();
         addClientPage.enterClientName();

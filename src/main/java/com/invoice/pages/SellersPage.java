@@ -34,6 +34,8 @@ public class SellersPage extends Page {
     @FindBy(className = "btn-success")
     WebElement buttonChangeDataSeller;
 
+    @FindBy(id = "pay_account")
+    WebElement fieldPayAccount;
 
     @FindAll(@FindBy(className = "select2-result-label"))
     List<WebElement> dropdownElements;
@@ -122,6 +124,13 @@ public class SellersPage extends Page {
             return true;
         }
         else return false;
+
+    }
+
+    public void setPayAccount() throws InterruptedException {
+        Thread.sleep(500);
+        typeHere(fieldPayAccount, "4456456");
+        Thread.sleep(500);
 
     }
 }

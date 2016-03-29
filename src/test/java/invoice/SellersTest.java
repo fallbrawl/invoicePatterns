@@ -38,10 +38,6 @@ public class SellersTest extends BasicTestCase {
         sellersPage.openCreatedSeller();
         sellersPage.changeData();
 
-
-
-
-
-
+        sellersPage.setPayAccount();
     }
 }

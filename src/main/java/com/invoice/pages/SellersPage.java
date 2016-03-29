@@ -2,6 +2,7 @@ package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,8 +51,9 @@ public class SellersPage extends Page {
     }
 
     public void addNewSeller() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(500);
         buttonAddSeller.click();
+        Thread.sleep(500);
     }
 
     public void changeData() throws InterruptedException {
@@ -60,6 +62,7 @@ public class SellersPage extends Page {
     }
 
     public void fillSellersFields() throws InterruptedException {
+
         Thread.sleep(1000);
 
         typeHere(fieldSellerName, UtilStore.nameOfDocument1);
@@ -73,9 +76,20 @@ public class SellersPage extends Page {
         dropdownElements.get(1).click();
         Thread.sleep(500);
 
+        dropdownManagers.click();
+        Thread.sleep(500);
+        dropdownElements.get(0).click();
+        Thread.sleep(500);
+
         dropdownStores.click();
         Thread.sleep(500);
         dropdownElements.get(1).click();
+
+        dropdownStores.click();
+        Thread.sleep(500);
+        dropdownElements.get(0).click();
+
+        Thread.sleep(500);
     }
 
     public void confirmAdding() throws InterruptedException {
@@ -92,11 +106,22 @@ public class SellersPage extends Page {
 
     public void setBalance() throws InterruptedException {
         Thread.sleep(1000);
-        typeHere(fieldSellerBalance,"1000000");
+        typeHere(fieldSellerBalance, "1000000");
     }
 
     public void save() throws InterruptedException {
         Thread.sleep(500);
         buttonSave.click();
+    }
+
+    public boolean isAlertPresent() throws InterruptedException {
+        Thread.sleep(1000);
+        int count = StringUtils.countMatches(driver.getPageSource(), "обязательно для заполнения");
+        System.out.println("Count " + count);
+        if (count == 3) {
+            return true;
+        }
+        else return false;
+
     }
 }

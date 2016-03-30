@@ -1,0 +1,106 @@
+package com.invoice.pages;
+
+import com.invoice.utils.ConfigProperties;
+import com.invoice.utils.UtilStore;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+
+/**
+ * Created by paul on 30.03.16.
+ */
+public class ProductsPage extends Page {
+
+    @FindBy(className = "btn-primary")
+    WebElement buttonAddNewProduct;
+
+    @FindBy(name = "name_product")
+    WebElement fieldProductName;
+
+    @FindBy(name = "code_product")
+    WebElement fieldProductCode;
+
+    @FindBy(id = "name_category")
+    WebElement fieldEnterNewCategoryName;
+
+    @FindBy(id = "modal_success")
+    WebElement buttonOk;
+
+    @FindBy(id = "price_product")
+    WebElement fieldPriceProduct;
+
+    @FindBy(id = "recprice_product")
+    WebElement fieldRecommendedProductPrice;
+
+    @FindBy(className = "btn-high")
+    WebElement buttonSave;
+
+    @FindBy(id = "select2-chosen-4")
+    WebElement dropdownTypeOfAgreement;
+
+
+    @FindAll(@FindBy(className = "select2-result-selectable"))
+    List<WebElement> dropdownArrayOfTypesAgreements;
+
+    @FindAll(@FindBy(className = "btn-primary"))
+    List<WebElement> arrayAddItemButtons;
+
+
+    public void addNewItem() throws InterruptedException {
+        Thread.sleep(1000);
+        buttonAddNewProduct.click();
+    }
+
+
+    public void fillNewItem(String whatType) throws InterruptedException {
+
+        dropdownTypeOfAgreement.click();
+        Thread.sleep(1000);
+
+        for (WebElement a : dropdownArrayOfTypesAgreements) {
+            System.out.println(a.getText());
+            System.out.println("Sze: " + dropdownArrayOfTypesAgreements.size());
+            if (a.getText().contains(whatType)) {
+                a.click();
+                break;
+            }
+        }
+
+        typeHere(fieldRecommendedProductPrice, "2");
+        typeHere(fieldPriceProduct, "40");
+
+        Thread.sleep(500);
+        WebElement buttonAddCategory = arrayAddItemButtons.get(0);
+        Thread.sleep(500);
+        buttonAddCategory.click();
+        Thread.sleep(500);
+        typeHere(fieldEnterNewCategoryName, "dfjgdk" + UtilStore.addDateForEmail());
+        Thread.sleep(500);
+        buttonOk.click();
+        Thread.sleep(500);
+
+        typeHere(fieldProductName, UtilStore.nameProduct);
+
+        System.out.println("nameproduct " + UtilStore.nameProduct);
+
+        typeHere(fieldProductCode, "607" + UtilStore.addDateForProduct());
+
+        Thread.sleep(500);
+
+        buttonSave.click();
+
+    }
+
+
+    public ProductsPage(WebDriver driver) {
+        super(driver);
+    }
+
+    @Override
+    public void open() {
+        driver.get(ConfigProperties.getProperty("products.url"));
+    }
+}

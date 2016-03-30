@@ -1,6 +1,7 @@
 package invoice;
 
 import com.invoice.pages.*;
+import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -31,13 +32,28 @@ public class SellersTest extends BasicTestCase {
         sellersPage.addNewSeller();
 
         sellersPage.save();
-        Assert.assertTrue(sellersPage.isAlertPresent()); //поля обязательны для заполнения
+        Assert.assertTrue(sellersPage.isAlertPresent()); //поля обязательны для заполнения?
         sellersPage.fillSellersFields();
         sellersPage.save();
 
         sellersPage.openCreatedSeller();
         sellersPage.changeData();
-
+        sellersPage.changeCreditLimit();
         sellersPage.setPayAccount();
+        sellersPage.save();
+
+        sellersPage.openBalance();
+        Assert.assertTrue(sellersPage.isBalanceOpened());// открыт ли баланс ?
+        UtilStore.goBack(getWebDriver());
+        sellersPage.openReturn();
+        Assert.assertTrue(sellersPage.isReturnsOpened()); // открыты ли возвраты ?
+        UtilStore.goBack(getWebDriver());
+        sellersPage.openCreatedSeller();
+        sellersPage.deleteSeller();
+        sellersPage.initPage();
+        Assert.assertTrue(sellersPage.isUserSuccessfullyDeleted());
+
+
+
     }
 }

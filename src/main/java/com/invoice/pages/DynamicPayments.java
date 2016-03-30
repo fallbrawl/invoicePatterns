@@ -27,8 +27,6 @@ public class DynamicPayments extends Page {
     @FindBy(name = "file")
     WebElement inputFile;
 
-
-
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement neededDate;
 
@@ -89,8 +87,6 @@ public class DynamicPayments extends Page {
         buttonOk.click();
         Thread.sleep(500);
     }
-
-
 
 
     public void openBying() throws InterruptedException {

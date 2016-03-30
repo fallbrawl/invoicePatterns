@@ -4,6 +4,7 @@ import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -37,11 +38,20 @@ public class SellersPage extends Page {
     @FindBy(id = "pay_account")
     WebElement fieldPayAccount;
 
+    @FindBy(id = "credit_limit")
+    WebElement fieldCreditLimit;
+
     @FindAll(@FindBy(className = "select2-result-label"))
     List<WebElement> dropdownElements;
 
     @FindBy(className = "submit_btn")
     WebElement buttonSave;
+
+    @FindBy(className = "btn-danger")
+    WebElement buttonDelete;
+
+    @FindBy(id = "modal_success")
+    WebElement buttonOk;
 
     public SellersPage(WebDriver driver) {
         super(driver);
@@ -58,9 +68,21 @@ public class SellersPage extends Page {
         Thread.sleep(500);
     }
 
+    public void changeCreditLimit() throws InterruptedException {
+        Thread.sleep(500);
+        typeHere(fieldCreditLimit, Keys.ARROW_LEFT);
+        Thread.sleep(500);
+        typeHere(fieldCreditLimit, Keys.ARROW_LEFT);
+        Thread.sleep(500);
+        typeHere(fieldCreditLimit, Keys.ARROW_LEFT);
+        fieldCreditLimit.sendKeys("3");
+    }
+
     public void changeData() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(500);
         buttonChangeDataSeller.click();
+        Thread.sleep(500);
+
     }
 
     public void fillSellersFields() throws InterruptedException {
@@ -122,9 +144,7 @@ public class SellersPage extends Page {
         System.out.println("Count " + count);
         if (count == 3) {
             return true;
-        }
-        else return false;
-
+        } else return false;
     }
 
     public void setPayAccount() throws InterruptedException {
@@ -132,5 +152,51 @@ public class SellersPage extends Page {
         typeHere(fieldPayAccount, "4456456");
         Thread.sleep(500);
 
+    }
+
+    public void openBalance() throws InterruptedException {
+        Thread.sleep(500);
+        WebElement a = driver.findElement(By.xpath(".//td/div/a[text() = 'documentcreated1 2016/03/3011:23:01']/../../../td[3]/div/a"));
+        System.out.println(a.getText());
+        a.click();
+    }
+
+    public void openReturn() throws InterruptedException {
+        Thread.sleep(500);
+        WebElement a = driver.findElement(By.xpath(".//td/div/a[text() = 'documentcreated1 2016/03/3011:23:01']/../../../td[4]/div/a"));
+        System.out.println(a.getText());
+        a.click();
+
+    }
+
+    public boolean isBalanceOpened() {
+        if (driver.getPageSource().contains("Баланс моего юридического лица")) {
+            return true;
+        } else
+            return false;
+    }
+
+    public boolean isReturnsOpened() {
+        if (driver.getPageSource().contains("Возврат средств моему юридическому лицу")) {
+            return true;
+        } else
+            return false;
+    }
+
+    public void deleteSeller() throws InterruptedException {
+        Thread.sleep(500);
+        buttonDelete.click();
+        Thread.sleep(500);
+        buttonOk.click();
+
+    }
+
+    public boolean isUserSuccessfullyDeleted() throws InterruptedException {
+        Thread.sleep(1000);
+        if (driver.getPageSource().contains(UtilStore.nameOfDocument1)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

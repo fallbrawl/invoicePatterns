@@ -21,6 +21,7 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
     private AddDocumentSixthPage sixthPage = PageFactory.initElements(getWebDriver(), AddDocumentSixthPage.class);
     private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
     private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
+    private ProductsPage productsPage = PageFactory.initElements(getWebDriver(), ProductsPage.class);
 
     private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
 
@@ -53,12 +54,25 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         sellersPage.changeData();
         sellersPage.setBalance();
         sellersPage.save();
+
         UtilStore.goBack(getWebDriver());
         UtilStore.goBack(getWebDriver());
 
 
         thirdPage = secondPage.toTheNextStep();
+
         thirdPage.initPage();
+
+        productsPage.open();
+        productsPage.addNewItem();
+        productsPage.fillNewItem("Услуга");
+
+        UtilStore.goBack(getWebDriver());
+        UtilStore.goBack(getWebDriver());
+
+        thirdPage = secondPage.toTheNextStep();
+        thirdPage.initPage();
+
         thirdPage.enterExistingNameOfProduct();
         thirdPage.addProduct();
         thirdPage.save();

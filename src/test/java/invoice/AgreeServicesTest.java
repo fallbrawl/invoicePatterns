@@ -70,7 +70,7 @@ public class AgreeServicesTest extends BasicTestCase {
         thirdPage.waitForLoad();
         UtilStore.reload(driver);
 
-        thirdPage.saveAndLoad();
+//        thirdPage.saveAndLoad();
         thirdPage.saveAndInitiate();
         ninethPage.waitForLoad();
         ninethPage.waitForLoad();

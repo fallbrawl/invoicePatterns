@@ -156,7 +156,7 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         ninethPage.waitForLoad();
         ninethPage.setFullLoad();
         ninethPage.waitForLoad();
-        ninethPage.fullShipment();
+        ninethPage.fullShipmentForServices();
         ninethPage.waitForLoad();
         ninethPage.checkDocs("Bill");
         ninethPage.initPage();

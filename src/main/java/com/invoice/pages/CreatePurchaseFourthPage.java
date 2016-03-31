@@ -33,8 +33,7 @@ public class CreatePurchaseFourthPage extends Page{
     @FindBy(xpath = ".//*[@id='form-edit_transit']/div[2]/div/div/div/div[1]/div[4]/div/div[2]/div[2]/div/div[1]/span")
     WebElement check2;
 
-    @FindBy (xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[3]/div[1]/div/a[1]")
-    //@FindBy (xpath = ".//*[@id='body-wrapper']/div[1]/div[1]/div[3]/section/div[2]/div[9]/div[1]/div/a[1]")
+    @FindBy (id = "save_documents_and_accept_purchase")
     WebElement buttonSaveDocumentsAndAcceptTransfer;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")

@@ -4,16 +4,18 @@ import com.invoice.pages.Page;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by NEXUS on 23.02.2016.
  */
 public class AddDocumentNinethPage extends Page {
 
-    @FindBy(xpath = ".//*[@id='buttons_div']/a[2]")
+    @FindBy(id = "full_shipment")
     WebElement buttonFullShipment;
 
     @FindBy(name = "invoice[2]")
@@ -31,7 +33,7 @@ public class AddDocumentNinethPage extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement cellCalendarDateToday;
 
-    @FindBy (linkText = "Счёт")
+    @FindBy(linkText = "Счёт")
     WebElement linkBill;
 
     @FindBy(linkText = "Накладная")
@@ -76,9 +78,8 @@ public class AddDocumentNinethPage extends Page {
     }
 
     public void fullShipmentForServices() throws InterruptedException {
-
         Thread.sleep(500);
-        fieldCalendarNaklad.click();
+        fieldCalendarAct.click();
 
         Thread.sleep(500);
         cellCalendarDateToday.click();
@@ -116,7 +117,7 @@ public class AddDocumentNinethPage extends Page {
 
     }
 
-    public void setFullLoad(){
+    public void setFullLoad() {
         buttonFullShipment.click();
     }
 

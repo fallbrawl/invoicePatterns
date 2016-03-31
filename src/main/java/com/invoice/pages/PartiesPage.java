@@ -30,7 +30,7 @@ public class PartiesPage extends Page {
     @FindAll(@FindBy(className = "select2-result-label"))
     List<WebElement> dropdownArrayElementsSelectStore;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/form/div/button")
+    @FindBy(className = "press_me_im_cool")
     WebElement buttonSelectItem;
 
     @FindBy(id = "autocomplete_document_product")
@@ -96,6 +96,11 @@ public class PartiesPage extends Page {
     public MovementPage acceptMoving() {
         buttonAcceptMoving.click();
         return PageFactory.initElements(driver, MovementPage.class);
+
+    }
+
+    public void enterProduct() {
+        typeHere(fieldSearch, "product 2016/03/3116:06:58");
 
     }
 }

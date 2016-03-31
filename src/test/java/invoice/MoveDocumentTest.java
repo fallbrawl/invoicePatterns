@@ -28,6 +28,7 @@ public class MoveDocumentTest extends BasicTestCase {
     private MovementPage movementPage = PageFactory.initElements(getWebDriver(), MovementPage.class);
     private PitchPage pitchPage = PageFactory.initElements(getWebDriver(), PitchPage.class);
     private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
+    private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
 
     private MainPage mainPage;
 
@@ -70,8 +71,29 @@ public class MoveDocumentTest extends BasicTestCase {
         createPurchaseThirdPage.setCalendar("thisDay");
         createPurchaseThirdPage.upl();
         createPurchaseThirdPage.payTransit();
+        //createPurchaseThirdPage.saveAndOrder();
+
+        dynamicPayments.open();
+        dynamicPayments.openPayWindow();
+        dynamicPayments.setValuesPayWindow();
+        dynamicPayments.uploadFile();
+        dynamicPayments.confirmPayment();
+        dynamicPayments.waitForLoad();
+        dynamicPayments.initPage();
+        UtilStore.goBack(getWebDriver());
+
+        createPurchaseThirdPage.initPage();
+        UtilStore.reload(getWebDriver());
+        createPurchaseThirdPage.initPage();
+//        createPurchaseThirdPage.saveAndOrder();
         createPurchaseThirdPage.saveAndOrder();
+        createPurchaseThirdPage.setCalendar("thisDay");
+        createPurchaseThirdPage.upl();
         createPurchaseThirdPage.payTransit();
+//        createPurchaseThirdPage.saveAndOrder();
+  //      createPurchaseThirdPage.payTransit();
+
+     //   createPurchaseThirdPage.payTransit();
 
 
         createPurchaseFourthPage.uploadNaklad();

@@ -25,8 +25,8 @@ public class SellersTest extends BasicTestCase {
     @Test
     public void sellersTest() throws InterruptedException {
 
-        loginPage.open();
-        mainPage = loginPage.loginAs(admin);
+        //loginPage.open();
+        //mainPage = loginPage.loginAs(admin);
 
         sellersPage.open();
         sellersPage.addNewSeller();

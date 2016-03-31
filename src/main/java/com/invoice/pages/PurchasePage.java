@@ -60,6 +60,7 @@ public class PurchasePage extends Page {
     }
 
     public void openOrder() throws InterruptedException {
+        Thread.sleep(1000);
         linkAcceptOrder.click();
         Thread.sleep(500);
     }

@@ -25,8 +25,8 @@ public class EntireVendorsTest extends BasicTestCase {
 
     public void entireVendorsTest() throws InterruptedException {
 
-        loginPage.open();
-        mainPage = loginPage.loginAs(admin);
+        //loginPage.open();
+        //mainPage = loginPage.loginAs(admin);
 
         addVendorPage.open();
         addVendorPage.enterVendorName();

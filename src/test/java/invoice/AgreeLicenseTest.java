@@ -23,7 +23,7 @@ public class AgreeLicenseTest extends BasicTestCase {
 
     private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
 
-    private MainPage mainPage;
+    private MainPage mainPage = PageFactory.initElements(getWebDriver(), MainPage.class);
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
@@ -32,8 +32,8 @@ public class AgreeLicenseTest extends BasicTestCase {
 
     public void agreeLicenseTest() throws InterruptedException, NoSuchFieldException {
 
-        loginPage.open();
-        mainPage = loginPage.loginAs(admin);
+       // loginPage.open();
+       // mainPage = loginPage.loginAs(admin);
 
         firstPage.open();
         firstPage.enterNames();

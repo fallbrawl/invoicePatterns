@@ -170,7 +170,7 @@ public class CreatePurchaseThirdPage extends Page {
     }
 
     public void saveAndInitiate() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         buttonAttachInvoice.click();
         Thread.sleep(1000);
 

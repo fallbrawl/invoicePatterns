@@ -156,14 +156,14 @@ public class SellersPage extends Page {
 
     public void openBalance() throws InterruptedException {
         Thread.sleep(500);
-        WebElement a = driver.findElement(By.xpath(".//td/div/a[text() = 'documentcreated1 2016/03/3011:23:01']/../../../td[3]/div/a"));
+        WebElement a = driver.findElement(By.xpath(".//td/div/a[text() = '" + UtilStore.nameOfDocument1 + "']/../../../td[3]/div/a"));
         System.out.println(a.getText());
         a.click();
     }
 
     public void openReturn() throws InterruptedException {
         Thread.sleep(500);
-        WebElement a = driver.findElement(By.xpath(".//td/div/a[text() = 'documentcreated1 2016/03/3011:23:01']/../../../td[4]/div/a"));
+        WebElement a = driver.findElement(By.xpath(".//td/div/a[text() = '" + UtilStore.nameOfDocument1 + "']/../../../td[4]/div/a"));
         System.out.println(a.getText());
         a.click();
 

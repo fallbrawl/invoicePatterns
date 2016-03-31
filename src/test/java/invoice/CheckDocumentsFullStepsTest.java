@@ -30,7 +30,7 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test
+    @Test(enabled = false)
 
     public void checkDocumentTest() throws NoSuchFieldException, InterruptedException {
 

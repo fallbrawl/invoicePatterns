@@ -36,16 +36,16 @@ public class NotReadyToBuyTest extends BasicTestCase {
     private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
     private ReservedPage reservedPage = PageFactory.initElements(getWebDriver(), ReservedPage.class);
     private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
+    private MainPage mainPage = PageFactory.initElements(getWebDriver(), MainPage.class);
 
-    private MainPage mainPage;
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
     @Test
     public void notReadyToBuy() throws NoSuchFieldException, InterruptedException {
 
-        //loginPage.open();
-        //mainPage = loginPage.loginAs(admin);
+        loginPage.open();
+        mainPage = loginPage.loginAs(admin);
 
         createPurchaseFirstPage.open();
         createPurchaseFirstPage.enterNames();

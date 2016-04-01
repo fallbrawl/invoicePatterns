@@ -105,7 +105,8 @@ public class AddDocumentSecondPage extends Page {
 
     }
 
-    public void uploadFile() {
+    public void uploadFile() throws InterruptedException {
+        Thread.sleep(1500);
         String osVersion = System.getProperty("os.name");
         System.out.println(osVersion);
 

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
  * Created by paul on 11.02.16.
  */
 public class CheckHttpResponses extends BasicTestCase {
-    @Test
+    @Test(enabled = false)
     public void checkPesponse() {
 
         //Заказы на продажу

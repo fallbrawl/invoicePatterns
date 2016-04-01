@@ -31,7 +31,7 @@ public class StoresTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test
+    @Test(enabled = false)
     public void storesTest() throws InterruptedException {
 
         //loginPage.open();

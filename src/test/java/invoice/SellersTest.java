@@ -22,7 +22,7 @@ public class SellersTest extends BasicTestCase {
     private MainPage mainPage;
 
 
-    @Test
+    @Test(enabled = false)
     public void sellersTest() throws InterruptedException {
 
         //loginPage.open();

@@ -42,6 +42,8 @@ public class AgreeLicenseTest extends BasicTestCase {
         secondPage.waitForLoad();
         secondPage.uploadFile();
         secondPage.setTypeOfAgreementService("Лицензионный");
+        secondPage.setBestBefore();
+        secondPage.setAgreementDelay("10");
         secondPage.agreement("Save");
         secondPage.waitForLoad();
         secondPage.agreement("Use");
@@ -66,17 +68,17 @@ public class AgreeLicenseTest extends BasicTestCase {
         thirdPage.save();
         thirdPage.waitForLoad();
 
-        dynamicPayments.open();
-        dynamicPayments.openPayWindow();
-        dynamicPayments.setValuesPayWindow();
-        dynamicPayments.uploadFile();
-        dynamicPayments.confirmPayment();
-        dynamicPayments.waitForLoad();
-        dynamicPayments.initPage();
-        UtilStore.goBack(getWebDriver());
-        dynamicPayments.waitForLoad();
+//        dynamicPayments.open();
+//        dynamicPayments.openPayWindow();
+//        dynamicPayments.setValuesPayWindow();
+//        dynamicPayments.uploadFile();
+//        dynamicPayments.confirmPayment();
+//        dynamicPayments.waitForLoad(); //если убрать отсрочку, то понадобится
+//        dynamicPayments.initPage();
+//        UtilStore.goBack(getWebDriver());
+//        dynamicPayments.waitForLoad();
 
-//        thirdPage = secondPage.toTheNextStep();
+
         UtilStore.reload(getWebDriver());
         thirdPage.waitForLoad();
         thirdPage.save();
@@ -94,6 +96,8 @@ public class AgreeLicenseTest extends BasicTestCase {
 
         sixthPage.uploadFile();
         sixthPage.setTypeOfAgreement("Лицензионный");
+        sixthPage.setAgreementDelay("10");
+        sixthPage.setBestBefore();
         sixthPage.agreement("Save");
         sixthPage.waitForLoad();
         sixthPage.agreement("Use");
@@ -101,38 +105,39 @@ public class AgreeLicenseTest extends BasicTestCase {
 
         seventhPage = sixthPage.toTheNextStep();
         seventhPage.waitForLoad();
-        seventhPage.openPayWindow();
+//        seventhPage.openPayWindow(); // TODO: тут надо переделать под договор с отсрочкой, и лишнее исчезнет
 //        seventhPage.setValuesPayWindow();
 //        seventhPage.uploadFile1();
 //        seventhPage.confirmPayment();
 //        seventhPage.waitForLoad();
 //        seventhPage.initPage();
 //        seventhPage.saveAndDelivery();
-        seventhPage.fillDeliveryForm();
-        seventhPage.uploadFile2();
-        seventhPage.confirmPayment();
+//        seventhPage.fillDeliveryForm();
+//        seventhPage.uploadFile2();
+//        seventhPage.confirmPayment();
+//        seventhPage.initPage();
+//        UtilStore.reload(getWebDriver());
+//
+//        dynamicPayments.open();
+//        dynamicPayments.openPayWindow();
+//        dynamicPayments.setValuesPayWindow();
+//        dynamicPayments.uploadFile();
+//        dynamicPayments.confirmPayment();
+//        dynamicPayments.waitForLoad();
+//        dynamicPayments.initPage();
+//        UtilStore.goBack(getWebDriver());
+//
+//
+//        UtilStore.reload(getWebDriver());
         seventhPage.initPage();
-        UtilStore.reload(getWebDriver());
-
-        dynamicPayments.open();
-        dynamicPayments.openPayWindow();
-        dynamicPayments.setValuesPayWindow();
-        dynamicPayments.uploadFile();
-        dynamicPayments.confirmPayment();
-        dynamicPayments.waitForLoad();
-        dynamicPayments.initPage();
-        UtilStore.goBack(getWebDriver());
-
-
-        UtilStore.reload(getWebDriver());
-        seventhPage.initPage();
-        seventhPage.openPayWindow();
+        //seventhPage.openPayWindow();
+        seventhPage.saveAndDelivery();
         seventhPage.fillDeliveryForm();
         seventhPage.uploadFile2();
         seventhPage.confirmPayment();
         seventhPage.waitForLoad();
         seventhPage.initPage();
-        seventhPage.saveAndDelivery();
+ //       seventhPage.saveAndDelivery();
 //        seventhPage.openPayWindow();
 //        seventhPage.fillDeliveryForm();
 //        seventhPage.uploadFile2();

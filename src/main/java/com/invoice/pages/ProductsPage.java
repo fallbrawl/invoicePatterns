@@ -72,15 +72,15 @@ public class ProductsPage extends Page {
         typeHere(fieldRecommendedProductPrice, "2");
         typeHere(fieldPriceProduct, "40");
 
-        Thread.sleep(500);
+        Thread.sleep(1000);
         WebElement buttonAddCategory = arrayAddItemButtons.get(0);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonAddCategory.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         typeHere(fieldEnterNewCategoryName, "dfjgdk" + UtilStore.addDateForEmail());
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonOk.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         typeHere(fieldProductName, UtilStore.nameProduct);
 

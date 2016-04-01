@@ -57,7 +57,7 @@ public class PartiesPage extends Page {
     }
 
     public void selectItem() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonSelectItem.click();
 //        Thread.sleep(1000);
 //        buttonSelectItem.click();

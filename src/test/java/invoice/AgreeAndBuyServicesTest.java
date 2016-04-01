@@ -29,7 +29,7 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test(enabled = false)
+    @Test
     public void agreeAndBuyService() throws NoSuchFieldException, InterruptedException {
 
         loginPage.open();

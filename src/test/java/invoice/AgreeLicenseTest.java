@@ -32,8 +32,8 @@ public class AgreeLicenseTest extends BasicTestCase {
 
     public void agreeLicenseTest() throws InterruptedException, NoSuchFieldException {
 
-       // loginPage.open();
-       // mainPage = loginPage.loginAs(admin);
+        loginPage.open();
+        mainPage = loginPage.loginAs(admin);
 
         firstPage.open();
         firstPage.enterNames();

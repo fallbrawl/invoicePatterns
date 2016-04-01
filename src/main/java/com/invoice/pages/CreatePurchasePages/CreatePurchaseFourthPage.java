@@ -1,5 +1,6 @@
-package com.invoice.pages;
+package com.invoice.pages.CreatePurchasePages;
 
+import com.invoice.pages.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by paul on 18.02.16.
  */
-public class CreatePurchaseFourthPage extends Page{
+public class CreatePurchaseFourthPage extends Page {
 
     @FindBy(xpath = ".//*[@id='file_upload_div_naklad_date']/div/div[2]/input" )
     public WebElement fieldUploadNaklad;

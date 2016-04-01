@@ -4,6 +4,9 @@ import com.invoice.pages.*;
 import com.invoice.pages.AddDocumentPages.AddDocumentFirstPage;
 import com.invoice.pages.AddDocumentPages.AddDocumentSecondPage;
 import com.invoice.pages.AddDocumentPages.AddDocumentThirdPage;
+import com.invoice.pages.CreatePurchasePages.CreatePurchaseFirstPage;
+import com.invoice.pages.CreatePurchasePages.CreatePurchaseSecondPage;
+import com.invoice.pages.CreatePurchasePages.CreatePurchaseThirdPage;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
@@ -44,8 +47,8 @@ public class NotReadyToBuyTest extends BasicTestCase {
     @Test
     public void notReadyToBuy() throws NoSuchFieldException, InterruptedException {
 
-        loginPage.open();
-        mainPage = loginPage.loginAs(admin);
+        //loginPage.open();
+        //mainPage = loginPage.loginAs(admin);
 
         createPurchaseFirstPage.open();
         createPurchaseFirstPage.enterNames();

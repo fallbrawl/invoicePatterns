@@ -1,6 +1,10 @@
 package invoice;
 
 import com.invoice.pages.*;
+import com.invoice.pages.CreatePurchasePages.CreatePurchaseFirstPage;
+import com.invoice.pages.CreatePurchasePages.CreatePurchaseFourthPage;
+import com.invoice.pages.CreatePurchasePages.CreatePurchaseSecondPage;
+import com.invoice.pages.CreatePurchasePages.CreatePurchaseThirdPage;
 import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;

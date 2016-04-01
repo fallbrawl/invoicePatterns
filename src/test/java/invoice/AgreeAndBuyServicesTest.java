@@ -42,6 +42,9 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
 
         secondPage.uploadFile();
         secondPage.setTypeOfAgreementService("Услуги");
+
+        secondPage.setAgreementDelay("8");
+
         secondPage.agreement("Save");
         secondPage.waitForLoad();
         secondPage.agreement("Use");

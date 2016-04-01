@@ -22,7 +22,8 @@ public class AddDocumentSecondPage extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
     public WebElement buttonGoToTheNextMonthInCalendar;
 
-    @FindBy(name = "file_delay")
+    //@FindBy(className = "col-xs-6")
+    @FindBy(xpath = ".//*[@id='agreement-table']/tbody/tr/td[3]/input")
     public WebElement fieldAgreementDelay;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
@@ -58,7 +59,7 @@ public class AddDocumentSecondPage extends Page {
     @FindAll(@FindBy(className = "btn-primary"))
     public List<WebElement> allElementsInList;
 
-    @FindBy (name = "date_to_file")
+    @FindBy(name = "date_to_file")
     public WebElement fieldCalendarForFile;
 
     public void extractNumber() {
@@ -96,10 +97,11 @@ public class AddDocumentSecondPage extends Page {
                 typeHere(fieldForSearchTypeOfAgreement, "Лицензионный");
                 break;
 
-            default: throw new NoSuchFieldException();
+            default:
+                throw new NoSuchFieldException();
         }
         Thread.sleep(500);
-        typeHere(fieldForSearchTypeOfAgreement,Keys.ENTER);
+        typeHere(fieldForSearchTypeOfAgreement, Keys.ENTER);
 
     }
 
@@ -112,8 +114,7 @@ public class AddDocumentSecondPage extends Page {
             String pathLinux = (System.getProperty("user.dir") + "/src/main/Resources/agreement.pdf");
             System.out.println(pathLinux);
             formForFile.sendKeys(pathLinux);
-        }
-        else {
+        } else {
             String pathWindows = (System.getProperty("user.dir") + "\\src\\main\\Resources\\agreement.pdf");
             System.out.println(pathWindows);
             formForFile.sendKeys(pathWindows);
@@ -140,9 +141,9 @@ public class AddDocumentSecondPage extends Page {
         }
     }
 
-    public void setAgreementDelay() throws InterruptedException {
+    public void setAgreementDelay(String howManyDays) throws InterruptedException {
         Thread.sleep(1000);
-        typeHere(fieldAgreementDelay,"7");
+        typeHere(fieldAgreementDelay, howManyDays);
     }
 
     public void setBestBefore() throws InterruptedException {
@@ -158,7 +159,7 @@ public class AddDocumentSecondPage extends Page {
 
         Thread.sleep(1000);
         allElementsInList.get(2).click();
-        return PageFactory.initElements(driver,AddDocumentThirdPage.class);
+        return PageFactory.initElements(driver, AddDocumentThirdPage.class);
     }
 
     public AddDocumentSecondPage(WebDriver driver) {

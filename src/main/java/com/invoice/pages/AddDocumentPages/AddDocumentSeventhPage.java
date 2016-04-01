@@ -94,7 +94,7 @@ public class AddDocumentSeventhPage extends Page {
     }
 
     public void openPayWindow() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         buttonPayTransit.click();
         Thread.sleep(500);
     }

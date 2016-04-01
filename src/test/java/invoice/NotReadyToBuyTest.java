@@ -82,16 +82,12 @@ public class NotReadyToBuyTest extends BasicTestCase {
         createPurchaseThirdPage.addProduct();
         createPurchaseThirdPage.fillProductForm();
 
-      //  createPurchaseThirdPage.saveAndOrder();
         createPurchaseThirdPage.saveAndInitiate();
         createPurchaseThirdPage.setCalendar("firstDayOfTHeSecondWeekOnTheNextMonth");
         createPurchaseThirdPage.upl();
         createPurchaseThirdPage.payTransit();
-        //createPurchaseThirdPage.go();
         createPurchaseThirdPage.waitForLoad();
 
-//        createPurchaseThirdPage.saveAndOrder();
-        //createPurchaseThirdPage.saveAndInitiate();
         purchasePage.initiateDeliveryToTheStore();
         purchasePage.openOrder();
         purchasePage.setCalendar1();
@@ -131,7 +127,6 @@ public class NotReadyToBuyTest extends BasicTestCase {
         dynamicPayments.uploadFile();
 
         dynamicPayments.confirmPayment();
-//        dynamicPayments.waitForLoad();
         dynamicPayments.initPage();
         UtilStore.goBack(getWebDriver());
 
@@ -139,7 +134,6 @@ public class NotReadyToBuyTest extends BasicTestCase {
         createPurchaseSecondPage.extractNumber();
         UtilStore.reload(getWebDriver());
         thirdPage.saveAndInitiate();
-//        thirdPage.waitForLoad();
         thirdPage.reserveAndInitiate();
 
         UtilStore.reload(getWebDriver());

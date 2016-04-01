@@ -25,15 +25,16 @@ public class CreatePurchaseFirstPage extends Page {
     @FindBy(className = "btn-success")
     public WebElement buttonAcceptPurchase;
 
-    public void enterNames() {
+    public void enterNames() throws InterruptedException {
+        Thread.sleep(1500);
         typeHere(fieldNameOne, UtilStore.nameOfDocument2);
         typeHere(fieldNameTwo, UtilStore.nameOfDocument1);
 
     }
 
-    public CreatePurchaseSecondPage toTheNextStep(){
-
-        click(buttonAcceptPurchase);
+    public CreatePurchaseSecondPage toTheNextStep() throws InterruptedException {
+        Thread.sleep(1500);
+        buttonAcceptPurchase.click();
         return PageFactory.initElements(driver, CreatePurchaseSecondPage.class);
     }
 

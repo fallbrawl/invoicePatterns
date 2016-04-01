@@ -23,12 +23,14 @@ public class AddDocumentFirstPage extends Page {
     public WebElement buttonNextStep;
 
 
-    public void enterNames() {
+    public void enterNames() throws InterruptedException {
+
         typeHere(fieldNameOne, UtilStore.nameOfDocument1);
         typeHere(fieldNameTwo, UtilStore.nameOfDocument2);
     }
 
-    public AddDocumentSecondPage toTheNextStep(){
+    public AddDocumentSecondPage toTheNextStep() throws InterruptedException {
+        Thread.sleep(1500);
         click(buttonNextStep);
         return PageFactory.initElements(driver, AddDocumentSecondPage.class);
     }

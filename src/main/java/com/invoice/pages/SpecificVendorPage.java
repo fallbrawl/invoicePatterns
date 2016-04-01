@@ -104,7 +104,8 @@ public class SpecificVendorPage extends Page {
         return PageFactory.initElements(driver, ListVendorPage.class);
     }
 
-    public boolean ensureThatDataIsSaved() {
+    public boolean ensureThatDataIsSaved() throws InterruptedException {
+        Thread.sleep(1500);
         if (fieldVendorAddress.getText().equals(UtilStore.nameProduct))
             return true;
         else return false;

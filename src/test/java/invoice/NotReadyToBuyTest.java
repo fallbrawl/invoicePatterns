@@ -51,6 +51,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
         //mainPage = loginPage.loginAs(admin);
 
         createPurchaseFirstPage.open();
+        createPurchaseFirstPage.waitForLoad();
         createPurchaseFirstPage.enterNames();
         createPurchaseFirstPage.acceptPurchase();
 

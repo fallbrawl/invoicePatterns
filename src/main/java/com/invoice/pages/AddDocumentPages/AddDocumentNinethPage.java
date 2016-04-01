@@ -78,17 +78,17 @@ public class AddDocumentNinethPage extends Page {
     }
 
     public void fullShipmentForServices() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         fieldCalendarAct.click();
 
-        Thread.sleep(500);
+        Thread.sleep(1000);
         cellCalendarDateToday.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         fieldCalendarBill.click();
 
-        Thread.sleep(500);
+        Thread.sleep(1000);
         cellCalendarDateToday.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         buttonOk.click();
     }

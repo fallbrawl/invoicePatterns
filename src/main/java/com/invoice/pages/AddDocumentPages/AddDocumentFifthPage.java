@@ -41,7 +41,7 @@ public class AddDocumentFifthPage extends Page {
 
     public AddDocumentSixthPage formPurchase() throws InterruptedException {
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         buttonAcceptFormPurchase.click();
 
         return PageFactory.initElements(driver, AddDocumentSixthPage.class);

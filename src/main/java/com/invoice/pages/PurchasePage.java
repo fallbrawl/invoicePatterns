@@ -44,7 +44,8 @@ public class PurchasePage extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
     public WebElement buttonGoToTheNextMonthInCalendar;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[2]/div/div/div[3]/button[1]")
+    //@FindBy(xpath = ".//*[@id='body-wrapper']/div[2]/div/div/div[3]/button[1]")
+    @FindBy(id = "modal_success")
     WebElement buttonSaveDocumentsAndAcceptTransfer;
 
     @FindBy(id = "modal_success")
@@ -129,7 +130,7 @@ public class PurchasePage extends Page {
     }
 
     public void acceptOrder() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonSaveDocumentsAndAcceptTransfer.click();
     }
 

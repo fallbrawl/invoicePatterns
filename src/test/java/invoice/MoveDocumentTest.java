@@ -39,8 +39,8 @@ public class MoveDocumentTest extends BasicTestCase {
     @Test
     public void moveDocument() throws InterruptedException, NoSuchFieldException {
 
-        //loginPage.open();
-        //mainPage = loginPage.loginAs(admin);
+        loginPage.open();
+        mainPage = loginPage.loginAs(admin);
 
         createPurchaseFirstPage.open();
         createPurchaseFirstPage.enterNames();

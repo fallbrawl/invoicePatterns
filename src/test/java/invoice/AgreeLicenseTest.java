@@ -28,7 +28,7 @@ public class AgreeLicenseTest extends BasicTestCase {
     private AddDocumentThirdPage thirdPage;
 
 
-    @Test(enabled = false)
+    @Test
 
     public void agreeLicenseTest() throws InterruptedException, NoSuchFieldException {
 

@@ -44,7 +44,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test(enabled = false)
+    @Test
     public void notReadyToBuy() throws NoSuchFieldException, InterruptedException {
 
         //loginPage.open();

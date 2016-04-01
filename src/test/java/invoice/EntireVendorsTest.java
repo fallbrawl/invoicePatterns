@@ -21,7 +21,7 @@ public class EntireVendorsTest extends BasicTestCase {
 
     private MainPage mainPage;
 
-    @Test(enabled = false)
+    @Test
 
     public void entireVendorsTest() throws InterruptedException {
 

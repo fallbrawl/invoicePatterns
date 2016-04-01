@@ -36,7 +36,7 @@ public class MoveDocumentTest extends BasicTestCase {
 
     private MainPage mainPage;
 
-    @Test(enabled = false)
+    @Test
     public void moveDocument() throws InterruptedException, NoSuchFieldException {
 
         //loginPage.open();

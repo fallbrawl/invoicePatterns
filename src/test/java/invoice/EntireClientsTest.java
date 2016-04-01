@@ -19,7 +19,7 @@ public class EntireClientsTest extends BasicTestCase {
 //    Ну и проверки, что все это делается.
 //    http://screencast.com/t/kOmnFGCooIh
 
-    @Test(enabled = false)
+    @Test
 
     public void clientsEntireTest() throws InterruptedException {
         //loginPage.open();

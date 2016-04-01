@@ -82,15 +82,6 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         thirdPage.save();
         thirdPage.waitForLoad();
 
-//        dynamicPayments.open();
-//        dynamicPayments.openPayWindow();
-//        dynamicPayments.setValuesPayWindow();
-//        dynamicPayments.uploadFile();
-//        dynamicPayments.confirmPayment();
-//        dynamicPayments.waitForLoad();
-//        dynamicPayments.initPage();
-//        UtilStore.goBack(getWebDriver());
-//
         thirdPage.waitForLoad();
         thirdPage.save();
         thirdPage.waitForLoad();
@@ -116,40 +107,13 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
 
         seventhPage = sixthPage.toTheNextStep();
         seventhPage.waitForLoad();
-//        seventhPage.openPayWindow();
-//        seventhPage.setValuesPayWindow();
-//        seventhPage.uploadFile1();
-//        seventhPage.confirmPayment();
-//        seventhPage.waitForLoad();
-//        seventhPage.initPage();
-//        seventhPage.saveAndDelivery();
-//        seventhPage.fillDeliveryForm();
-//        seventhPage.uploadFile2();
-//        seventhPage.confirmPayment();
-//        seventhPage.initPage();
-        //UtilStore.reload(getWebDriver());
 
-//        dynamicPayments.open();
-//        dynamicPayments.openPayWindow();
-//        dynamicPayments.setValuesPayWindow();
-//        dynamicPayments.uploadFile();
-//        dynamicPayments.confirmPayment();
-//        dynamicPayments.waitForLoad();
-//        dynamicPayments.initPage();
-//        UtilStore.goBack(getWebDriver());
-//
-//        seventhPage.initPage();
-//        UtilStore.reload(getWebDriver());
-        //seventhPage.openPayWindow();
         seventhPage.saveAndDelivery();
         seventhPage.fillDeliveryForm();
         seventhPage.uploadFile2();
         seventhPage.confirmPayment();
         seventhPage.waitForLoad();
-        seventhPage.initPage();       // eighthPage = seventhPage.confirmDeliveryForm();
-
-
-       // seventhPage.confirmPayment();
+        seventhPage.initPage();
 
         eighthPage.waitForLoad();
         eighthPage.setCalendar2FirstDay();

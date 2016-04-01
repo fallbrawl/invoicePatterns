@@ -151,6 +151,8 @@ public class AddDocumentSecondPage extends Page {
         Thread.sleep(500);
         buttonGoToTheNextMonthInCalendar.click();
         Thread.sleep(500);
+        buttonGoToTheNextMonthInCalendar.click();
+        Thread.sleep(500);
         cellFirstDayOfTheNextWeekInCalendar.click();
 
     }

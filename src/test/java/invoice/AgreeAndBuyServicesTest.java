@@ -43,7 +43,8 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         secondPage.uploadFile();
         secondPage.setTypeOfAgreementService("Услуги");
 
-        secondPage.setAgreementDelay("8");
+        secondPage.setAgreementDelay("10");
+        secondPage.setBestBefore();
 
         secondPage.agreement("Save");
         secondPage.waitForLoad();
@@ -81,15 +82,15 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         thirdPage.save();
         thirdPage.waitForLoad();
 
-        dynamicPayments.open();
-        dynamicPayments.openPayWindow();
-        dynamicPayments.setValuesPayWindow();
-        dynamicPayments.uploadFile();
-        dynamicPayments.confirmPayment();
-        dynamicPayments.waitForLoad();
-        dynamicPayments.initPage();
-        UtilStore.goBack(getWebDriver());
-
+//        dynamicPayments.open();
+//        dynamicPayments.openPayWindow();
+//        dynamicPayments.setValuesPayWindow();
+//        dynamicPayments.uploadFile();
+//        dynamicPayments.confirmPayment();
+//        dynamicPayments.waitForLoad();
+//        dynamicPayments.initPage();
+//        UtilStore.goBack(getWebDriver());
+//
         thirdPage.waitForLoad();
         thirdPage.save();
         thirdPage.waitForLoad();
@@ -106,6 +107,8 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
 
         sixthPage.uploadFile();
         sixthPage.setTypeOfAgreement("Услуги");
+        sixthPage.setAgreementDelay("10");
+        sixthPage.setBestBefore();
         sixthPage.agreement("Save");
         sixthPage.waitForLoad();
         sixthPage.agreement("Use");
@@ -113,38 +116,40 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
 
         seventhPage = sixthPage.toTheNextStep();
         seventhPage.waitForLoad();
-        seventhPage.openPayWindow();
+//        seventhPage.openPayWindow();
 //        seventhPage.setValuesPayWindow();
 //        seventhPage.uploadFile1();
 //        seventhPage.confirmPayment();
 //        seventhPage.waitForLoad();
 //        seventhPage.initPage();
 //        seventhPage.saveAndDelivery();
-        seventhPage.fillDeliveryForm();
-        seventhPage.uploadFile2();
-        seventhPage.confirmPayment();
-        seventhPage.initPage();
-        UtilStore.reload(getWebDriver());
+//        seventhPage.fillDeliveryForm();
+//        seventhPage.uploadFile2();
+//        seventhPage.confirmPayment();
+//        seventhPage.initPage();
+        //UtilStore.reload(getWebDriver());
 
-        dynamicPayments.open();
-        dynamicPayments.openPayWindow();
-        dynamicPayments.setValuesPayWindow();
-        dynamicPayments.uploadFile();
-        dynamicPayments.confirmPayment();
-        dynamicPayments.waitForLoad();
-        dynamicPayments.initPage();
-        UtilStore.goBack(getWebDriver());
-
-        seventhPage.initPage();
-        UtilStore.reload(getWebDriver());
-        seventhPage.openPayWindow();
+//        dynamicPayments.open();
+//        dynamicPayments.openPayWindow();
+//        dynamicPayments.setValuesPayWindow();
+//        dynamicPayments.uploadFile();
+//        dynamicPayments.confirmPayment();
+//        dynamicPayments.waitForLoad();
+//        dynamicPayments.initPage();
+//        UtilStore.goBack(getWebDriver());
+//
+//        seventhPage.initPage();
+//        UtilStore.reload(getWebDriver());
+        //seventhPage.openPayWindow();
+        seventhPage.saveAndDelivery();
         seventhPage.fillDeliveryForm();
         seventhPage.uploadFile2();
         seventhPage.confirmPayment();
         seventhPage.waitForLoad();
         seventhPage.initPage();       // eighthPage = seventhPage.confirmDeliveryForm();
-        seventhPage.saveAndDelivery();
-        seventhPage.confirmPayment();
+
+
+       // seventhPage.confirmPayment();
 
         eighthPage.waitForLoad();
         eighthPage.setCalendar2FirstDay();

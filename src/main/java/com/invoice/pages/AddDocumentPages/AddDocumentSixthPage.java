@@ -27,6 +27,18 @@ public class AddDocumentSixthPage extends Page {
     @FindBy(className = "fa-envelope")
     public WebElement buttonSendAgreement;
 
+
+
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
+    public WebElement buttonGoToTheNextMonthInCalendar;
+
+    //@FindBy(className = "col-xs-6")
+    @FindBy(xpath = ".//*[@id='agreement-table']/tbody/tr/td[3]/input")
+    public WebElement fieldAgreementDelay;
+
+    @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
+    public WebElement cellFirstDayOfTheNextWeekInCalendar;
+
     @FindBy(className = "loader_wrapper")
     public WebElement loader;
 
@@ -81,6 +93,22 @@ public class AddDocumentSixthPage extends Page {
             default:
                 throw new NoSuchFieldException();
         }
+    }
+
+    public void setAgreementDelay(String howManyDays) throws InterruptedException {
+        Thread.sleep(1000);
+        typeHere(fieldAgreementDelay, howManyDays);
+    }
+
+    public void setBestBefore() throws InterruptedException {
+        fieldCalendarForFile.click();
+        Thread.sleep(500);
+        buttonGoToTheNextMonthInCalendar.click();
+        Thread.sleep(500);
+        buttonGoToTheNextMonthInCalendar.click();
+        Thread.sleep(500);
+        cellFirstDayOfTheNextWeekInCalendar.click();
+
     }
 
     public void setTypeOfAgreement(String whatType) throws InterruptedException, NoSuchFieldException {

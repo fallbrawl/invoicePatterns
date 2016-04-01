@@ -51,7 +51,7 @@ public class DynamicPayments extends Page {
     public void openPayWindow() throws InterruptedException {
         System.out.println(target);
         driver.navigate().refresh();
-        WebElement cells = driver.findElement(By.xpath("//td/a[text()=\"" + target + "\"]/../../td[8]/a[2]"));
+        WebElement cells = driver.findElement(By.xpath("//td/a[text()='" + target + "']/../../td[9]/a[2]"));
         System.out.println("Element: " + cells.getText());
         cells.click();
         Thread.sleep(1000);

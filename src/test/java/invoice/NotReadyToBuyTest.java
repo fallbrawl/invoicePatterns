@@ -111,6 +111,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
         firstPage.enterNames();
 
         secondPage = firstPage.toTheNextStep();
+        secondPage.waitForLoad();
         secondPage.uploadFile();
         secondPage.agreement("Save");
         secondPage.waitForLoad();

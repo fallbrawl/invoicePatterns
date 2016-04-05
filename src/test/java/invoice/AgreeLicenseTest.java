@@ -73,7 +73,7 @@ public class AgreeLicenseTest extends BasicTestCase {
 //        dynamicPayments.setValuesPayWindow();
 //        dynamicPayments.uploadFile();
 //        dynamicPayments.confirmPayment();
-//        dynamicPayments.waitForLoad(); //если убрать отсрочку, то понадобится
+//        dynamicPayments.waitForLoad(); //если убрать отсрочку, то понадобится этот блок
 //        dynamicPayments.initPage();
 //        UtilStore.goBack(getWebDriver());
 //        dynamicPayments.waitForLoad();
@@ -145,9 +145,9 @@ public class AgreeLicenseTest extends BasicTestCase {
         seventhPage.waitForLoad();
         seventhPage.initPage();       // eighthPage = seventhPage.confirmDeliveryForm();
         //seventhPage.saveAndDelivery();
-        seventhPage.confirmPayment();
+        //seventhPage.confirmPayment();
 
-        eighthPage = seventhPage.confirmDeliveryForm();
+        //eighthPage = seventhPage.confirmDeliveryForm();
         eighthPage.waitForLoad();
         eighthPage.uploadAct();
         eighthPage.setCalendar3FirstDay();
@@ -164,6 +164,7 @@ public class AgreeLicenseTest extends BasicTestCase {
         ninethPage.initPage();
         ninethPage.checkDocs("Act");
         ninethPage.initPage();
+        ninethPage.logout();
 
     }
 }

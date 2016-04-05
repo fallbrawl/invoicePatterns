@@ -22,11 +22,11 @@ public class SellersTest extends BasicTestCase {
     private MainPage mainPage;
 
 
-    @Test(enabled = false)
+    @Test
     public void sellersTest() throws InterruptedException {
 
-        //loginPage.open();
-        //mainPage = loginPage.loginAs(admin);
+        loginPage.open();
+        mainPage = loginPage.loginAs(admin);
 
         sellersPage.open();
         sellersPage.addNewSeller();
@@ -52,6 +52,7 @@ public class SellersTest extends BasicTestCase {
         sellersPage.deleteSeller();
         sellersPage.initPage();
         Assert.assertTrue(sellersPage.isUserSuccessfullyDeleted());
+        sellersPage.logout();
 
 
 

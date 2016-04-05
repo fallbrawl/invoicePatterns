@@ -21,7 +21,7 @@ public class AddDocumentFifthPage extends Page {
     WebElement buttonAcceptFormPurchase;
 
     public void enterProviderName() {
-        typeHere(fieldProviderName, "Provider " + UtilStore.addDateForProduct());
+        typeHere(fieldProviderName, "Provider " + UtilStore.addExtendedDate());
     }
 
     public AddDocumentFifthPage(WebDriver driver) {

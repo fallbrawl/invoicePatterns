@@ -31,11 +31,11 @@ public class StoresTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test(enabled = false)
+    @Test
     public void storesTest() throws InterruptedException {
 
-        //loginPage.open();
-        //mainPage = loginPage.loginAs(admin);
+        loginPage.open();
+        mainPage = loginPage.loginAs(admin);
 
         warehousePage.open();
         editWarehousePage = warehousePage.addNewStore();
@@ -62,6 +62,7 @@ public class StoresTest extends BasicTestCase {
         warehousePage.deleteStore();
 
         Assert.assertTrue(warehousePage.isStorePresentAfterDeletion());
+        warehousePage.logout();
     }
 
 }

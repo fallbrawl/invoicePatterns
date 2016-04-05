@@ -111,7 +111,7 @@ public class AddDocumentThirdPage extends Page {
 
         typeHere(fieldProductName, UtilStore.nameProduct);
         System.out.println("nameproduct " + UtilStore.nameProduct);
-        typeHere(fieldProductCode, "607" + UtilStore.addDateForProduct());
+        typeHere(fieldProductCode, "607" + UtilStore.addExtendedDate());
 
         Thread.sleep(500);
         buttonAddCategory.click();

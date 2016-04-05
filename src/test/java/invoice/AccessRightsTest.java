@@ -31,7 +31,7 @@ public class AccessRightsTest extends BasicTestCase {
     private UserTypePage userTypePage  = PageFactory.initElements(getWebDriver(), UserTypePage.class);
     private MainPage mainPage;
 
-    @Test(enabled = false)
+    @Test
     public void accessRightsTest() throws InterruptedException {
 
         loginPage.open();
@@ -51,6 +51,8 @@ public class AccessRightsTest extends BasicTestCase {
         profilePage.selectClient();
         profilePage.saveProfile();
         UtilStore.goBack(getWebDriver());
+        profilePage.logout();
+
 
        // driver.close();
 

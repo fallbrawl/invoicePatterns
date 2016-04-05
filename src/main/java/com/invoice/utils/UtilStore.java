@@ -1,11 +1,8 @@
 package com.invoice.utils;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.FindBy;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,18 +14,20 @@ import static com.jayway.restassured.RestAssured.given;
  * Created by paul on 01.02.16.
  */
 public class UtilStore {
-    public static String nameProduct = ("product " + UtilStore.addDateForProduct());
-    public static String sellerName = ("seller " + UtilStore.addDateForEmail());
+    public static String nameProduct = ("product " + UtilStore.addExtendedDate());
+    public static String sellerName = ("seller " + UtilStore.addSimpleDate());
+    public static String expenseTypeName = ("expenseType" + UtilStore.addSimpleDate());
     public static String buyingNumber;
-    public static String userEmail = ("email" + UtilStore.addDateForEmail());
-    public static String nameOfDocument1 = "documentcreated1 " + addDateForProduct();
-    public static String nameOfDocument2 = "documentcreated2 " + addDateForProduct();
+    public static String userEmail = ("email" + UtilStore.addSimpleDate());
+    public static String nameOfDocument1 = "documentcreated1 " + addExtendedDate();
+    public static String nameOfDocument2 = "documentcreated2 " + addExtendedDate();
     public static ArrayList<String> arrayOfNamesSellersAndManagers = new ArrayList<String>();
-    public static ArrayList<WebElement> arrayForSmth = new ArrayList<>();
 
-    public static String getSellerName(){
-        return sellerName;
-    }
+    @FindBy(linkText = "Выйти")
+    public static WebElement linkExit;
+
+    @FindBy(className = "account-dropdown")
+    public static WebElement panelAccount;
 
     public static boolean checkHttpResponseCode(String url) {
         com.jayway.restassured.response.Response response =
@@ -46,7 +45,7 @@ public class UtilStore {
         }
     }
 
-    public static String addDateForProduct() {
+    public static String addExtendedDate() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/ddHH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
@@ -54,7 +53,15 @@ public class UtilStore {
         return dateAndTimeAttachment;
     }
 
-    public static String addDateForEmail() {
+    public static void logout() throws InterruptedException {
+        Thread.sleep(1000);
+        panelAccount.click();
+        Thread.sleep(500);
+        linkExit.click();
+    }
+
+
+    public static String addSimpleDate() {
         DateFormat dateFormat = new SimpleDateFormat("HHmmss");
         //get current date time with Date()
         Date date = new Date();

@@ -44,7 +44,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test(enabled = false)
+    @Test
     public void notReadyToBuy() throws NoSuchFieldException, InterruptedException {
 
         loginPage.open();
@@ -147,6 +147,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
         mainPage.open();
         mainPage.initPage();
         Assert.assertTrue(driver.findElements(By.linkText(createPurchaseSecondPage.documentName)).size() == 1);
+        mainPage.logout();
 
     }
 }

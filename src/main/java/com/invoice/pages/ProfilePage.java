@@ -66,7 +66,7 @@ public class ProfilePage extends Page {
     }
 
     public void saveProfile() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonSaveProfile.click();
 
     }
@@ -89,7 +89,7 @@ public class ProfilePage extends Page {
         dropdownSelectClients.click();
         Thread.sleep(500);
         for (WebElement a : arrayOfDropdownElementsStores) {
-            if (a.getText().equals("Покупатель админ")) {
+            if (a.getText().contains("Покупатель")) {
                 a.click();
                 break;
             }

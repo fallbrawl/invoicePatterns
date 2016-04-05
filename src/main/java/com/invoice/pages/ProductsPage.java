@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ProductsPage extends Page {
 
-    @FindBy(className = "btn-primary")
+    @FindBy(className = "btn-warning")
     WebElement buttonAddNewProduct;
 
     @FindBy(name = "name_product")
@@ -77,7 +77,7 @@ public class ProductsPage extends Page {
         Thread.sleep(1000);
         buttonAddCategory.click();
         Thread.sleep(1000);
-        typeHere(fieldEnterNewCategoryName, "dfjgdk" + UtilStore.addDateForEmail());
+        typeHere(fieldEnterNewCategoryName, "dfjgdk" + UtilStore.addSimpleDate());
         Thread.sleep(1000);
         buttonOk.click();
         Thread.sleep(1000);
@@ -86,7 +86,7 @@ public class ProductsPage extends Page {
 
         System.out.println("nameproduct " + UtilStore.nameProduct);
 
-        typeHere(fieldProductCode, "607" + UtilStore.addDateForProduct());
+        typeHere(fieldProductCode, "607" + UtilStore.addExtendedDate());
 
         Thread.sleep(500);
 

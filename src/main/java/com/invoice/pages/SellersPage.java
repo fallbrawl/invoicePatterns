@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class SellersPage extends Page {
 
-    @FindBy(className = "btn-primary")
+    @FindBy(className = "btn-warning")
     WebElement buttonAddSeller;
 
     @FindBy(id = "name_user_info")

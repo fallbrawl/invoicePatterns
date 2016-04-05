@@ -10,6 +10,9 @@ public abstract class Page {
 
     protected WebDriver driver;
 
+    @FindBy(id = "modal_success")
+    public WebElement buttonOk;
+
     @FindBy(className = "copyright")
     WebElement fieldCopyrightForInit;
 
@@ -28,14 +31,22 @@ public abstract class Page {
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/header/div[3]/ul/li[2]/ul/li[3]/a")
     public WebElement linkProfile;
 
+    @FindBy(id = "submit_form_button_login")
+    public WebElement buttonEnter;
+
     public Page(WebDriver driver) {
         this.driver = driver;
     }
 
     public void logout() throws InterruptedException {
+        Thread.sleep(1000);
         panelAccount.click();
         Thread.sleep(500);
         linkExit.click();
+        Thread.sleep(1000);
+        if (buttonEnter.getText().equals("Войти")) {
+            System.out.println("Successfully logged out of: " + this.getClass().getSimpleName());
+        }
     }
 
     protected void typeHere(WebElement elementToTypeIn, String whatToType) {
@@ -74,19 +85,12 @@ public abstract class Page {
     }
 
     public void waitForLoad() throws InterruptedException {
-//        if (loader.isDisplayed()) {
-//            Thread.sleep(3500);
-//        }
+
         if (loaderArray.size() > 0) {
             Thread.sleep(3500);
         }
     }
 
-//    public void waitForLoadExperimental() throws InterruptedException {
-//        if (loaderArray.size() > 0) {
-//            Thread.sleep(3500);
-//        }
-//    }
 
     public void submit(WebElement elementToSubmit) {
         elementToSubmit.click();

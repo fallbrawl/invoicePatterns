@@ -36,11 +36,11 @@ public class MoveDocumentTest extends BasicTestCase {
 
     private MainPage mainPage;
 
-    @Test
+    @Test(enabled = false)
     public void moveDocument() throws InterruptedException, NoSuchFieldException {
 
-//        loginPage.open();
-//        mainPage = loginPage.loginAs(admin);
+        loginPage.open();
+        mainPage = loginPage.loginAs(admin);
 
         createPurchaseFirstPage.open();
         createPurchaseFirstPage.enterNames();
@@ -130,6 +130,7 @@ public class MoveDocumentTest extends BasicTestCase {
         movementPage = pitchPage.moveFromStore();
         movementPage.save();
         movementPage.enter();
+        movementPage.logout();
 
 
 

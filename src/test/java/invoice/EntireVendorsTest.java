@@ -21,12 +21,12 @@ public class EntireVendorsTest extends BasicTestCase {
 
     private MainPage mainPage;
 
-    @Test(enabled = false)
+    @Test
 
     public void entireVendorsTest() throws InterruptedException {
 
-        //loginPage.open();
-        //mainPage = loginPage.loginAs(admin);
+        loginPage.open();
+        mainPage = loginPage.loginAs(admin);
 
         addVendorPage.open();
         addVendorPage.enterVendorName();
@@ -64,6 +64,7 @@ public class EntireVendorsTest extends BasicTestCase {
 
         specificVendorPage.deleteUser();
         Assert.assertTrue(listVendorPage.isVendorDeleted());
+        specificVendorPage.logout();
 
     }
 

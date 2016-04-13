@@ -44,9 +44,13 @@ public class ArticlesTest extends BasicTestCase {
         expensesTypePage.changeNameOfExpenseType();
         expensesTypePage.save();
         expensesTypePage.toTheLastPage();
+
         Assert.assertTrue(expensesTypePage.isNameChanged());
+
         expensesTypePage.deleteCreatedExpenseType();
+
         Assert.assertTrue(expensesTypePage.isTypeDeleted());
+
         expensesTypePage.addExpenseType();
         expensesTypePage.fillFieldsOfNewExpenseType();
         expensesTypePage.save();
@@ -57,7 +61,9 @@ public class ArticlesTest extends BasicTestCase {
         expensesPage.save();
         expensesPage.toTheLastPage();
         expensesPage.deleteExpense();
+
         Assert.assertTrue(expensesPage.isExpenseDeleted());
+
 
     }
 

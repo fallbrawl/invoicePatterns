@@ -25,7 +25,6 @@ public class MeasuresTest extends BasicTestCase {
         settingsPage.editMeasures();
 
         measurePage.addMeasure();
-        //measurePage.checkHowManyPages();
         measurePage.enterNameMeasure();
         measurePage.saveMeasure();
 
@@ -42,6 +41,12 @@ public class MeasuresTest extends BasicTestCase {
 
         settingsPage.open();
         Assert.assertTrue(settingsPage.isMeasureHided());
+
+        measurePage.open();
+        measurePage.checkHowManyPages();
+        measurePage.deleteCreatedMeasure();
+        Assert.assertTrue(measurePage.isMeasureDeleted());
+
 
 
     }

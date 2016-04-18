@@ -16,7 +16,8 @@ import java.util.List;
 public class MeasurePage extends Page {
 
     private String measureName = "measure" + UtilStore.addSimpleDate();
-    private String editedMesureName = measureName + "1";
+    private String editedMeasureName = measureName + "1";
+
 
     @FindBy(className = "btn-warning")
     WebElement buttonAddNewMeasure;
@@ -43,7 +44,7 @@ public class MeasurePage extends Page {
     }
 
     public String getEditedMeasureName() {
-        return editedMesureName;
+        return editedMeasureName;
     }
 
     @Override
@@ -52,14 +53,6 @@ public class MeasurePage extends Page {
     }
 
     public void addMeasure() throws InterruptedException {
-//        List<WebElement> wow = driver.findElements(By.xpath("//td[position() = 1]/div[normalize-space(.)='measure111119']"));
-//        //WebElement wow1 = driver.findElement(By.xpath(".//td[position() = 1]/div[contains(@class, 'td_text') and text()='measure111119']"));
-//        //       System.out.println(wow.getText());
-//        for (WebElement a : wow) {
-//            System.out.println(a.getText());
-//        }
-
-        //System.out.println(driver.findElement(By.xpath("//td[1]/div[text() = ' measure111119 ']")).getText());
         Thread.sleep(500);
         buttonAddNewMeasure.click();
     }
@@ -82,12 +75,13 @@ public class MeasurePage extends Page {
         driver.findElement(By.xpath("//td[position() = 1]/div[normalize-space(.)='" + measureName + "']/../../td[3]/div/a[1]")).click();
 
         Thread.sleep(500);
-        typeHere(fieldEnterMeasureName, editedMesureName);
+        typeHere(fieldEnterMeasureName, editedMeasureName);
 
     }
 
     public void checkHowManyPages() throws InterruptedException {
         System.out.println(arrayNumberOfItemsOnPage.size());
+
         if (arrayNumberOfItemsOnPage.size() == 10) {
             Thread.sleep(500);
             System.out.println(driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div[2]/div/ul/li[last() - 1]")).getText());
@@ -103,9 +97,27 @@ public class MeasurePage extends Page {
     public boolean isMeasureEdited() throws InterruptedException {
         Thread.sleep(500);
 
-        if (driver.getPageSource().contains(editedMesureName)) {
+        if (driver.getPageSource().contains(editedMeasureName)) {
             return true;
         } else return false;
+    }
 
+    public void deleteCreatedMeasure() throws InterruptedException {
+        Thread.sleep(500);
+
+        System.out.println(measureName);
+        driver.findElement(By.xpath("//td[position() = 1]/div[normalize-space(.)='" + editedMeasureName + "']/../../td[3]/div/a[2]")).click();
+
+        Thread.sleep(500);
+
+        buttonOk.click();
+    }
+
+    public boolean isMeasureDeleted() throws InterruptedException {
+        Thread.sleep(1000);
+        if (driver.getPageSource().contains(editedMeasureName)) {
+            return false;
+        } else
+            return true;
     }
 }

@@ -44,10 +44,10 @@ public class AddDocumentSecondPage extends Page {
     @FindBy(className = "select2-focused")
     WebElement fieldForSearchTypeOfAgreement;
 
-    @FindBy(className = "icon_save_big")
+    @FindBy(css = ".fa.fa-floppy-o.fa-color-info_big")
     public WebElement buttonSaveAgreement;
 
-    @FindBy(className = "icon_in_big")
+    @FindBy(css = ".fa.fa-sign-in.fa-color-success")
     public WebElement buttonUseAgreement;
 
     @FindBy(className = "fa-envelope")

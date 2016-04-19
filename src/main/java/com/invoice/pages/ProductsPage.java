@@ -69,8 +69,8 @@ public class ProductsPage extends Page {
             }
         }
 
-        typeHere(fieldRecommendedProductPrice, "2");
-        typeHere(fieldPriceProduct, "40");
+        typeHere(fieldRecommendedProductPrice, "100");
+        typeHere(fieldPriceProduct, "75");
 
         Thread.sleep(1000);
         WebElement buttonAddCategory = arrayAddItemButtons.get(0);

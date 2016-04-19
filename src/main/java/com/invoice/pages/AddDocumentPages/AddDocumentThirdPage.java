@@ -80,8 +80,9 @@ public class AddDocumentThirdPage extends Page {
 
     public void enterExistingNameOfProduct() throws InterruptedException {
         fieldForName.click();
-        //System.out.println("nameproduct " + UtilStore.nameProduct);
         typeHere(fieldForName, UtilStore.nameProduct);
+        Thread.sleep(500);
+        typeHere(fieldNumberOfItems, "5");
     }
 
     public void setOfferService() throws InterruptedException {
@@ -97,7 +98,7 @@ public class AddDocumentThirdPage extends Page {
     }
 
     public void setNumberOfItems(){
-        typeHere(fieldNumberOfItems, "1");
+        typeHere(fieldNumberOfItems, "5");
     }
 
     public void save() throws InterruptedException {
@@ -112,6 +113,7 @@ public class AddDocumentThirdPage extends Page {
         typeHere(fieldProductName, UtilStore.nameProduct);
         System.out.println("nameproduct " + UtilStore.nameProduct);
         typeHere(fieldProductCode, "607" + UtilStore.addExtendedDate());
+        typeHere(fieldNumberOfItems, "5");
 
         Thread.sleep(500);
         buttonAddCategory.click();

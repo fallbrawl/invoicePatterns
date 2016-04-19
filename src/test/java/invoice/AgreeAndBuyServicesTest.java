@@ -118,7 +118,7 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         eighthPage.waitForLoad();
         eighthPage.setCalendar2FirstDay();
         eighthPage.uploadAct();
-        eighthPage.setNumber2();
+        eighthPage.setNumber4();
         eighthPage.setCalendar3FirstDay();
         eighthPage.setNumber3();
         eighthPage.uploadInvoice();

@@ -30,7 +30,7 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test(enabled = false)
+    @Test
 
     public void checkDocumentTest() throws NoSuchFieldException, InterruptedException {
 
@@ -120,9 +120,9 @@ public class CheckDocumentsFullStepsTest extends BasicTestCase {
         eighthPage.waitForLoad();
         eighthPage.setCalendar1NextMonthFirstDay();
         eighthPage.uploadNaklad();
-        eighthPage.setNumber2();
+        eighthPage.setNumber4();
         eighthPage.setCalendar2NextMonthFirstDay();
-        eighthPage.setNumber1();
+        eighthPage.setNumber2();
         eighthPage.uploadInvoice();
 
         ninethPage = eighthPage.acceptOrder();

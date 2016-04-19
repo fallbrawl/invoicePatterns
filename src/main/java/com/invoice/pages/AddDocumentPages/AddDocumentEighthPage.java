@@ -15,13 +15,13 @@ public class AddDocumentEighthPage extends Page {
     WebElement linkAcceptOrder;
 
     @FindBy(name = "number[2]")
-    WebElement fieldNumber1;
+    WebElement fieldNumber2;
 
     @FindBy(name = "number[3]")
     WebElement fieldNumber3;
 
     @FindBy(name = "number[4]")
-    WebElement fieldNumber2;
+    WebElement fieldNumber4;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
     WebElement getCellCalendarDateFirstDayOfTHeSecondWeekOnTheNextMonth;
@@ -36,13 +36,13 @@ public class AddDocumentEighthPage extends Page {
     public WebElement fieldUploadInvoice;
 
     @FindBy(name = "receive_date[2]")
-    WebElement fieldCalendar1;
+    WebElement fieldCalendar2;
 
     @FindBy(name = "receive_date[3]")
     WebElement fieldCalendar3;
 
     @FindBy(name = "receive_date[4]")
-    WebElement fieldCalendar2;
+    WebElement fieldCalendar4;
 
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr/td/a[1]")
     WebElement cellCalendarDateToday;
@@ -109,7 +109,7 @@ public class AddDocumentEighthPage extends Page {
 
     public void setCalendar1NextMonthFirstDay() throws InterruptedException {
         Thread.sleep(1000);
-        fieldCalendar1.click();
+        fieldCalendar2.click();
         buttonGoToTheNextMonthInCalendar.click();
 
         cellCalendarDateToday.click();
@@ -126,37 +126,43 @@ public class AddDocumentEighthPage extends Page {
     public void setCalendar3FirstDay() throws InterruptedException {
         Thread.sleep(1000);
         fieldCalendar3.click();
-
         cellCalendarDateToday.click();
     }
 
-    public void setNumber1() {
-        typeHere(fieldNumber1, "wwww");
+    public void setNumber2() {
+        typeHere(fieldNumber2, "wwww");
     }
 
     public void setNumber3() {
         typeHere(fieldNumber3, "wwww");
     }
 
+
+
     public void setCalendar2NextMonthFirstDay() throws InterruptedException {
 
         Thread.sleep(1000);
-        fieldCalendar2.click();
+        fieldCalendar4.click();
         buttonGoToTheNextMonthInCalendar.click();
-
         cellCalendarDateToday.click();
     }
 
     public void setCalendar2FirstDay() throws InterruptedException {
 
         Thread.sleep(1000);
-        fieldCalendar2.click();
-
+        fieldCalendar4.click();
         cellCalendarDateToday.click();
     }
 
-    public void setNumber2() {
-        typeHere(fieldNumber2, "wwww");
+    public void setCalendar2_2FirstDay() throws InterruptedException {
+
+        Thread.sleep(1000);
+        fieldCalendar2.click();
+        cellCalendarDateToday.click();
+    }
+
+    public void setNumber4() {
+        typeHere(fieldNumber4, "wwww");
     }
 
     public AddDocumentNinethPage acceptOrder() throws InterruptedException {

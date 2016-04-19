@@ -91,6 +91,11 @@ public abstract class Page {
         }
     }
 
+    public void confirmPayment() throws InterruptedException {
+        Thread.sleep(500);
+        buttonOk.click();
+    }
+
 
     public void submit(WebElement elementToSubmit) {
         elementToSubmit.click();

@@ -45,6 +45,12 @@ public class AddDocumentNinethPage extends Page {
     @FindBy(linkText = "Акт")
     WebElement linkAct;
 
+    @FindBy(id = "partly_shipment")
+    WebElement buttonPartialShipment;
+
+    @FindBy(className = "table-header")
+    WebElement fieldTable;
+
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[4]/div[1]/ul/li[4]/a/span")
     WebElement step4;
 
@@ -59,6 +65,7 @@ public class AddDocumentNinethPage extends Page {
         Thread.sleep(500);
         buttonOk.click();
     }
+
 
     public void fullShipment() throws InterruptedException {
 
@@ -192,4 +199,25 @@ public class AddDocumentNinethPage extends Page {
 
     }
 
+    public void partialShipment() throws InterruptedException {
+
+        Thread.sleep(500);
+        buttonPartialShipment.click();
+
+        Thread.sleep(500);
+        fieldCalendarNaklad.click();
+        Thread.sleep(500);
+        cellCalendarDateToday.click();
+
+
+        Thread.sleep(500);
+        fieldCalendarBill.click();
+        Thread.sleep(500);
+        cellCalendarDateToday.click();
+
+        fieldTable.click();
+        Thread.sleep(500);
+
+        buttonOk.click();
+    }
 }

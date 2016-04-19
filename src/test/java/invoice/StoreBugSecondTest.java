@@ -167,9 +167,9 @@ public class StoreBugSecondTest extends BasicTestCase {
         eighthPage.waitForLoad();
         eighthPage.setCalendar1NextMonthFirstDay();
         eighthPage.uploadNaklad();
-        eighthPage.setNumber2();
+        eighthPage.setNumber4();
         eighthPage.setCalendar2NextMonthFirstDay();
-        eighthPage.setNumber1();
+        eighthPage.setNumber2();
         eighthPage.uploadInvoice();
 
         ninethPage = eighthPage.acceptOrder();

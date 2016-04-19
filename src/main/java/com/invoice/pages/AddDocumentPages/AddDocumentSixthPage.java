@@ -18,10 +18,10 @@ public class AddDocumentSixthPage extends Page {
     @FindBy(name = "file")
     public WebElement formForFile;
 
-    @FindBy(className = "icon_save_big")
+    @FindBy(css = ".fa.fa-floppy-o.fa-color-info_big")
     public WebElement buttonSaveAgreement;
 
-    @FindBy(className = "icon_in_big")
+    @FindBy(css = ".fa.fa-sign-in.fa-color-success")
     public WebElement buttonUseAgreement;
 
     @FindBy(className = "fa-envelope")
@@ -58,7 +58,8 @@ public class AddDocumentSixthPage extends Page {
     WebElement fieldForSearchTypeOfAgreement;
 
 
-    public void uploadFile() {
+    public void uploadFile() throws InterruptedException {
+        Thread.sleep(500);
         String osVersion = System.getProperty("os.name");
         System.out.println(osVersion);
 

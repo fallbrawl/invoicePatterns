@@ -1,6 +1,7 @@
 package com.invoice.pages.AddDocumentPages;
 
 import com.invoice.pages.Page;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,6 +51,9 @@ public class AddDocumentNinethPage extends Page {
 
     @FindBy(className = "table-header")
     WebElement fieldTable;
+
+    @FindBy(className = "document_pitch_partial_input")
+    WebElement fieldHowMuchToPartialShip;
 
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[4]/div[1]/ul/li[4]/a/span")
     WebElement step4;
@@ -199,10 +203,19 @@ public class AddDocumentNinethPage extends Page {
 
     }
 
-    public void partialShipment() throws InterruptedException {
-
+    public void partialShipment(String howMuchItemsToShip) throws InterruptedException {
         Thread.sleep(500);
         buttonPartialShipment.click();
+
+        if (!howMuchItemsToShip.equals("1")) {
+            Thread.sleep(500);
+            typeHere(fieldHowMuchToPartialShip, Keys.BACK_SPACE);
+            typeHere(fieldHowMuchToPartialShip, Keys.ARROW_LEFT);
+            typeHere(fieldHowMuchToPartialShip, Keys.DELETE);
+            Thread.sleep(500);
+            typeHere(fieldHowMuchToPartialShip, howMuchItemsToShip);
+        }
+
 
         Thread.sleep(500);
         fieldCalendarNaklad.click();

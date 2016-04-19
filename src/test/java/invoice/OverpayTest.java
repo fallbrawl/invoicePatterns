@@ -15,7 +15,6 @@ public class OverpayTest extends BasicTestCase {
 
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
     private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
-    private DynamicPayments dynamicPayments = PageFactory.initElements(getWebDriver(), DynamicPayments.class);
     private AddDocumentNinethPage ninethPage = PageFactory.initElements(getWebDriver(), AddDocumentNinethPage.class);
     private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
     private AddDocumentFifthPage fifthPage = PageFactory.initElements(getWebDriver(), AddDocumentFifthPage.class);
@@ -23,7 +22,6 @@ public class OverpayTest extends BasicTestCase {
     private AddDocumentSeventhPage seventhPage = PageFactory.initElements(getWebDriver(), AddDocumentSeventhPage.class);
     private AddDocumentEighthPage eighthPage = PageFactory.initElements(getWebDriver(), AddDocumentEighthPage.class);
     private ProductsPage productsPage = PageFactory.initElements(getWebDriver(), ProductsPage.class);
-
     private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
 
     private MainPage mainPage;
@@ -84,6 +82,7 @@ public class OverpayTest extends BasicTestCase {
         fifthPage.enterProviderName();
         fifthPage.initPurchase();
         fifthPage.waitForLoad();
+        fifthPage.waitForLoad();
 
         sixthPage = fifthPage.formPurchase();
 
@@ -125,15 +124,13 @@ public class OverpayTest extends BasicTestCase {
         UtilStore.goBack(getWebDriver());
 
         ninethPage = eighthPage.acceptOrder();
-        ninethPage.partialShipment();
+        ninethPage.partialShipment("1");
 
         sellersPage.open();
         sellersPage.openBalance();
 
         sellersPage.makeAPay();
-
         sellersPage.payForItems("200");
-        sellersPage.uploadFile();
         sellersPage.confirmPayment();
 
         sellersPage.makeAReturn();
@@ -147,12 +144,10 @@ public class OverpayTest extends BasicTestCase {
         UtilStore.goBack(getWebDriver());
         UtilStore.goBack(getWebDriver());
 
-        ninethPage.partialShipment();
+        ninethPage.partialShipment("4");
 
         sellersPage.open();
         sellersPage.openBalance();
-
-
 
     }
 }

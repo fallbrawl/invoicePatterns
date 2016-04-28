@@ -39,11 +39,11 @@ public abstract class Page {
     }
 
     public void logout() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         panelAccount.click();
         Thread.sleep(500);
         linkExit.click();
-        Thread.sleep(1000);
+        Thread.sleep(500);
         if (buttonEnter.getText().equals("Войти")) {
             System.out.println("Successfully logged out of: " + this.getClass().getSimpleName());
         }

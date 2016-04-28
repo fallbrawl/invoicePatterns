@@ -28,7 +28,10 @@ public class OverpayTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
+    //[14:59:37] Юлия: https://goo.gl/TVq49v
+
     @Test
+
     public void overpayTest() throws InterruptedException, NoSuchFieldException {
 
         loginPage.open();

@@ -23,6 +23,7 @@ public class LoginPage extends Page {
         typeHere(fieldEmailLogin, admin.email);
         typeHere(fieldPasswordLogin, admin.password);
         buttonEnterLogin.submit();
+        Thread.sleep(500);
         return PageFactory.initElements(driver, MainPage.class);
     }
 

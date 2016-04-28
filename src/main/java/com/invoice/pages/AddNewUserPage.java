@@ -1,17 +1,21 @@
 package com.invoice.pages;
 
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class AddNewUserPage extends Page {
 
     private String newUserEmail;
     private String newUserPassword = "attract";
     private String newUserName = "attract";
+
 
     @FindBy(id = "email")
     WebElement fieldNewUserEmail;
@@ -34,20 +38,29 @@ public class AddNewUserPage extends Page {
     @FindBy(xpath = ".//*[@id='form-add_edit_user']/div[7]/div/a")
     WebElement buttonCreateNewUser;
 
-    @FindAll(@FindBy(className = "select2-result-label"))
-    java.util.List<WebElement> arrayOfDropdownElements;
+    @FindBy(className = "check_label")
+    WebElement checkboxSetEgoiste;
+
 
     public AddNewUserPage(WebDriver driver) {
         super(driver);
     }
+
+
 
     @Override
     public void open() {
 
     }
 
-    public void fillNewUserForm() throws InterruptedException {
-        newUserEmail = UtilStore.userEmail + "@mail.ru";
+    public void setNewUserEmail(String numberOfUser){
+        newUserEmail = UtilStore.userEmail + numberOfUser + "@mail.ru";
+    }
+
+    public void fillNewUserForm(String whatRole) throws InterruptedException {
+//
+//        newUserEmail = UtilStore.userEmail + numberOfUser + "@mail.ru";
+
         Thread.sleep(500);
         typeHere(fieldNewUserEmail, newUserEmail);
         Thread.sleep(500);
@@ -55,12 +68,21 @@ public class AddNewUserPage extends Page {
         Thread.sleep(500);
         typeHere(fieldNewUserConfirmPassword, newUserPassword);
         Thread.sleep(500);
-        typeHere(fieldNewUserName, newUserName);
-        Thread.sleep(500);
         dropdownNewUserRole.click();
+        Thread.sleep(1000);
+
+        List<WebElement> arrayOfDropdownElements = driver.findElements(By.className("select2-result-label"));
+
+        for (WebElement a : arrayOfDropdownElements) {
+            if (a.getText().equals(whatRole)) {
+                Thread.sleep(500);
+                a.click();
+                break;
+            }
+        }
+
         Thread.sleep(500);
-        arrayOfDropdownElements.get(3).click();
-        Thread.sleep(500);
+        typeHere(fieldNewUserName, newUserName);
 
     }
 
@@ -80,4 +102,8 @@ public class AddNewUserPage extends Page {
     }
 
 
+    public void checkEgoiste() throws InterruptedException {
+        Thread.sleep(500);
+        checkboxSetEgoiste.click();
+    }
 }

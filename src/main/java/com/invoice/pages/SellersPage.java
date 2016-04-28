@@ -229,7 +229,7 @@ public class SellersPage extends Page {
     }
 
     public void uploadFile() throws InterruptedException {
-        Thread.sleep(1500);
+        Thread.sleep(1000);
         String osVersion = System.getProperty("os.name");
         System.out.println(osVersion);
 
@@ -252,7 +252,7 @@ public class SellersPage extends Page {
     }
 
     public void payForItems(String howMuch) throws InterruptedException {
-
+        Thread.sleep(500);
         typeHere(fieldSetSumOfPayment, howMuch);
         Thread.sleep(500);
         typeHere(fieldNumberOfPaymentDocument,"43534");

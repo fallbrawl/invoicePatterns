@@ -41,6 +41,9 @@ public class ProductsPage extends Page {
     @FindBy(id = "select2-chosen-4")
     WebElement dropdownTypeOfAgreement;
 
+    @FindBy(className = "fa-tree")
+    WebElement buttonProductsTree;
+
 
     @FindAll(@FindBy(className = "select2-result-selectable"))
     List<WebElement> dropdownArrayOfTypesAgreements;
@@ -102,5 +105,10 @@ public class ProductsPage extends Page {
     @Override
     public void open() {
         driver.get(ConfigProperties.getProperty("products.url"));
+    }
+
+    public void openProductsTree() throws InterruptedException {
+        Thread.sleep(500);
+        buttonProductsTree.click();
     }
 }

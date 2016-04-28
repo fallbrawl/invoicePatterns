@@ -28,7 +28,7 @@ public class AccessRightsTest extends BasicTestCase {
     private AddNewUserPage addNewUserPage = PageFactory.initElements(getWebDriver(), AddNewUserPage.class);
     private UsersPage usersPage = PageFactory.initElements(getWebDriver(), UsersPage.class);
     private ProfilePage profilePage = PageFactory.initElements(getWebDriver(), ProfilePage.class);
-    private UserTypePage userTypePage  = PageFactory.initElements(getWebDriver(), UserTypePage.class);
+    private UserTypePage userTypePage = PageFactory.initElements(getWebDriver(), UserTypePage.class);
     private MainPage mainPage;
 
     @Test
@@ -40,7 +40,8 @@ public class AccessRightsTest extends BasicTestCase {
         usersPage.open();
         addNewUserPage = usersPage.addNewUser();
 
-        addNewUserPage.fillNewUserForm();
+        addNewUserPage.setNewUserEmail("first");
+        addNewUserPage.fillNewUserForm("Менеджер по продажам");
         usersPage = addNewUserPage.saveNewUser();
 
         Assert.assertTrue(usersPage.textNewUserEmail.getText().contains(UtilStore.userEmail + "@mail.ru")); //Проверка на то что новый пользователь создан
@@ -54,7 +55,7 @@ public class AccessRightsTest extends BasicTestCase {
         profilePage.logout();
 
 
-       // driver.close();
+        // driver.close();
 
 
     }

@@ -18,12 +18,18 @@ public class MainPage extends Page {
         driver.get(ConfigProperties.getProperty("mainpage.url"));
     }
 
-
-
     public boolean isLoggedIn() {
         if (driver.getTitle().equals("Заказы на продажу"))
             return true;
         else
             return false;
+    }
+
+    public boolean isNullDocuments() {
+        if (driver.getPageSource().contains("Ничего не найдено!")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

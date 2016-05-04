@@ -1,12 +1,8 @@
 package invoice;
 
 import com.invoice.pages.*;
-import com.invoice.pages.AddDocumentPages.AddDocumentFirstPage;
-import com.invoice.pages.AddDocumentPages.AddDocumentFourthPage;
-import com.invoice.pages.AddDocumentPages.AddDocumentSecondPage;
-import com.invoice.pages.AddDocumentPages.AddDocumentThirdPage;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.*;
+import org.testng.Assert;
 
 /**
  * Created by paul on 27.04.16.
@@ -19,17 +15,13 @@ import org.testng.annotations.*;
 public class CategoriesTest extends BasicTestCase {
 
     private LoginPage loginPage = PageFactory.initElements(getWebDriver(), LoginPage.class);
-    private AddNewUserPage addNewUserPage = PageFactory.initElements(getWebDriver(), AddNewUserPage.class);
-    private UsersPage usersPage = PageFactory.initElements(getWebDriver(), UsersPage.class);
-    private ProfilePage profilePage = PageFactory.initElements(getWebDriver(), ProfilePage.class);
-    private AddDocumentFirstPage firstPage = PageFactory.initElements(getWebDriver(), AddDocumentFirstPage.class);
     private ProductsPage productsPage = PageFactory.initElements(getWebDriver(), ProductsPage.class);
+
     private CategoriesPage categoriesPage = PageFactory.initElements(getWebDriver(), CategoriesPage.class);
-    private AddDocumentFourthPage fourthPage = PageFactory.initElements(getWebDriver(), AddDocumentFourthPage.class);
+    private EditCategoriesPage editCategoriesPage = PageFactory.initElements(getWebDriver(), EditCategoriesPage.class);
 
     private MainPage mainPage;
-    private AddDocumentSecondPage secondPage;
-    private AddDocumentThirdPage thirdPage;
+
 
     @org.testng.annotations.Test
 
@@ -43,18 +35,41 @@ public class CategoriesTest extends BasicTestCase {
 
         //Добавляю родительскую категорию
 
-//        categoriesPage.addCategory();
-//        categoriesPage.enterNameOfCategory("Parent");
-//        categoriesPage.saveCategory();
-//
-//        //Добавляю подкатегорию
-//
-//        categoriesPage.addCategory();
-//        categoriesPage.enterNameOfCategory("Sub");
-//        categoriesPage.setMutualCategory();
-//        categoriesPage.saveCategory();
+        editCategoriesPage.addCategory();
+        editCategoriesPage.enterNameOfCategory("Parent");
+        editCategoriesPage.saveCategory();
 
-        categoriesPage.expandCreatedCategories();
+        //Добавляю подкатегорию
+
+        editCategoriesPage.addCategory();
+        editCategoriesPage.enterNameOfCategory("Sub");
+
+        editCategoriesPage.setMutualCategory();
+        editCategoriesPage.saveCategory();
+
+        categoriesPage.expandCreatedParentCategory(1);
+        categoriesPage.enterNameOfCategoryInTree("SubSub");
+
+        categoriesPage.expandCreatedSubCategories();
+        categoriesPage.createSubSubCategory();
+        categoriesPage.enterNameOfCategoryInTree("SubSubSub");
+
+        //Удаляю
+
+        categoriesPage.expandCreatedSubSubCategories();
+        categoriesPage.deleteSubSubCategory();
+        Assert.assertTrue(!categoriesPage.isSubCategoriesNotDeleted());
+
+        //Редактирую
+
+        categoriesPage.editSubCategoryName();
+        categoriesPage.enterNameOfCategoryInTree("SubEdited");
+        Assert.assertTrue(categoriesPage.isCategoryEdited());
+
+        //Удаляю всё
+
+        categoriesPage.deleteParentCategory();
+
 
     }
 }

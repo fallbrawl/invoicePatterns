@@ -93,7 +93,7 @@ public abstract class Page {
     }
 
     public void confirmPayment() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonOk.click();
     }
 

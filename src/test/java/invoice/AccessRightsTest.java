@@ -2,6 +2,7 @@ package invoice;
 
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -31,7 +32,8 @@ public class AccessRightsTest extends BasicTestCase {
     private UserTypePage userTypePage = PageFactory.initElements(getWebDriver(), UserTypePage.class);
     private MainPage mainPage;
 
-    @Test
+    @Test(priority = 99)
+
     public void accessRightsTest() throws InterruptedException {
 
         loginPage.open();
@@ -43,8 +45,12 @@ public class AccessRightsTest extends BasicTestCase {
         addNewUserPage.setNewUserEmail("first");
         addNewUserPage.fillNewUserForm("Менеджер по продажам");
         usersPage = addNewUserPage.saveNewUser();
+        UtilStore.goBack(getWebDriver());
+        UtilStore.reload(getWebDriver());
+        usersPage.initPage();
 
-        Assert.assertTrue(usersPage.textNewUserEmail.getText().contains(UtilStore.userEmail + "@mail.ru")); //Проверка на то что новый пользователь создан
+        System.out.println(addNewUserPage.getNewUserEmail());
+        Assert.assertTrue(usersPage.textNewUserEmail.getText().contains(addNewUserPage.getNewUserEmail())); //Проверка на то что новый пользователь создан
         usersPage.logout();
 
         loginPage.loginAs(addNewUserPage.getNewUserEmail(), addNewUserPage.getNewUserPassword()); //Логин под свежесозданным пользователем

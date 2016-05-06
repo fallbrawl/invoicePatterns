@@ -41,8 +41,8 @@ public class WarehouseStandalonePage extends Page {
 
     public void goToStores() throws InterruptedException {
         Thread.sleep(1000);
-        System.out.println(linkStores.get(1).getText());
-        linkStores.get(1).click();
+        System.out.println(linkStores.get(0).getText());
+        linkStores.get(0).click();
     }
 
     public WarehouseStandalonePage(WebDriver driver) {

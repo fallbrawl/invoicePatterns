@@ -7,6 +7,7 @@ package invoice;
 import com.invoice.pages.*;
 import com.invoice.pages.AddDocumentPages.*;
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
@@ -30,7 +31,7 @@ public class OverpayTest extends BasicTestCase {
 
     //[14:59:37] Юлия: https://goo.gl/TVq49v
 
-    @Test
+    @Test(priority = 2)
 
     public void overpayTest() throws InterruptedException, NoSuchFieldException {
 
@@ -132,7 +133,7 @@ public class OverpayTest extends BasicTestCase {
         sellersPage.open();
         sellersPage.openBalance();
 
-        sellersPage.makeAPay();
+        sellersPage.attachAPay();
         sellersPage.payForItems("200");
         sellersPage.confirmPayment();
 
@@ -140,7 +141,7 @@ public class OverpayTest extends BasicTestCase {
         sellersPage.payForItems("100");
         sellersPage.confirmPayment();
 
-        sellersPage.makeAPay();
+        sellersPage.attachAPay();
         sellersPage.payForItems("400");
         sellersPage.confirmPayment();
 
@@ -151,6 +152,8 @@ public class OverpayTest extends BasicTestCase {
 
         sellersPage.open();
         sellersPage.openBalance();
+
+        sellersPage.logout();
 
     }
 }

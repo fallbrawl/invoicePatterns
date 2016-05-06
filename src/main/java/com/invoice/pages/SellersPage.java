@@ -56,6 +56,9 @@ public class SellersPage extends Page {
     @FindBy(linkText = "Оплатить")
     WebElement linkOpenSpecificPayments;
 
+    @FindBy(linkText = "Привязать платеж")
+    WebElement linkAttachSpecificPayments;
+
     @FindBy(name = "sum_payment")
     WebElement fieldSetSumOfPayment;
 
@@ -71,7 +74,7 @@ public class SellersPage extends Page {
     @FindBy(name = "file")
     WebElement formForFile;
 
-    @FindBy(linkText = "Возврат")
+    @FindBy(linkText = "Возврат средств")
     WebElement buttonOpenSpecificReturn;
 
     public SellersPage(WebDriver driver) {
@@ -206,14 +209,16 @@ public class SellersPage extends Page {
     }
 
     public void deleteSeller() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonDelete.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonOk.click();
+        Thread.sleep(1000);
     }
 
     public boolean isUserSuccessfullyDeleted() throws InterruptedException {
         Thread.sleep(1000);
+        System.out.println("NameDOc "+UtilStore.nameOfDocument1);
         if (driver.getPageSource().contains(UtilStore.nameOfDocument1)) {
             return false;
         } else {
@@ -271,4 +276,9 @@ public class SellersPage extends Page {
     }
 
 
+    public void attachAPay() throws InterruptedException {
+        Thread.sleep(500);
+        linkAttachSpecificPayments.click();
+        Thread.sleep(500);
+    }
 }

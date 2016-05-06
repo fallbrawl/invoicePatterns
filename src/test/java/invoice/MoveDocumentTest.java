@@ -130,6 +130,7 @@ public class MoveDocumentTest extends BasicTestCase {
         movementPage = pitchPage.moveFromStore();
         movementPage.save();
         movementPage.enter();
+
         movementPage.logout();
 
 

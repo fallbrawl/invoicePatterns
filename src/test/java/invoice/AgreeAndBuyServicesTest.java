@@ -29,7 +29,8 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test
+    @Test(priority = 5)
+
     public void agreeAndBuyService() throws NoSuchFieldException, InterruptedException {
 
         loginPage.open();
@@ -132,9 +133,8 @@ public class AgreeAndBuyServicesTest extends BasicTestCase {
         ninethPage.waitForLoad();
         ninethPage.checkDocs("Bill");
         ninethPage.initPage();
-        ninethPage.checkDocs("Act");
-        ninethPage.initPage();
         ninethPage.checkDocs("BillFacture");
+        ninethPage.initPage();
         ninethPage.logout();
 
     }

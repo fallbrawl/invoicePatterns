@@ -2,6 +2,7 @@ package invoice;
 
 import com.invoice.pages.*;
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,12 +18,12 @@ public class SellersTest extends BasicTestCase {
     private AddNewUserPage addNewUserPage = PageFactory.initElements(getWebDriver(), AddNewUserPage.class);
     private UsersPage usersPage = PageFactory.initElements(getWebDriver(), UsersPage.class);
     private ProfilePage profilePage = PageFactory.initElements(getWebDriver(), ProfilePage.class);
-    private UserTypePage userTypePage  = PageFactory.initElements(getWebDriver(), UserTypePage.class);
-    private SellersPage sellersPage  = PageFactory.initElements(getWebDriver(), SellersPage.class);
+    private UserTypePage userTypePage = PageFactory.initElements(getWebDriver(), UserTypePage.class);
+    private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
     private MainPage mainPage;
 
+    @Test(priority = 1)
 
-    @Test
     public void sellersTest() throws InterruptedException {
 
         loginPage.open();
@@ -52,8 +53,8 @@ public class SellersTest extends BasicTestCase {
         sellersPage.deleteSeller();
         sellersPage.initPage();
         Assert.assertTrue(sellersPage.isUserSuccessfullyDeleted());
+        //driver.quit();
         sellersPage.logout();
-
 
 
     }

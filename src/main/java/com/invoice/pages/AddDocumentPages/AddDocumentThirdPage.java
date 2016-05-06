@@ -81,7 +81,7 @@ public class AddDocumentThirdPage extends Page {
     public void enterExistingNameOfProduct() throws InterruptedException {
         fieldForName.click();
         typeHere(fieldForName, UtilStore.nameProduct);
-        Thread.sleep(500);
+        Thread.sleep(750);
         typeHere(fieldNumberOfItems, "5");
     }
 
@@ -93,7 +93,7 @@ public class AddDocumentThirdPage extends Page {
     public void addProduct() throws InterruptedException {
         Thread.sleep(2000);
         buttonPlus.click();
-        Thread.sleep(500);
+        Thread.sleep(750);
 
     }
 
@@ -102,10 +102,11 @@ public class AddDocumentThirdPage extends Page {
     }
 
     public void save() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         UtilStore.reload(driver);
+        Thread.sleep(1000);
         buttonSave.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
     }
 
     public void fillProductForm() throws InterruptedException {
@@ -115,13 +116,13 @@ public class AddDocumentThirdPage extends Page {
         typeHere(fieldProductCode, "607" + UtilStore.addExtendedDate());
         typeHere(fieldNumberOfItems, "5");
 
-        Thread.sleep(500);
+        Thread.sleep(750);
         buttonAddCategory.click();
-        Thread.sleep(500);
+        Thread.sleep(750);
         typeHere(fieldEnterNewCategoryName, "dfjgdk");
-        Thread.sleep(500);
+        Thread.sleep(750);
         buttonAcceptNewCategoryName.click();
-        Thread.sleep(500);
+        Thread.sleep(750);
 
         typeHere(fieldRecommendedProductPrice, "2");
         typeHere(fieldProductPrice, "40");

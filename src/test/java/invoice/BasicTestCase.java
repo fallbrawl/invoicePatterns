@@ -33,6 +33,20 @@ public class BasicTestCase {
     private int counterForScreenshot = 0;
 
 
+    @BeforeMethod
+
+    protected void testName() {
+        System.out.println("Test name is: " + this.getClass().getSimpleName());
+    }
+
+    public void setUp() {
+//        driver.manage().window().maximize();
+
+
+    }
+
+
+    @BeforeClass
     protected WebDriver getWebDriver() {
         if (driver == null) {
 
@@ -59,23 +73,17 @@ public class BasicTestCase {
 
             //driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp_wait")), TimeUnit.SECONDS);
+
         }
         return driver;
     }
 
-    @BeforeMethod
 
-    protected void testName() {
-        System.out.println("Test name is: " + this.getClass().getSimpleName());
-    }
 
-    public void setUp() {
-//        driver.manage().window().maximize();
-    }
 
     @AfterClass
-    public void shutDown(){
-
+    public void shutDown() {
+        //driver = null;
 
     }
 
@@ -104,5 +112,17 @@ public class BasicTestCase {
         }
     }
 
-
+//    @AfterClass
+//
+//    public void smth(){
+//        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+//        System.out.println("TABSTABSTABSTABSTABSTABSTABS SIZE " + tabs2.size());
+//
+//        if (tabs2.size() > 1) {
+//
+//            driver.switchTo().window(tabs2.get(0));
+//            driver.close();
+//            driver.switchTo().window(tabs2.get(1));
+//        }
+//    }
 }

@@ -3,6 +3,7 @@ package invoice;
 import com.invoice.pages.*;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.*;
 
 /**
  * Created by paul on 27.04.16.
@@ -23,7 +24,7 @@ public class CategoriesTest extends BasicTestCase {
     private MainPage mainPage;
 
 
-    @org.testng.annotations.Test
+    @org.testng.annotations.Test(priority = 7)
 
     public void categoriesTest() throws InterruptedException {
 
@@ -69,6 +70,7 @@ public class CategoriesTest extends BasicTestCase {
         //Удаляю всё
 
         categoriesPage.deleteParentCategory();
+        categoriesPage.logout();
 
 
     }

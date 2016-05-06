@@ -3,6 +3,7 @@ package invoice;
 import com.invoice.pages.*;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.*;
 
 /**
  * Created by paul on 14.04.16.
@@ -14,7 +15,7 @@ public class MeasuresTest extends BasicTestCase {
     private MeasurePage measurePage = PageFactory.initElements(getWebDriver(), MeasurePage.class);
     private MainPage mainPage;
 
-    @org.testng.annotations.Test
+    @org.testng.annotations.Test(priority = 11)
 
     public void measuresTest() throws InterruptedException {
 
@@ -46,7 +47,7 @@ public class MeasuresTest extends BasicTestCase {
         measurePage.checkHowManyPages();
         measurePage.deleteCreatedMeasure();
         Assert.assertTrue(measurePage.isMeasureDeleted());
-
+        measurePage.logout();
 
 
     }

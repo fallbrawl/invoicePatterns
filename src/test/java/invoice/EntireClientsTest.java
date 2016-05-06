@@ -19,9 +19,10 @@ public class EntireClientsTest extends BasicTestCase {
 //    Ну и проверки, что все это делается.
 //    http://screencast.com/t/kOmnFGCooIh
 
-    @Test
+    @Test(priority = 9)
 
     public void clientsEntireTest() throws InterruptedException {
+
         loginPage.open();
         mainPage = loginPage.loginAs(admin);
 

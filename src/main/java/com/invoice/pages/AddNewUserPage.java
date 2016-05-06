@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Random;
 
 public class AddNewUserPage extends Page {
 
@@ -41,12 +42,9 @@ public class AddNewUserPage extends Page {
     @FindBy(className = "check_label")
     WebElement checkboxSetEgoiste;
 
-
     public AddNewUserPage(WebDriver driver) {
         super(driver);
     }
-
-
 
     @Override
     public void open() {
@@ -54,12 +52,14 @@ public class AddNewUserPage extends Page {
     }
 
     public void setNewUserEmail(String numberOfUser){
+
+        Random rn = new Random();
+        int randomForEmail = rn.nextInt(65536);
+
         newUserEmail = UtilStore.userEmail + numberOfUser + "@mail.ru";
     }
 
     public void fillNewUserForm(String whatRole) throws InterruptedException {
-//
-//        newUserEmail = UtilStore.userEmail + numberOfUser + "@mail.ru";
 
         Thread.sleep(500);
         typeHere(fieldNewUserEmail, newUserEmail);

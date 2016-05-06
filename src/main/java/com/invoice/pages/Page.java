@@ -47,6 +47,7 @@ public abstract class Page {
         if (buttonEnter.getText().equals("Войти")) {
             System.out.println("Successfully logged out of: " + this.getClass().getSimpleName());
         }
+        Thread.sleep(500);
     }
 
     protected void typeHere(WebElement elementToTypeIn, String whatToType) {

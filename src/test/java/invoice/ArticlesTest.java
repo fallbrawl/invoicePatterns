@@ -28,7 +28,7 @@ public class ArticlesTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @Test
+    @Test(priority=6)
 
     public void articlesTest() throws InterruptedException {
 
@@ -64,6 +64,7 @@ public class ArticlesTest extends BasicTestCase {
 
         Assert.assertTrue(expensesPage.isExpenseDeleted());
 
+        expensesPage.logout();
 
     }
 

@@ -28,6 +28,7 @@ public class AddClientPage extends Page {
     }
 
     public AddClientPage(WebDriver driver) {
+
         super(driver);
     }
 

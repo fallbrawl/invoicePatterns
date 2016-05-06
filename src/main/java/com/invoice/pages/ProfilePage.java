@@ -89,7 +89,7 @@ public class ProfilePage extends Page {
         dropdownSelectClients.click();
         Thread.sleep(500);
         for (WebElement a : arrayOfDropdownElementsStores) {
-            if (a.getText().contains("Покупатель")) {
+            if (a.getText().contains("Админ")) {
                 a.click();
                 break;
             }

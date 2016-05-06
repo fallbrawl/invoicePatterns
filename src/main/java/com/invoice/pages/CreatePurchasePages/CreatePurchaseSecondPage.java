@@ -37,7 +37,7 @@ public class CreatePurchaseSecondPage extends Page {
     @FindBy (name = "date_to_file")
     public WebElement fieldCalendarForFile;
 
-    @FindBy(className = "icon_save_big")
+    @FindBy(className = "fa-color-info_big")
     public WebElement buttonSaveAgreement;
 
     @FindBy(className = "fa-envelope")
@@ -46,7 +46,7 @@ public class CreatePurchaseSecondPage extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
     public WebElement cellFirstDayOfTheNextWeekInCalendar;
 
-    @FindBy(className = "icon_in_big")
+    @FindBy(className = "fa-sign-in")
     public WebElement buttonUseAgreement;
 
     @FindBy(className = "loader_wrapper")

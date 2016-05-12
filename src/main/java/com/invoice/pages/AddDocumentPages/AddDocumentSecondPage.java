@@ -1,6 +1,7 @@
 package com.invoice.pages.AddDocumentPages;
 
 import com.invoice.pages.Page;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -89,27 +90,51 @@ public class AddDocumentSecondPage extends Page {
         Thread.sleep(500);
         dropdownSetTypeOfAgreement.click();
         Thread.sleep(500);
-        fieldForSearchTypeOfAgreement.click();
-        Thread.sleep(500);
+//        fieldForSearchTypeOfAgreement.click();
+//        Thread.sleep(500);
+
+        List<WebElement> typesOfDocuments;
 
         switch (whatType) {
 
             case "Услуги":
-                typeHere(fieldForSearchTypeOfAgreement, "Услуги");
+
+                typesOfDocuments = driver.findElements(By.className("select2-result-label"));
+                System.out.println("USLUGI:");
+                for (WebElement a : typesOfDocuments) {
+                    if (a.getText().equals("Услуги")) {
+                        Thread.sleep(500);
+                        a.click();
+                        break;
+                    }
+                }
                 break;
+
             case "Товарный":
-                typeHere(fieldForSearchTypeOfAgreement, "Товарный");
+                typesOfDocuments = driver.findElements(By.className("select2-result-label"));
+                for (WebElement a : typesOfDocuments) {
+                    if (a.getText().equals("Товарный")) {
+                        Thread.sleep(500);
+                        a.click();
+                        break;
+                    }
+                }
                 break;
+
             case "Лицензионный":
-                typeHere(fieldForSearchTypeOfAgreement, "Лицензионный");
+                typesOfDocuments = driver.findElements(By.className("select2-result-label"));
+                for (WebElement a : typesOfDocuments) {
+                    if (a.getText().equals("Лицензионный")) {
+                        Thread.sleep(500);
+                        a.click();
+                        break;
+                    }
+                }
                 break;
 
             default:
                 throw new NoSuchFieldException();
         }
-        Thread.sleep(500);
-        typeHere(fieldForSearchTypeOfAgreement, Keys.ENTER);
-
     }
 
     public void uploadFile() throws InterruptedException {

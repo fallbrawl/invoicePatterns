@@ -87,9 +87,10 @@ public class ProfilePage extends Page {
     public void selectClient() throws InterruptedException {
         Thread.sleep(500);
         dropdownSelectClients.click();
+
         Thread.sleep(500);
         for (WebElement a : arrayOfDropdownElementsStores) {
-            if (a.getText().contains("Админ")) {
+            if (a.getText().contains("documentcreated")) {
                 a.click();
                 break;
             }

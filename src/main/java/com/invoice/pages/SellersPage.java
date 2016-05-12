@@ -38,7 +38,7 @@ public class SellersPage extends Page {
     @FindBy(id = "pay_account")
     WebElement fieldPayAccount;
 
-    @FindBy(id = "credit_limit")
+    @FindBy(name = "credit_limit")
     WebElement fieldCreditLimit;
 
     @FindAll(@FindBy(className = "select2-result-label"))

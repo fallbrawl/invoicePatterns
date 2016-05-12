@@ -1,6 +1,7 @@
 package invoice;
 
 import com.invoice.data.UserData;
+import com.invoice.pages.MainPage;
 import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
 import org.apache.commons.io.FileUtils;
@@ -26,6 +27,7 @@ public class BasicTestCase {
 
     protected static WebDriver driver;
 
+    private MainPage mainPage;
     public UserData admin = new UserData("pavel.a@attractgroup.com", "attract");
     public UserData manager_buyer = new UserData("pavel.a.manager.buyer@attractgroup.com", "attract");
     public UserData manager_seller = new UserData("pavel.a.manager_sales@attractgroup.com", "attract");
@@ -89,8 +91,12 @@ public class BasicTestCase {
 
     @AfterMethod
 
-    public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
+    public void takeScreenShotOnFailure(ITestResult testResult) throws IOException, InterruptedException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
+
+            mainPage.initPage();
+            mainPage.logout();
+
             System.out.println(testResult.getStatus());
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 

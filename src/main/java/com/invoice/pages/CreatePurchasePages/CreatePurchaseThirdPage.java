@@ -168,14 +168,11 @@ public class CreatePurchaseThirdPage extends Page {
         typeHere(fieldProductPrice, "40");
         Thread.sleep(500);
         WebElement wow = driver.findElement(By.id("modal_success"));
+
         Thread.sleep(500);
         wow.click();
         Thread.sleep(500);
-        wow.click();
-        Thread.sleep(500);
-        wow.click();
-        Thread.sleep(500);
-        wow.click();
+
     }
 
     public void saveAndInitiate() throws InterruptedException {

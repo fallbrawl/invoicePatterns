@@ -88,6 +88,7 @@ public class NotReadyToBuyTest extends BasicTestCase {
         createPurchaseThirdPage.payTransit();
         createPurchaseThirdPage.waitForLoad();
 
+        purchasePage.open();
         purchasePage.initiateDeliveryToTheStore();
         purchasePage.openOrder();
         purchasePage.setCalendar1();

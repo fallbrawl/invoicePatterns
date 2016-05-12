@@ -94,8 +94,7 @@ public class BasicTestCase {
     public void takeScreenShotOnFailure(ITestResult testResult) throws IOException, InterruptedException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
 
-            mainPage.initPage();
-            mainPage.logout();
+
 
             System.out.println(testResult.getStatus());
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

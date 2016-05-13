@@ -53,7 +53,7 @@ public class AddDocumentEighthPage extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
     public WebElement buttonGoToTheNextMonthInCalendar;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div[1]/div[3]/section/div[2]/div[9]/div[1]/div/a[1]")
+    @FindBy(id = "save_documents_and_accept_purchase")
     WebElement buttonSaveDocumentsAndAcceptTransfer;
 
 

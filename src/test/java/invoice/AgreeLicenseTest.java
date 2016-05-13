@@ -143,7 +143,8 @@ public class AgreeLicenseTest extends BasicTestCase {
 //        seventhPage.uploadFile2();
 //        seventhPage.confirmPayment();
         seventhPage.waitForLoad();
-        seventhPage.initPage();       // eighthPage = seventhPage.confirmDeliveryForm();
+        seventhPage.initPage();
+        // eighthPage = seventhPage.confirmDeliveryForm();
         //seventhPage.saveAndDelivery();
         //seventhPage.confirmPayment();
 

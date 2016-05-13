@@ -204,7 +204,7 @@ public class AddDocumentNinethPage extends Page {
     }
 
     public void partialShipment(String howMuchItemsToShip) throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         buttonPartialShipment.click();
 
         if (!howMuchItemsToShip.equals("1")) {

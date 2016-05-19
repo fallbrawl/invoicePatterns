@@ -18,7 +18,7 @@ public class ListVendorPage extends Page {
 
     public void openTransit() throws InterruptedException {
 
-        WebElement accountLink = driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[1]/td[1]/div/a[text()=" + "\'vendor " + productNameForXpath + "\'" + "]/../../../td[2]/div/a"));
+        WebElement accountLink = driver.findElement(By.xpath("//a[text()=" + "\'vendor " + productNameForXpath + "\'" + "]/../../../td[2]/div/a"));
         System.out.println(accountLink.getText());
         accountLink.click();
         Thread.sleep(1000);
@@ -27,7 +27,7 @@ public class ListVendorPage extends Page {
 
     public void openReturns() throws InterruptedException {
 
-        WebElement returnLink = driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[1]/td[1]/div/a[text()=" + "\'vendor " + productNameForXpath + "\'" + "]/../../../td[5]/div/a"));
+        WebElement returnLink = driver.findElement(By.xpath("//a[text()=" + "\'vendor " + productNameForXpath + "\'" + "]/../../../td[5]/div/a"));
         System.out.println(returnLink.getText());
         returnLink.click();
         Thread.sleep(1000);

@@ -16,22 +16,22 @@ import java.util.List;
  */
 public class WarehousePage extends Page {
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/form/a")
+    @FindBy(className = "btn-warning")
     WebElement buttonAddNewStore;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[2]/div/ul/li[last()-1]/a")
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[2]/div/div[3]/section/div[2]/div[3]/div[2]/div/ul/li[last()-1]/a")
     WebElement buttonLastPage;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[3]/div/a[1]")
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[2]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[3]/div/a[1]")
     WebElement linkEditNewStore;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[2]/div/a")
+    @FindBy(xpath = "//*[@id='body-wrapper']/div[2]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[2]/div/a")
     public WebElement linkNewStore;
 
     @FindAll(@FindBy(className = "link_divider"))
     List<WebElement> linkArrayEditStores;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[3]/div/a[2]")
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[2]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[last()]/td[3]/div/a[2]")
     WebElement linkDeleteStore;
 
     @FindBy(className = "btn-success")

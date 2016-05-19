@@ -20,10 +20,11 @@ public class EditWarehousePage extends Page {
     @FindBy(name = "name_warehouse")
     public WebElement fieldNameWarehouse;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[2]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
     public WebElement textNameOfStore;
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[1]/a")
+    @FindBy(linkText = "Склады")
+    //@FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[1]/a")
     public  WebElement linkStores;
 
     @FindAll(@FindBy(className = "select2-choices"))

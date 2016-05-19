@@ -4,6 +4,7 @@ import com.invoice.utils.UtilStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -41,7 +42,10 @@ public class CategoriesPage extends Page {
 
         Thread.sleep(750);
 
+      //  new Actions(driver).moveToElement(driver.findElement(By.xpath("//div[span = '" + nameCategory + "Parent" + "']/a"))).perform();
+
         driver.findElement(By.xpath("//div[span = '" + nameCategory + "Parent" + "']/a")).click();
+
         Thread.sleep(750);
 
         driver.findElement(By.xpath("//div[span = '" + nameCategory + "Parent" + "']/a/../../ul/li/div/span[3]")).click();

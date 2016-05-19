@@ -15,7 +15,7 @@ public class EditCategoriesPage extends Page {
 
     private String nameCategory = "category" + UtilStore.addSimpleDate();
 
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/form/a")
+    @FindBy(id = "add_new_category")
     WebElement buttonAddCategory;
 
     @FindBy(id = "name_category")

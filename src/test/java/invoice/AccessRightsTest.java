@@ -50,7 +50,8 @@ public class AccessRightsTest extends BasicTestCase {
         usersPage.initPage();
 
         System.out.println(addNewUserPage.getNewUserEmail());
-        Assert.assertTrue(usersPage.textNewUserEmail.getText().contains(addNewUserPage.getNewUserEmail())); //Проверка на то что новый пользователь создан
+        Assert.assertTrue(driver.getPageSource().contains(addNewUserPage.getNewUserEmail())); //Проверка на то что новый пользователь создан
+        //Assert.assertTrue(usersPage.textNewUserEmail.getText().contains(addNewUserPage.getNewUserEmail())); //Проверка на то что новый пользователь создан
         usersPage.logout();
 
         loginPage.loginAs(addNewUserPage.getNewUserEmail(), addNewUserPage.getNewUserPassword()); //Логин под свежесозданным пользователем

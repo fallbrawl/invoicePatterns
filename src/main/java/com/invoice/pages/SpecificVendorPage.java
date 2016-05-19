@@ -4,8 +4,11 @@ import com.invoice.utils.UtilStore;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 /**
  * Created by paul on 12.03.16.
@@ -13,9 +16,9 @@ import org.openqa.selenium.support.PageFactory;
 public class SpecificVendorPage extends Page {
 
     private boolean isDocumentDeleted;
-
-    @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
-    WebElement textForAssert;
+    @FindAll(@FindBy(className = "active"))
+    //@FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
+            List<WebElement> textForAssert;
 
     @FindBy(linkText = "Изменить данные")
     WebElement buttonChangeData;
@@ -29,10 +32,10 @@ public class SpecificVendorPage extends Page {
     @FindBy(name = "file")
     WebElement formUploadDocumentForVendor;
 
-    @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[4]/div/div/div[2]/div[3]/form[2]/div/a")
+    @FindBy(className = "fa-color-info_big")
     WebElement buttonSaveNewDocument;
 
-    @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[1]/div/div[3]/section/div[2]/div[1]/div[1]/a[1]")
+    @FindBy(className = "btn-primary")
     WebElement buttonDocuments;
 
     @FindBy(className = "modal")
@@ -74,8 +77,8 @@ public class SpecificVendorPage extends Page {
 
     public boolean ensureThatOpenedRightVendor() {
         System.out.println("Редактирование поставщика " + "\"" + "vendor " + UtilStore.nameProduct + "\"");
-        System.out.println(textForAssert.getText());
-        if (textForAssert.getText().equals("Редактирование поставщика " + "\"" + "vendor " + UtilStore.nameProduct + "\"")) {
+        System.out.println("Assert is: " + textForAssert.get(1).getText());
+        if (textForAssert.get(1).getText().equals("Редактирование поставщика " + "\"" + "vendor " + UtilStore.nameProduct + "\"")) {
             return true;
         } else return false;
     }
@@ -142,7 +145,7 @@ public class SpecificVendorPage extends Page {
 
     public void deleteDocument() throws InterruptedException {
 //        Thread.sleep(4000);
-  //      System.out.println(driver.getPageSource());
+        //      System.out.println(driver.getPageSource());
         Thread.sleep(1000);
         buttonDeleteDocument.click();
         Thread.sleep(1000);

@@ -1,6 +1,7 @@
 package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
+import groovy.transform.Undefined;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,8 +16,8 @@ import java.util.List;
 public class UsersPage extends Page {
 
     AddNewUserPage addNewUserPage = new AddNewUserPage(driver);
-
-    @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/form/a[1]")
+    @FindBy(className = "btn-warning")
+    //@FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[1]/form/a[1]")
     WebElement buttonAddNewUser;
 
     @FindBy(xpath = ".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[3]/div[1]/div[1]/table/tbody/tr[1]/td[2]/div")

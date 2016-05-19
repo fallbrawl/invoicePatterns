@@ -14,7 +14,7 @@ public class SpecificClientPage extends Page {
 
     private boolean isDocumentDeleted;
 
-    @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[1]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
+    @FindBy(xpath = ".//*[@id='body-wrapper']/div[2]/div/div[3]/section/div[2]/div[1]/ol/li[2]")
     WebElement textForAssert;
 
     @FindBy(linkText = "Изменить данные")
@@ -29,10 +29,13 @@ public class SpecificClientPage extends Page {
     @FindBy(name = "file")
     WebElement formUploadDocumentForClient;
 
-    @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[4]/div/div/div[2]/div[3]/form[2]/div/a")
+
+    @FindBy(className = "fa-color-info_big")
+    //@FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[4]/div/div/div[2]/div[3]/form[2]/div/a")
     WebElement buttonSaveNewDocument;
 
-    @FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[1]/div/div[3]/section/div[2]/div[1]/div[1]/a[1]")
+    @FindBy(className = "btn-primary")
+    //@FindBy(xpath = "//*[@id=\"body-wrapper\"]/div[1]/div/div[3]/section/div[2]/div[1]/div[1]/a[1]")
     WebElement buttonDocuments;
 
     @FindBy(className = "modal")

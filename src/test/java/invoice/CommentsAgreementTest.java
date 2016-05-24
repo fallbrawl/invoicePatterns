@@ -37,7 +37,7 @@ public class CommentsAgreementTest extends BasicTestCase {
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @org.testng.annotations.Test
+    @org.testng.annotations.Test(enabled = false)
     public void commentsAgreementTest() throws InterruptedException, NoSuchFieldException {
 
         loginPage.open();

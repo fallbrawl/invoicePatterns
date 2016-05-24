@@ -166,7 +166,7 @@ public class AddDocumentEighthPage extends Page {
     }
 
     public AddDocumentNinethPage acceptOrder() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         buttonSaveDocumentsAndAcceptTransfer.click();
         return PageFactory.initElements(driver, AddDocumentNinethPage.class);
     }

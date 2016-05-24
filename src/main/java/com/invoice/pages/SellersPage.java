@@ -279,7 +279,7 @@ public class SellersPage extends Page {
 
 
     public void attachAPay() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         linkAttachSpecificPayments.click();
         Thread.sleep(1000);
     }

@@ -192,7 +192,7 @@ public class AddDocumentSecondPage extends Page {
 
     public AddDocumentThirdPage toTheNextStep() throws InterruptedException {
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         allElementsInList.get(2).click();
         return PageFactory.initElements(driver, AddDocumentThirdPage.class);
     }

@@ -74,8 +74,8 @@ public class ExpensesTypePage extends Page {
         System.out.println("size " + arrayForPageSwitch.size());
         if (arrayForPageSwitch.size() == 10) {
             Thread.sleep(500);
-            System.out.println(driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div[2]/div/ul/li[last() - 1]")).getText());
-            driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div[2]/div/ul/li[last() - 1]")).click();
+            //System.out.println(driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[1]/div/div[3]/section/div[2]/div[2]/div[2]/div/ul/li[last() - 1]")).getText());
+            driver.findElement(By.xpath(".//*[@id='body-wrapper']/div[2]/div/div[3]/section/div[2]/div[2]/div[2]/div/ul/li[last() - 1]")).click();
         }
     }
 

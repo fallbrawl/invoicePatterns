@@ -24,7 +24,7 @@ public class AddDocumentThirdPage extends Page {
     @FindBy(id = "product-count")
     WebElement fieldNumberOfItems;
 
-    @FindBy(xpath = ".//*[@id='buttons_div']/a[1]")
+    @FindBy(id = "save_this_document")
     WebElement buttonSave;
 
     @FindBy(id = "save_and_purchase")

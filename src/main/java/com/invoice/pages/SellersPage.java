@@ -194,14 +194,16 @@ public class SellersPage extends Page {
 
     }
 
-    public boolean isBalanceOpened() {
+    public boolean isBalanceOpened() throws InterruptedException {
+        Thread.sleep(1000);
         if (driver.getPageSource().contains("Баланс моего юридического лица")) {
             return true;
         } else
             return false;
     }
 
-    public boolean isReturnsOpened() {
+    public boolean isReturnsOpened() throws InterruptedException {
+        Thread.sleep(1000);
         if (driver.getPageSource().contains("Возврат средств моему юридическому лицу")) {
             return true;
         } else

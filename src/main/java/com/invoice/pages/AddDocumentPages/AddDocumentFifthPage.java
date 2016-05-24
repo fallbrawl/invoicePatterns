@@ -20,7 +20,8 @@ public class AddDocumentFifthPage extends Page {
     @FindBy(className = "btn-success")
     WebElement buttonAcceptFormPurchase;
 
-    public void enterProviderName() {
+    public void enterProviderName() throws InterruptedException {
+        Thread.sleep(1000);
         typeHere(fieldProviderName, "Provider " + UtilStore.addExtendedDate());
     }
 

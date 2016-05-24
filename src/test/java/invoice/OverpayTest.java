@@ -124,8 +124,14 @@ public class OverpayTest extends BasicTestCase {
         sellersPage.switchToBuy();
 
         UtilStore.goBack(getWebDriver());
+        mainPage.initPage();
+        System.out.print("first sequence");
         UtilStore.goBack(getWebDriver());
+        mainPage.initPage();
+        System.out.print("first sequence");
         UtilStore.goBack(getWebDriver());
+        mainPage.initPage();
+        System.out.print("first sequence");
 
         ninethPage = eighthPage.acceptOrder();
         ninethPage.partialShipment("1");

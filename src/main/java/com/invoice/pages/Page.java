@@ -120,5 +120,8 @@ public abstract class Page {
     }
 
 
-
+    public void clickOk() throws InterruptedException {
+        Thread.sleep(500);
+        buttonOk.click();
+    }
 }

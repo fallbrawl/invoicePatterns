@@ -91,7 +91,7 @@ public class CreatePurchaseFourthPage extends Page {
         cellNeededDate.click();
     }
 
-    public void setNumber1(){
+    public void setNumber1() throws InterruptedException {
         typeHere(fieldNumber1,"wwww");
     }
 
@@ -102,7 +102,7 @@ public class CreatePurchaseFourthPage extends Page {
         cellNeededDate.click();
     }
 
-    public void setNumber2() {
+    public void setNumber2() throws InterruptedException {
         typeHere(fieldNumber2,"wwww");
     }
 

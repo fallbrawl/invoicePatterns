@@ -50,6 +50,9 @@ public class SellersPage extends Page {
     @FindBy(className = "btn-danger")
     WebElement buttonDelete;
 
+    @FindBy(className = "buyer_agreements")
+    WebElement buttonAgreements;
+
     @FindBy(id = "modal_success")
     WebElement buttonOk;
 
@@ -76,6 +79,9 @@ public class SellersPage extends Page {
 
     @FindBy(linkText = "Возврат средств")
     WebElement buttonOpenSpecificReturn;
+
+    @FindBy(id = "start_invoicefact_number")
+    WebElement fieldInvoicefactNumber;
 
     public SellersPage(WebDriver driver) {
         super(driver);
@@ -149,17 +155,27 @@ public class SellersPage extends Page {
         Thread.sleep(1000);
         // from ryba       WebElement needed = driver.findElement(By.xpath(".//td[position() = 1]/div[text() = '" + UtilsStore.getEmailNewUsername() + "']/ancestor::tr/td[last()]/div/a[contains(@class,'icon-remove')]"));
         WebElement createdSeller = driver.findElement(By.xpath(".//td[position() = 1]/div/a[text() = '" + UtilStore.nameOfDocument1 + "']"));
+        //WebElement createdSeller = driver.findElement(By.xpath(".//td[position() = 1]/div/a[text() = 'documentcreated1 2016/06/0916:16:56']"));
+
         createdSeller.click();
     }
 
     public void setBalance() throws InterruptedException {
         Thread.sleep(1000);
         typeHere(fieldSellerBalance, "1000000");
+        dropdownManagers.click();
+        Thread.sleep(500);
+        dropdownElements.get(1).click();
+        Thread.sleep(500);
+        typeHere(fieldInvoicefactNumber,"12456");
+
+
     }
 
     public void save() throws InterruptedException {
         Thread.sleep(500);
         buttonSave.click();
+        Thread.sleep(500);
     }
 
     public boolean isAlertPresent() throws InterruptedException {
@@ -282,5 +298,11 @@ public class SellersPage extends Page {
         Thread.sleep(2000);
         linkAttachSpecificPayments.click();
         Thread.sleep(1000);
+    }
+
+    public void openAgreements() throws InterruptedException {
+        Thread.sleep(500);
+        buttonAgreements.click();
+
     }
 }

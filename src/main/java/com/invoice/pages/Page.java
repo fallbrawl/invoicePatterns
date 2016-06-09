@@ -50,8 +50,9 @@ public abstract class Page {
         Thread.sleep(500);
     }
 
-    protected void typeHere(WebElement elementToTypeIn, String whatToType) {
+    protected void typeHere(WebElement elementToTypeIn, String whatToType) throws InterruptedException {
         elementToTypeIn.clear();
+        Thread.sleep(250);
         elementToTypeIn.sendKeys(whatToType);
     }
 

@@ -2,8 +2,11 @@ package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -118,6 +121,10 @@ public class EditWarehousePage extends Page {
     }
 
     public void goToStores() throws InterruptedException {
+        Thread.sleep(1000);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.linkText("Склады")));
+
+
         Thread.sleep(1000);
         linkStores.click();
     }

@@ -61,7 +61,7 @@ public class OverpayTest extends BasicTestCase {
 
         productsPage.open();
         productsPage.addNewItem();
-        productsPage.fillNewItem("Товар");
+        productsPage.fillNewItem("Товар","75","100");
 
         UtilStore.goBack(getWebDriver());
         UtilStore.goBack(getWebDriver());
@@ -101,6 +101,7 @@ public class OverpayTest extends BasicTestCase {
 
         seventhPage = sixthPage.toTheNextStep();
         seventhPage.waitForLoad();
+
 
         seventhPage.saveAndDelivery();
         seventhPage.fillDeliveryForm();

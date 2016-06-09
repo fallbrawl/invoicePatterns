@@ -97,7 +97,7 @@ public class SpecificClientPage extends Page {
         buttonChangeData.click();
     }
 
-    public void enterNewAddress() {
+    public void enterNewAddress() throws InterruptedException {
         typeHere(fieldClientAddress, UtilStore.nameProduct);
     }
 
@@ -122,7 +122,7 @@ public class SpecificClientPage extends Page {
         uploadFile(formUploadDocumentForClient);
     }
 
-    public void setDelay() {
+    public void setDelay() throws InterruptedException {
         typeHere(fieldDelay, "10");
     }
 

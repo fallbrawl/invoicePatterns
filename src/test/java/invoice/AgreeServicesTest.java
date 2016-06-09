@@ -50,7 +50,7 @@ public class AgreeServicesTest extends BasicTestCase {
         thirdPage = secondPage.toTheNextStep();
         thirdPage.waitForLoad();
         thirdPage.initPage();
-        thirdPage.setNumberOfItems();
+        thirdPage.setNumberOfItems("5");
 
         thirdPage.addProduct();
         thirdPage.fillProductForm();

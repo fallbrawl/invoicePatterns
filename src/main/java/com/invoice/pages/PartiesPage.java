@@ -99,7 +99,7 @@ public class PartiesPage extends Page {
 
     }
 
-    public void enterProduct() {
+    public void enterProduct() throws InterruptedException {
         typeHere(fieldSearch, "product 2016/03/3116:06:58");
 
     }

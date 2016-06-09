@@ -19,6 +19,10 @@ public class AddDocumentNinethPage extends Page {
     @FindBy(id = "full_shipment")
     WebElement buttonFullShipment;
 
+    //@FindBy(className = "btn-warning")
+    @FindBy(id = "edit_invoice")
+    WebElement buttonEditUnload;
+
     @FindBy(name = "invoice[2]")
     WebElement fieldCalendarNaklad;
 
@@ -204,7 +208,7 @@ public class AddDocumentNinethPage extends Page {
     }
 
     public void partialShipment(String howMuchItemsToShip) throws InterruptedException {
-        Thread.sleep(2500);
+        Thread.sleep(1500);
         buttonPartialShipment.click();
 
         if (!howMuchItemsToShip.equals("1")) {
@@ -218,7 +222,7 @@ public class AddDocumentNinethPage extends Page {
 
 
         Thread.sleep(500);
-        fieldCalendarNaklad.click();
+        fieldCalendarAct.click();
         Thread.sleep(500);
         cellCalendarDateToday.click();
 
@@ -232,5 +236,10 @@ public class AddDocumentNinethPage extends Page {
         Thread.sleep(500);
 
         buttonOk.click();
+    }
+
+    public void editUnload() throws InterruptedException {
+        Thread.sleep(500);
+        buttonEditUnload.click();
     }
 }

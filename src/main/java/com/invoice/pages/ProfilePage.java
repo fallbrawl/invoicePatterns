@@ -1,6 +1,7 @@
 package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,13 @@ public class ProfilePage extends Page {
 
     @FindBy(id = "select2-chosen-1")
     WebElement dropdownSetStore;
+
+    //@FindBy(name = "egoist_permission")
+    @FindBy(css = "[for=\"egoist_permission\"]")
+    WebElement checkboxEgoiste;
+
+    @FindBy(id = "egoist_permission")
+    WebElement egoisteStatus;
 
     @FindBy(className = "select2-chosen")
     WebElement fieldCurrentStore;
@@ -109,4 +117,33 @@ public class ProfilePage extends Page {
         driver.get(ConfigProperties.getProperty("profile.url"));
 
     }
+
+    public void setEgoiste(String neededState) throws InterruptedException {
+
+        Thread.sleep(1000);
+        switch (neededState) {
+
+            case "Disabled":
+                System.out.println(checkboxEgoiste.isSelected());
+                if (egoisteStatus.isSelected()) {
+                    checkboxEgoiste.click();
+                }
+                break;
+
+            case "Enabled":
+                if (egoisteStatus.isSelected()) {
+                    break;
+                } else checkboxEgoiste.click();
+                break;
+        }
+    }
+    public void setEgoiste1(String neededState) throws InterruptedException {
+        Thread.sleep(1000);
+        if (neededState.equals("Disabled") && driver.findElement(By.xpath("//[@id = 'egoist_permission' and @checked ='checked']")).isDisplayed()){
+            checkboxEgoiste.click();
+        }
+    }
 }
+
+
+

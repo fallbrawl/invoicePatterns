@@ -97,7 +97,7 @@ public class SpecificVendorPage extends Page {
         buttonChangeData.click();
     }
 
-    public void enterNewAddress() {
+    public void enterNewAddress() throws InterruptedException {
         typeHere(fieldVendorAddress, UtilStore.nameProduct);
     }
 
@@ -123,7 +123,7 @@ public class SpecificVendorPage extends Page {
         uploadFile(formUploadDocumentForVendor);
     }
 
-    public void setDelay() {
+    public void setDelay() throws InterruptedException {
         typeHere(fieldDelay, "10");
     }
 

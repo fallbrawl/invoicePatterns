@@ -26,6 +26,9 @@ public class AddDocumentSeventhPage extends Page {
     @FindBy(id = "save_an_deliv")
     WebElement buttonSaveAndDelivery;
 
+    @FindBy(id = "save_transit_pos")
+    WebElement buttonSave;
+
     @FindBy(name = "date_form")
     WebElement inputDate;
 
@@ -79,8 +82,13 @@ public class AddDocumentSeventhPage extends Page {
 
     }
 
-    public void saveAndDelivery() {
+    public void saveAndDelivery() throws InterruptedException {
+        Thread.sleep(1000);
         buttonSaveAndDelivery.click();
+        Thread.sleep(1000);
+//        buttonSave.click();
+//        Thread.sleep(1000);
+//        buttonSaveAndDelivery.click();
 
     }
 

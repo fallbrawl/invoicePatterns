@@ -120,7 +120,7 @@ public class CreatePurchaseSecondPage extends Page {
 
     }
 
-    public void setAgreementDelay() {
+    public void setAgreementDelay() throws InterruptedException {
         typeHere(fieldAgreementDelay,"7");
     }
 

@@ -129,11 +129,11 @@ public class AddDocumentEighthPage extends Page {
         cellCalendarDateToday.click();
     }
 
-    public void setNumber2() {
+    public void setNumber2() throws InterruptedException {
         typeHere(fieldNumber2, "wwww");
     }
 
-    public void setNumber3() {
+    public void setNumber3() throws InterruptedException {
         typeHere(fieldNumber3, "wwww");
     }
 
@@ -161,7 +161,7 @@ public class AddDocumentEighthPage extends Page {
         cellCalendarDateToday.click();
     }
 
-    public void setNumber4() {
+    public void setNumber4() throws InterruptedException {
         typeHere(fieldNumber4, "wwww");
     }
 

@@ -61,7 +61,7 @@ public class AgreeLicenseTest extends BasicTestCase {
 
         thirdPage = secondPage.toTheNextStep();
         thirdPage.initPage();
-        thirdPage.setNumberOfItems();
+        thirdPage.setNumberOfItems("5");
         thirdPage.addProduct();
         thirdPage.fillProductForm();
         thirdPage.waitForLoad();

@@ -29,6 +29,10 @@ public class SellersTest extends BasicTestCase {
         loginPage.open();
         mainPage = loginPage.loginAs(admin);
 
+        profilePage.open();
+        profilePage.setEgoiste("Enabled");
+        profilePage.saveProfile();
+
         sellersPage.open();
         sellersPage.addNewSeller();
 

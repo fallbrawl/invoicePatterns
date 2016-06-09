@@ -2,9 +2,9 @@ package invoice;
 
 import com.invoice.pages.*;
 import com.invoice.pages.AddDocumentPages.*;
+import com.invoice.utils.UtilStore;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.*;
 
 /**
  * Created by paul on 24.05.16.
@@ -30,50 +30,116 @@ public class CommentsAgreementTest extends BasicTestCase {
     private ProfilePage profilePage = PageFactory.initElements(getWebDriver(), ProfilePage.class);
     private ManagersPage managersPage = PageFactory.initElements(getWebDriver(), ManagersPage.class);
     private ArchivePage archivePage = PageFactory.initElements(getWebDriver(), ArchivePage.class);
+    private ListClientPage clientPage = PageFactory.initElements(getWebDriver(), ListClientPage.class);
 
     private SellersPage sellersPage = PageFactory.initElements(getWebDriver(), SellersPage.class);
 
-    private MainPage mainPage;
+    private MainPage mainPage = PageFactory.initElements(getWebDriver(), MainPage.class);
     private AddDocumentSecondPage secondPage;
     private AddDocumentThirdPage thirdPage;
 
-    @org.testng.annotations.Test(enabled = false)
+    @org.testng.annotations.Test(priority = 97)
     public void commentsAgreementTest() throws InterruptedException, NoSuchFieldException {
 
         loginPage.open();
         loginPage.loginAs(admin);
 
         profilePage.open();
-//        profilePage.setEgoiste("Disabled");
-//        profilePage.saveProfile();
-//
-//        firstPage.enterNames();
-//        firstPage.toTheNextStep();
-//
-//        secondPage.uploadFile();
-//        secondPage.setAgreementDelay("10");
-//        secondPage.agreement("Save");
-//        secondPage.waitForLoad();
-//        secondPage.agreement("Use");
-//        secondPage.waitForLoad();
-//
-//        managersPage.open();
-//        managersPage.declineAgreement();
-//        managersPage.writeComment("Bad comment on decline");
-//        managersPage.clickOk();
-//
-//        archivePage.open();
-//        archivePage.openSubPage("Договора клиентов");
-//        archivePage.openComment();
-//
-//        Assert.assertTrue(archivePage.isBadCommentSaved()); //Сохранился ли плохой комментарий об отклонении ?
+        profilePage.setEgoiste("Disabled");
+        profilePage.saveProfile();
 
+        firstPage.open();
+        firstPage.enterNames();
+        secondPage = firstPage.toTheNextStep();
 
+        secondPage.uploadFile();
+        secondPage.setAgreementDelay("10");
+        secondPage.setBestBefore();
+        secondPage.extractNumberDocument();
+        secondPage.agreement("Save");
+        secondPage.waitForLoad();
+        secondPage.agreement("Send");
+        secondPage.waitForLoad();
 
+        managersPage.open();
 
+        managersPage.declineAgreement();
+        managersPage.writeComment("Bad comment on decline");
+        managersPage.clickOk();
 
+        archivePage.open();
+        archivePage.openSubPage("Договора клиентов");
+        archivePage.openComment();
+
+        Assert.assertTrue(archivePage.isBadCommentSaved()); //Сохранился ли плохой комментарий об отклонении на странице архива ?
+
+        mainPage.open();
+        mainPage.openCreatedDocument();
+        secondPage.openBadComment();
+
+        Assert.assertTrue(secondPage.isBadCommentSaved()); //Сохранился ли плохой комментарий об отклонении на странице выбора счета для договора Шаг 2  ?
+
+        secondPage.uploadFile();
+        secondPage.setAgreementDelay("10");
+        secondPage.setBestBefore();
+        secondPage.extractNumberDocument();
+        secondPage.agreement("Save");
+        secondPage.waitForLoad();
+        secondPage.agreement("Send");
+        secondPage.waitForLoad();
+
+        managersPage.open();
+        managersPage.acceptAgreement();
+
+        UtilStore.goBack(driver);
+        UtilStore.reload(driver);
+        secondPage.initPage();
+        secondPage.agreement("Use");
+        secondPage.toTheNextStep();
+
+        sellersPage.initPage();
+
+        sellersPage.open();
+        sellersPage.openCreatedSeller();
+
+        sellersPage.changeData();
+        sellersPage.setBalance();
+        sellersPage.save();
+        UtilStore.goBack(getWebDriver());
+        UtilStore.goBack(getWebDriver());
+
+        thirdPage = secondPage.toTheNextStep();
+        thirdPage.initPage();
+        thirdPage.setNumberOfItems("5");
+        thirdPage.addProduct();
+        thirdPage.fillProductForm();
+        thirdPage.waitForLoad();
+        thirdPage.save();
+        thirdPage.waitForLoad();
+
+        archivePage.open();
+        archivePage.openSubPage("Договора клиентов");
+        archivePage.blockAgreement();
+        archivePage.writeComment("Bad comment on decline");
+        archivePage.clickOk();
+        archivePage.openComment();
+        Assert.assertTrue(archivePage.isBadCommentSaved()); //Сохранился ли плохой комментарий об отклонении на странице архива ?
+
+        mainPage.open();
+        mainPage.openComment();
+        Assert.assertTrue(mainPage.isBadCommentSaved()); //Сохранился ли плохой комментарий об отклонении на главной ?
+
+        dynamicPayments.open();
+        dynamicPayments.openComment();
+        Assert.assertTrue(dynamicPayments.isBadCommentSaved()); //Сохранился ли плохой комментарий об отклонении на движении платежей ?
+
+//        clientPage.open(); //TODO:не пашет из-за багов.
+//        clientPage.openClient();
+//        clientPage.openAgreements();
+
+        //Assert.assertTrue(clientPage.isFirstBadCommentSaved()); //Сохранился ли первый плохой комментарий об отклонении на странице клиентов ?
+        //Assert.assertTrue(clientPage.isSecondBadCommentSaved()); //Сохранился ли второй плохой комментарий об отклонении на странице клиентов ?
 
 
     }
-
 }

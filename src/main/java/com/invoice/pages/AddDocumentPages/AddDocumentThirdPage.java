@@ -2,6 +2,7 @@ package com.invoice.pages.AddDocumentPages;
 
 import com.invoice.pages.Page;
 import com.invoice.utils.UtilStore;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -91,14 +92,15 @@ public class AddDocumentThirdPage extends Page {
     }
 
     public void addProduct() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(1500);
         buttonPlus.click();
         Thread.sleep(750);
 
     }
 
-    public void setNumberOfItems(){
-        typeHere(fieldNumberOfItems, "5");
+    public void setNumberOfItems(String numberOfItems) throws InterruptedException {
+        typeHere(fieldNumberOfItems, Keys.BACK_SPACE);
+        typeHere(fieldNumberOfItems, numberOfItems);
     }
 
     public void save() throws InterruptedException {

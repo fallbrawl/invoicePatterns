@@ -1,6 +1,7 @@
 package com.invoice.pages.AddDocumentPages;
 
 import com.invoice.pages.Page;
+import com.invoice.utils.UtilStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -30,6 +31,9 @@ public class AddDocumentSecondPage extends Page {
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[1]/a")
     public WebElement cellFirstDayOfTheNextWeekInCalendar;
 
+    @FindBy(className = "fa-commenting")
+    public WebElement buttonComment;
+
     @FindBy(css = "li.active")
     public WebElement textNumber;
 
@@ -58,7 +62,7 @@ public class AddDocumentSecondPage extends Page {
     public WebElement buttonUseAgreement;
 
 
-    @FindBy(className = "fa-envelope")
+    @FindBy(className = "send_to_manager")
     public WebElement buttonSendAgreement;
 
     @FindBy(className = "loader_wrapper")
@@ -69,6 +73,11 @@ public class AddDocumentSecondPage extends Page {
 
     @FindBy(name = "date_to_file")
     public WebElement fieldCalendarForFile;
+
+    public void extractNumberDocument() {
+        System.out.print("DOc = " + driver.findElement(By.xpath("//div[1]/span/a")).getText());
+        UtilStore.buyingNumber = driver.findElement(By.xpath("//div[1]/span/a")).getText();
+    }
 
     public void extractNumber() {
 
@@ -83,6 +92,10 @@ public class AddDocumentSecondPage extends Page {
             documentName = matcher.group(0);
             System.out.println("EXTRACTED regex expression " + documentName);
         }
+    }
+
+    public String getDocumentName() {
+        return documentName;
     }
 
     public void setTypeOfAgreementService(String whatType) throws InterruptedException, NoSuchFieldException {
@@ -102,7 +115,7 @@ public class AddDocumentSecondPage extends Page {
                 typesOfDocuments = driver.findElements(By.className("select2-result-label"));
                 System.out.println("USLUGI:");
                 for (WebElement a : typesOfDocuments) {
-                    if (a.getText().equals("Услуги")) {
+                    if (a.getText().contains("Услуги")) {
                         Thread.sleep(500);
                         a.click();
                         break;
@@ -158,14 +171,17 @@ public class AddDocumentSecondPage extends Page {
         switch (what) {
 
             case "Save":
+                Thread.sleep(1000);
                 click(buttonSaveAgreement);
                 break;
 
             case "Send":
+                Thread.sleep(1000);
                 click(buttonSendAgreement);
                 break;
 
             case "Use":
+                Thread.sleep(1000);
                 click(buttonUseAgreement);
                 break;
 
@@ -204,6 +220,21 @@ public class AddDocumentSecondPage extends Page {
     @Override
     public void open() {
 
+    }
+
+    public void openBadComment() throws InterruptedException {
+        Thread.sleep(1000);
+        buttonComment.click();
+    }
+
+    public boolean isBadCommentSaved() throws InterruptedException {
+        Thread.sleep(500);
+
+        if (driver.findElement(By.className("popover-content")).getText().equals("Bad comment on decline")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

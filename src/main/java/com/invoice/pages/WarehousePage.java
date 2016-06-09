@@ -57,7 +57,7 @@ public class WarehousePage extends Page {
     }
 
     public void checkNumberOfStores() throws InterruptedException {
-
+        Thread.sleep(500);
         System.out.println(linkArrayEditStores.size());
 
         if (linkArrayEditStores.size() == 10) {

@@ -5,13 +5,22 @@ import com.invoice.utils.UtilStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by paul on 12.03.16.
  */
 public class ListClientPage extends Page {
+
+    @FindBy(className = "buyer_agreements")
+    WebElement buttonAgreements;
+
+    @FindAll(@FindBy(className = "popover_comment"))
+    List<WebElement> buttonOpenCommentsPopup;
 
     public String productNameForXpath = UtilStore.nameProduct;
 
@@ -62,5 +71,38 @@ public class ListClientPage extends Page {
     @Override
     public void open() {
         driver.get(ConfigProperties.getProperty("buyers.url"));
+    }
+
+    public void openClient() throws InterruptedException {
+        Thread.sleep(500);
+        //driver.findElement(By.linkText(UtilStore.nameOfDocument2)).click();
+        driver.findElement(By.linkText("documentcreated2 2016/05/3114:26:23")).click();
+    }
+
+    public void openAgreements() throws InterruptedException {
+        Thread.sleep(500);
+        buttonAgreements.click();
+    }
+
+    public boolean isFirstBadCommentSaved() throws InterruptedException {
+        Thread.sleep(2500);
+        buttonOpenCommentsPopup.get(0).click();
+        Thread.sleep(500);
+        if (driver.findElement(By.className("popover-content")).getText().equals("Bad comment on decline")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isSecondBadCommentSaved() throws InterruptedException {
+        Thread.sleep(2500);
+        buttonOpenCommentsPopup.get(1).click();
+        Thread.sleep(500);
+        if (driver.findElement(By.className("popover-content")).getText().equals("Bad comment on decline")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

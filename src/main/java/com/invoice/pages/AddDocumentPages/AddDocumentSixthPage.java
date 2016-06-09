@@ -28,12 +28,9 @@ public class AddDocumentSixthPage extends Page {
     @FindBy(className = "fa-envelope")
     public WebElement buttonSendAgreement;
 
-
-
     @FindBy(xpath = ".//*[@id='ui-datepicker-div']/div/a[2]/span")
     public WebElement buttonGoToTheNextMonthInCalendar;
 
-    //@FindBy(className = "col-xs-6")
     @FindBy(xpath = ".//*[@id='agreement-table']/tbody/tr/td[3]/input")
     public WebElement fieldAgreementDelay;
 
@@ -103,12 +100,13 @@ public class AddDocumentSixthPage extends Page {
     }
 
     public void setBestBefore() throws InterruptedException {
+        Thread.sleep(1000);
         fieldCalendarForFile.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonGoToTheNextMonthInCalendar.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         buttonGoToTheNextMonthInCalendar.click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         cellFirstDayOfTheNextWeekInCalendar.click();
 
     }
@@ -129,7 +127,7 @@ public class AddDocumentSixthPage extends Page {
                 typesOfDocuments = driver.findElements(By.className("select2-result-label"));
                 System.out.println("USLUGI:");
                 for (WebElement a : typesOfDocuments) {
-                    if (a.getText().equals("Услуги")) {
+                    if (a.getText().contains("Услуги")) {
                         Thread.sleep(500);
                         a.click();
                         break;

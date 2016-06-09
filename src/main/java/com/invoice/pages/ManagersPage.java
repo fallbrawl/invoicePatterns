@@ -1,6 +1,8 @@
 package com.invoice.pages;
 
 import com.invoice.utils.ConfigProperties;
+import com.invoice.utils.UtilStore;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,30 +19,36 @@ public class ManagersPage extends Page {
         super(driver);
     }
 
-    @FindBy(className = "icon_check")
+    @FindBy(className = "fa-check")
     public WebElement buttonCheck;
-
-    @FindBy(className = "btn-success")
-    public WebElement buttonDone;
 
     @FindBy(className = "btn-danger")
     public WebElement buttonCancel;
 
-    public void checkAndSave() {
-        buttonCheck.click();
-
-    }
-
-    public void enter() throws InterruptedException {
-
-        WebDriverWait wait = new WebDriverWait(driver, 2);
-        wait.until(ExpectedConditions.visibilityOf(buttonDone));
-        buttonDone.click();
-    }
+    @FindBy(id = "comments")
+    public WebElement textfieldComments;
 
     @Override
     public void open() {
 
         driver.get(ConfigProperties.getProperty("manager.url"));
+    }
+
+    public void declineAgreement() {
+        driver.findElement(By.xpath("//a[text() = '" + UtilStore.nameOfDocument2 + "' ]/../../td[6]/div/a[2]")).click();
+    }
+
+    public void writeComment(String comment) throws InterruptedException {
+        Thread.sleep(1000);
+
+        typeHere(driver.findElement(By.id("comment")),comment);
+    }
+
+    public void acceptAgreement() throws InterruptedException {
+        Thread.sleep(500);
+        driver.findElement(By.xpath("//a[text() = '" + UtilStore.nameOfDocument2 + "' ]/../../td[6]/div/a[1]")).click();
+        Thread.sleep(500);
+        buttonOk.click();
+
     }
 }

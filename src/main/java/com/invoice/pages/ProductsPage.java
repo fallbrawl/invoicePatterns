@@ -58,7 +58,7 @@ public class ProductsPage extends Page {
     }
 
 
-    public void fillNewItem(String whatType) throws InterruptedException {
+    public void fillNewItem(String whatType, String priceProduct, String recomendedPriceProduct) throws InterruptedException {
 
         dropdownTypeOfAgreement.click();
         Thread.sleep(1000);
@@ -72,8 +72,8 @@ public class ProductsPage extends Page {
             }
         }
 
-        typeHere(fieldRecommendedProductPrice, "100");
-        typeHere(fieldPriceProduct, "75");
+        typeHere(fieldRecommendedProductPrice, recomendedPriceProduct);
+        typeHere(fieldPriceProduct, priceProduct);
 
         Thread.sleep(1000);
         WebElement buttonAddCategory = arrayAddItemButtons.get(0);

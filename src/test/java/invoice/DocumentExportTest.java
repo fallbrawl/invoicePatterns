@@ -52,7 +52,7 @@ public class DocumentExportTest extends BasicTestCase {
 
         productsPage.open();
         productsPage.addNewItem();
-        productsPage.fillNewItem("Товар");
+        productsPage.fillNewItem("Товар","75","100");
 
         usersPage.logout();
 
